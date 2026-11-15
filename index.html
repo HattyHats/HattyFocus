@@ -3076,7 +3076,7 @@ input[type=range].slider-gradient-exp::-webkit-slider-runnable-track {
     <button class="tbtn" id="t-filter" onclick="setTool('filter')" data-tip="Cinematic Presets (F)"><div class="ticon">✨</div><div class="tlabel">Filter</div></button>
     <div class="tsep"></div>
     <button class="tbtn" id="t-text" onclick="setTool('text')" data-tip="Add Vector Text (T)"><div class="ticon">T</div><div class="tlabel">Text</div></button>
-    <button class="tbtn" id="t-overlay" onclick="setTool('overlay')" data-tip="Layers & Overlays (L)"><div class="ticon">◫</div><div class="tlabel">Layers</div></button>
+    <button class="tbtn" id="t-overlay" onclick="setTool('overlay')" data-tip="Layers & Overlays"><div class="ticon">◫</div><div class="tlabel">Layers</div></button>
     <button class="tbtn" id="t-magic" onclick="setTool('magic')" data-tip="Magic Wand Selection (W)"><div class="ticon">🪄</div><div class="tlabel">Magic</div></button>
     <button class="tbtn" id="t-lasso" onclick="setTool('lasso')" data-tip="Lasso Selection (Q)"><div class="ticon">➰</div><div class="tlabel">Lasso</div></button>
     <div class="tsep"></div>
@@ -4282,7 +4282,7 @@ input[type=range].slider-gradient-exp::-webkit-slider-runnable-track {
         <div style="background:rgba(255,255,255,0.025);border:1px solid var(--border-subtle);border-radius:var(--rs);padding:8px 10px;">
           <div style="font-size:11px;font-weight:700;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:6px">Join An Existing Room</div>
           <div style="display:flex;gap:6px">
-            <input type="text" id="collab-input-join-code" placeholder="Enter Room Code (e.g. OF-K7M2-P9QA-3NVR)" style="flex:1;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:var(--rs);padding:6px 9px;font-size:11.5px;color:var(--text);font-family:var(--font-m);text-transform:uppercase" maxlength="16" onkeydown="if(event.key==='Enter') CollabEngine.joinFromInput()">
+            <input type="text" id="collab-input-join-code" placeholder="Enter Room Code (e.g. OF-K7M2-P9QA-3NVR)" style="flex:1;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:var(--rs);padding:6px 9px;font-size:11.5px;color:var(--text);font-family:var(--font-m);text-transform:uppercase" maxlength="24" onkeydown="if(event.key==='Enter') CollabEngine.joinFromInput()">
             <button class="btn btn-outline" onclick="CollabEngine.joinFromInput()" style="font-size:11px;padding:0 12px;height:30px">Join Room →</button>
           </div>
         </div>
@@ -4350,7 +4350,7 @@ input[type=range].slider-gradient-exp::-webkit-slider-runnable-track {
           <div style="height:1px;background:var(--border-subtle)"></div>
 
           <!-- Client Proofing & Star Rating Row -->
-          <div>
+          <div id="collab-proofing-section">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
               <div style="font-size:11px;font-weight:700;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.5px">Client Proofing &amp; Rating</div>
               <div class="collab-stars-wrap">
@@ -4480,20 +4480,25 @@ input[type=range].slider-gradient-exp::-webkit-slider-runnable-track {
   <div class="mcard" style="width:460px">
     <div class="mtitle">⌨ Studio Shortcuts</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;font-size:12px;color:var(--text-muted)">
+      <div><kbd style="background:var(--surface-raised);border:1px solid var(--border-light);border-radius:3px;padding:2px 6px;color:var(--text);font-family:var(--font-m)">Ctrl+K</kbd> Command Palette</div>
       <div><kbd style="background:var(--surface-raised);border:1px solid var(--border-light);border-radius:3px;padding:2px 6px;color:var(--text);font-family:var(--font-m)">Ctrl+N</kbd> New Edit Project</div>
       <div><kbd style="background:var(--surface-raised);border:1px solid var(--border-light);border-radius:3px;padding:2px 6px;color:var(--text);font-family:var(--font-m)">Ctrl+O</kbd> Open Photo</div>
+      <div><kbd style="background:var(--surface-raised);border:1px solid var(--border-light);border-radius:3px;padding:2px 6px;color:var(--text);font-family:var(--font-m)">Ctrl+S</kbd> Export Photo</div>
       <div><kbd style="background:var(--surface-raised);border:1px solid var(--border-light);border-radius:3px;padding:2px 6px;color:var(--text);font-family:var(--font-m)">Ctrl+Z</kbd> Undo</div>
       <div><kbd style="background:var(--surface-raised);border:1px solid var(--border-light);border-radius:3px;padding:2px 6px;color:var(--text);font-family:var(--font-m)">Ctrl+Y</kbd> Redo</div>
       <div><kbd style="background:var(--surface-raised);border:1px solid var(--border-light);border-radius:3px;padding:2px 6px;color:var(--text);font-family:var(--font-m)">Space+Drag</kbd> Hand Pan Canvas</div>
       <div><kbd style="background:var(--surface-raised);border:1px solid var(--border-light);border-radius:3px;padding:2px 6px;color:var(--text);font-family:var(--font-m)">\</kbd> Hold to compare original</div>
-      <div><kbd style="background:var(--surface-raised);border:1px solid var(--border-light);border-radius:3px;padding:2px 6px;color:var(--text);font-family:var(--font-m)">M</kbd> Move Tool</div>
+      <div><kbd style="background:var(--surface-raised);border:1px solid var(--border-light);border-radius:3px;padding:2px 6px;color:var(--text);font-family:var(--font-m)">M / V</kbd> Move Tool</div>
       <div><kbd style="background:var(--surface-raised);border:1px solid var(--border-light);border-radius:3px;padding:2px 6px;color:var(--text);font-family:var(--font-m)">H</kbd> Hand Pan Tool</div>
       <div><kbd style="background:var(--surface-raised);border:1px solid var(--border-light);border-radius:3px;padding:2px 6px;color:var(--text);font-family:var(--font-m)">C</kbd> Crop Tool</div>
+      <div><kbd style="background:var(--surface-raised);border:1px solid var(--border-light);border-radius:3px;padding:2px 6px;color:var(--text);font-family:var(--font-m)">A / F</kbd> Adjust / Filters</div>
+      <div><kbd style="background:var(--surface-raised);border:1px solid var(--border-light);border-radius:3px;padding:2px 6px;color:var(--text);font-family:var(--font-m)">W / Q</kbd> Magic Wand / Lasso</div>
       <div><kbd style="background:var(--surface-raised);border:1px solid var(--border-light);border-radius:3px;padding:2px 6px;color:var(--text);font-family:var(--font-m)">T</kbd> Text Layer</div>
       <div><kbd style="background:var(--surface-raised);border:1px solid var(--border-light);border-radius:3px;padding:2px 6px;color:var(--text);font-family:var(--font-m)">I</kbd> Eyedropper Loupe</div>
-      <div><kbd style="background:var(--surface-raised);border:1px solid var(--border-light);border-radius:3px;padding:2px 6px;color:var(--text);font-family:var(--font-m)">B</kbd> Selective Blur Brush</div>
+      <div><kbd style="background:var(--surface-raised);border:1px solid var(--border-light);border-radius:3px;padding:2px 6px;color:var(--text);font-family:var(--font-m)">B / G</kbd> Blur / Heal Brush</div>
       <div><kbd style="background:var(--surface-raised);border:1px solid var(--border-light);border-radius:3px;padding:2px 6px;color:var(--text);font-family:var(--font-m)">L</kbd> Vanishing Laser Pointer</div>
       <div><kbd style="background:var(--surface-raised);border:1px solid var(--border-light);border-radius:3px;padding:2px 6px;color:var(--text);font-family:var(--font-m)">P</kbd> Comments &amp; Proofing Pins</div>
+      <div><kbd style="background:var(--surface-raised);border:1px solid var(--border-light);border-radius:3px;padding:2px 6px;color:var(--text);font-family:var(--font-m)">[ / ]</kbd> Reorder Layer Stack</div>
       <div><kbd style="background:var(--surface-raised);border:1px solid var(--border-light);border-radius:3px;padding:2px 6px;color:var(--text);font-family:var(--font-m)">Del</kbd> Delete Layer / Cut Selection</div>
     </div>
     <div class="macts">
@@ -4595,6 +4600,186 @@ const cw = document.getElementById('cw');
 const cs = document.getElementById('cs');
 const ca = document.getElementById('canvas-area');
 
+// SHARED SECURITY, COLLAB GUARD & BLUR UTILITIES
+function escapeHTML(val) {
+  return String(val ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function sanitizeColor(col, fallback = '#3b82f6') {
+  const s = String(col || '').trim();
+  if (/^#[0-9a-fA-F]{3,8}$/.test(s) || /^(rgba?|hsla?)\([0-9.,%\s+-]+\)$/i.test(s) || /^[a-zA-Z]{3,20}$/.test(s)) {
+    return s;
+  }
+  return fallback;
+}
+
+function cryptoRandomString(len, chars) {
+  if (typeof window !== 'undefined' && window.crypto && window.crypto.getRandomValues) {
+    const arr = new Uint32Array(len);
+    window.crypto.getRandomValues(arr);
+    let out = '';
+    for (let i = 0; i < len; i++) out += chars[arr[i] % chars.length];
+    return out;
+  }
+  let out = '';
+  for (let i = 0; i < len; i++) out += chars[Math.floor(Math.random() * chars.length)];
+  return out;
+}
+
+const COLLAB_EDIT_PACKET_TYPES = new Set([
+  'sync_sliders', 'slider_delta', 'preset_applied',
+  'sync_layers', 'layer_transform', 'master_image',
+  'img_chunk', 'sync_canvas_meta'
+]);
+
+function canCollabEdit() {
+  return typeof CollabEngine === 'undefined' ||
+    !CollabEngine.active ||
+    CollabEngine.isHost ||
+    CollabEngine.roomMode !== 'view' ||
+    Boolean(CollabEngine._isRemoteUpdate);
+}
+
+function guardCollabViewOnly() {
+  if (canCollabEdit()) return true;
+  toast('👀 View-Only session: editing is disabled by host');
+  return false;
+}
+
+function _boxesForGauss(sigma, n) {
+  const wIdeal = Math.sqrt((12 * sigma * sigma / n) + 1);
+  let wl = Math.floor(wIdeal);
+  if (wl % 2 === 0) wl--;
+  const wu = wl + 2;
+  const mIdeal = (12 * sigma * sigma - n * wl * wl - 4 * n * wl - 3 * n) / (-4 * wl - 4);
+  const m = Math.round(mIdeal);
+  const sizes = [];
+  for (let i = 0; i < n; i++) sizes.push(i < m ? wl : wu);
+  return sizes;
+}
+
+// Separable edge-clamped O(W*H) 3-pass Gaussian approximation (cross-browser, zero border darkening)
+function blurImageDataInPlace(imgData, w, h, radiusPx, premultiply = false) {
+  if (!imgData || !w || !h || radiusPx <= 0.35) return;
+  const d = imgData.data;
+  const len = w * h;
+  const boxes = _boxesForGauss(radiusPx, 3);
+  let srcR = new Float32Array(len), srcG = new Float32Array(len), srcB = new Float32Array(len), srcA = new Float32Array(len);
+  let dstR = new Float32Array(len), dstG = new Float32Array(len), dstB = new Float32Array(len), dstA = new Float32Array(len);
+
+  for (let i = 0; i < len; i++) {
+    const p = i * 4;
+    const a = d[p + 3];
+    srcA[i] = a;
+    if (premultiply) {
+      const k = a / 255;
+      srcR[i] = d[p] * k;
+      srcG[i] = d[p + 1] * k;
+      srcB[i] = d[p + 2] * k;
+    } else {
+      srcR[i] = d[p];
+      srcG[i] = d[p + 1];
+      srcB[i] = d[p + 2];
+    }
+  }
+
+  for (let pass = 0; pass < boxes.length; pass++) {
+    const r = Math.max(0, (boxes[pass] - 1) >> 1);
+    if (r === 0) continue;
+    const iarr = 1 / (r + r + 1);
+
+    // Horizontal pass with edge clamping
+    for (let y = 0; y < h; y++) {
+      const row = y * w;
+      let valR = srcR[row] * (r + 1);
+      let valG = srcG[row] * (r + 1);
+      let valB = srcB[row] * (r + 1);
+      let valA = srcA[row] * (r + 1);
+      for (let j = 1; j <= r; j++) {
+        const idx = row + Math.min(w - 1, j);
+        valR += srcR[idx]; valG += srcG[idx]; valB += srcB[idx]; valA += srcA[idx];
+      }
+      for (let x = 0; x < w; x++) {
+        const ti = row + x;
+        dstR[ti] = valR * iarr;
+        dstG[ti] = valG * iarr;
+        dstB[ti] = valB * iarr;
+        dstA[ti] = valA * iarr;
+        const ri = row + Math.min(w - 1, x + r + 1);
+        const li = row + Math.max(0, x - r);
+        valR += srcR[ri] - srcR[li];
+        valG += srcG[ri] - srcG[li];
+        valB += srcB[ri] - srcB[li];
+        valA += srcA[ri] - srcA[li];
+      }
+    }
+
+    // Vertical pass with edge clamping
+    for (let x = 0; x < w; x++) {
+      let valR = dstR[x] * (r + 1);
+      let valG = dstG[x] * (r + 1);
+      let valB = dstB[x] * (r + 1);
+      let valA = dstA[x] * (r + 1);
+      for (let j = 1; j <= r; j++) {
+        const idx = Math.min(h - 1, j) * w + x;
+        valR += dstR[idx]; valG += dstG[idx]; valB += dstB[idx]; valA += dstA[idx];
+      }
+      for (let y = 0; y < h; y++) {
+        const ti = y * w + x;
+        srcR[ti] = valR * iarr;
+        srcG[ti] = valG * iarr;
+        srcB[ti] = valB * iarr;
+        srcA[ti] = valA * iarr;
+        const bi = Math.min(h - 1, y + r + 1) * w + x;
+        const ui = Math.max(0, y - r) * w + x;
+        valR += dstR[bi] - dstR[ui];
+        valG += dstG[bi] - dstG[ui];
+        valB += dstB[bi] - dstB[ui];
+        valA += dstA[bi] - dstA[ui];
+      }
+    }
+  }
+
+  for (let i = 0; i < len; i++) {
+    const p = i * 4;
+    const a = Math.max(0, Math.min(255, Math.round(srcA[i])));
+    d[p + 3] = a;
+    if (premultiply) {
+      if (a > 0) {
+        const inv = 255 / srcA[i];
+        d[p]     = Math.max(0, Math.min(255, Math.round(srcR[i] * inv)));
+        d[p + 1] = Math.max(0, Math.min(255, Math.round(srcG[i] * inv)));
+        d[p + 2] = Math.max(0, Math.min(255, Math.round(srcB[i] * inv)));
+      } else {
+        d[p] = d[p + 1] = d[p + 2] = 0;
+      }
+    } else {
+      d[p]     = Math.max(0, Math.min(255, Math.round(srcR[i])));
+      d[p + 1] = Math.max(0, Math.min(255, Math.round(srcG[i])));
+      d[p + 2] = Math.max(0, Math.min(255, Math.round(srcB[i])));
+    }
+  }
+}
+
+function blurCanvasPixels(srcCanvas, radiusPx, premultiply = false) {
+  const w = srcCanvas.width, h = srcCanvas.height;
+  const out = document.createElement('canvas');
+  out.width = w; out.height = h;
+  const ox = out.getContext('2d');
+  ox.drawImage(srcCanvas, 0, 0, w, h);
+  if (radiusPx > 0.35 && w > 0 && h > 0) {
+    const id = ox.getImageData(0, 0, w, h);
+    blurImageDataInPlace(id, w, h, radiusPx, premultiply);
+    ox.putImageData(id, 0, 0);
+  }
+  return out;
+}
+
 // INDEXEDDB AUTO-SAVE & RESTORE
 const DB_NAME = 'OpenFocusDB';
 const STORE_NAME = 'workspace';
@@ -4616,12 +4801,69 @@ function initDB() {
 }
 
 function saveWorkspace() {
-  if (!idb || !S.hasImg || hIdx < 0) return;
+  if (!idb || !S.hasImg || hIdx < 0 || !hist[hIdx]) return;
   try {
-    const ws = { S: JSON.parse(JSON.stringify(S)), histState: hist[hIdx] };
+    const ws = { S: JSON.parse(JSON.stringify(S)), histState: hist[hIdx], savedAt: Date.now() };
     const tx = idb.transaction(STORE_NAME, 'readwrite');
     tx.objectStore(STORE_NAME).put(ws, 'autosave');
   } catch (err) { console.error('Autosave error:', err); }
+}
+
+function clearSavedWorkspace() {
+  if (!idb) return;
+  try {
+    const tx = idb.transaction(STORE_NAME, 'readwrite');
+    tx.objectStore(STORE_NAME).delete('autosave');
+  } catch {}
+}
+
+function restoreWorkspace() {
+  if (!idb || S.hasImg) return Promise.resolve(false);
+  return new Promise((resolve) => {
+    try {
+      const tx = idb.transaction(STORE_NAME, 'readonly');
+      const req = tx.objectStore(STORE_NAME).get('autosave');
+      req.onsuccess = async () => {
+        try {
+          const ws = req.result;
+          const collabActive = typeof CollabEngine !== 'undefined' && CollabEngine.isActive && CollabEngine.isActive();
+          if (!ws || !ws.histState || !ws.histState.origImgSrc || S.hasImg || collabActive) {
+            resolve(false);
+            return;
+          }
+          if (ws.S) {
+            S.imgName = ws.S.imgName || 'Photo';
+            S.fmt = ws.S.fmt || 'jpg';
+            S.expPreset = ws.S.expPreset || 'original';
+            S.expScale = ws.S.expScale || 1;
+            S.targetMaxKB = ws.S.targetMaxKB || 0;
+            S.canvasBg = ws.S.canvasBg || 'transparent';
+            S.guide = ws.S.guide || 'none';
+          }
+          S.hasImg = true;
+          S.tool = 'move';
+          hist = [ws.histState];
+          hIdx = 0;
+          await jumpHist(0);
+          ca.classList.add('has-img');
+          cw.style.display = 'block';
+          const dn = document.getElementById('docname');
+          if (dn) dn.innerHTML = `<strong>${escapeHTML(S.imgName)}</strong>`;
+          if (document.getElementById('welcome')) enterApp(true);
+          if (typeof generatePresetThumbnails === 'function') generatePresetThumbnails();
+          requestAnimationFrame(() => zFit());
+          toast(`♻️ Restored previous session "${S.imgName}"`);
+          resolve(true);
+        } catch (err) {
+          console.warn('Workspace restore skipped:', err);
+          resolve(false);
+        }
+      };
+      req.onerror = () => resolve(false);
+    } catch {
+      resolve(false);
+    }
+  });
 }
 
 let saveTimeout;
@@ -4737,9 +4979,12 @@ function onDrop(e) {
 }
 
 function loadFile(f) {
+  if (!guardCollabViewOnly()) return;
   const r = new FileReader();
+  r.onerror = () => toast('❌ Failed to read image file');
   r.onload = e => {
     const img = new Image();
+    img.onerror = () => toast('❌ Unsupported or corrupted image file');
     img.onload = () => {
       const maxDim = window.innerWidth <= 768 ? 2048 : 3840;
       downscaleImageIfNeeded(img, maxDim, scaledImg => {
@@ -4760,6 +5005,7 @@ function downscaleImageIfNeeded(img, maxDim, callback) {
     oc.width = w; oc.height = h;
     oc.getContext('2d').drawImage(img, 0, 0, w, h);
     const scaledImg = new Image();
+    scaledImg.onerror = () => callback(img);
     scaledImg.onload = () => callback(scaledImg);
     scaledImg.src = oc.toDataURL('image/png');
   } else {
@@ -4815,6 +5061,7 @@ function submitNewBlankCanvas() {
   newBlankCanvas(w, h, bg);
 }
 function newBlankCanvas(w, h, bg = '#090a0d') {
+  if (!guardCollabViewOnly()) return;
   w = Math.max(64, Math.min(8192, parseInt(w) || 1920));
   h = Math.max(64, Math.min(8192, parseInt(h) || 1080));
   const oc = document.createElement('canvas');
@@ -4836,6 +5083,10 @@ function newBlankCanvas(w, h, bg = '#090a0d') {
 
 function confirmResetAll() {
   if (!S.hasImg) { closeNewModal(); return; }
+  if (!guardCollabViewOnly()) return;
+  if (cropOn) cancelCrop();
+  if (baActive && typeof exitBA === 'function') exitBA();
+  if (eyeActive && typeof stopEyedropper === 'function') stopEyedropper();
   origImg = null;
   _origDirty = false;
   S.hasImg = false;
@@ -4843,21 +5094,31 @@ function confirmResetAll() {
   selLayerId = null;
   invalidateAdjCache();
   if (typeof CurvesEngine !== 'undefined') CurvesEngine.resetForNewProject();
-  if (typeof clearHealStrokes === 'function') clearHealStrokes();
+  if (typeof HealBrush !== 'undefined') HealBrush.clear(true);
   if (typeof BGRRefine !== 'undefined') BGRRefine.cleanup();
   document.getElementById('bgr-refine-bar')?.classList.remove('on', 'vis');
   document.getElementById('bgr-brush-bar')?.classList.remove('on', 'vis');
   blurStrokes = [];
   lassoPoints = []; lassoBrushStrokes = [];
   selectionActive = false; selectionMask = null;
+  if (typeof clearSelectionCache === 'function') clearSelectionCache();
   activeSnapGuides = [];
   hist = []; hIdx = -1;
+  clearSavedWorkspace();
   ca.classList.remove('has-img');
   cw.style.display = 'none';
   const pill = document.getElementById('floating-context-pill');
   if (pill) pill.style.display = 'none';
   document.getElementById('docname').innerHTML = '<strong>No photo open</strong>';
   document.getElementById('stsize').textContent = '—';
+  const expOrig = document.getElementById('exp-orig-res');
+  if (expOrig) expOrig.textContent = '—';
+  const stLayers = document.getElementById('stlayers');
+  if (stLayers) stLayers.textContent = '0';
+  updateAdjustHeader();
+  renderLayersPanel();
+  renderHistPanel();
+  updateUndoBtns();
   closeNewModal();
   const wel = document.getElementById('welcome');
   if (wel) {
@@ -4884,13 +5145,14 @@ function initCanvas(img, name) {
   // Clean all previous tool and edit states so NO prior edits carry over
   invalidateAdjCache();
   if (typeof CurvesEngine !== 'undefined') CurvesEngine.resetForNewProject();
-  if (typeof clearHealStrokes === 'function') clearHealStrokes();
+  if (typeof HealBrush !== 'undefined') HealBrush.clear(true);
   if (typeof BGRRefine !== 'undefined') BGRRefine.cleanup();
   document.getElementById('bgr-refine-bar')?.classList.remove('on', 'vis');
   document.getElementById('bgr-brush-bar')?.classList.remove('on', 'vis');
   blurStrokes = [];
   lassoPoints = []; lassoBrushStrokes = [];
   selectionActive = false; selectionMask = null;
+  if (typeof clearSelectionCache === 'function') clearSelectionCache();
   activeSnapGuides = [];
   freeRotateAngle = 0;
   canvas.style.transform = '';
@@ -4918,11 +5180,11 @@ function initCanvas(img, name) {
   selLayerId = layers[0].id;
   resetSlidersUI();
   hist = []; hIdx = -1;
-  pushHist('Opened "' + name + '"');
+  pushHist('Opened "' + (name || 'Photo') + '"');
   
   ca.classList.add('has-img');
   cw.style.display = 'block';
-  document.getElementById('docname').innerHTML = `<strong>${name}</strong>`;
+  document.getElementById('docname').innerHTML = `<strong>${escapeHTML(name || 'Photo')}</strong>`;
   document.getElementById('stsize').textContent = `${img.width} × ${img.height}`;
   document.getElementById('exp-orig-res').textContent = `${img.width} × ${img.height}`;
   
@@ -4960,7 +5222,14 @@ function serializeLayers() {
     if (out.curves) out.curves = JSON.parse(JSON.stringify(out.curves));
     out.curvesLUT = null;
     if (out.img) {
-      if (out.type === 'image' && l.img.src) out.imgSrc = l.img.src;
+      if (out.type === 'image') {
+        if (typeof HTMLCanvasElement !== 'undefined' && l.img instanceof HTMLCanvasElement) {
+          if (!l.img._cachedDataUrl) l.img._cachedDataUrl = l.img.toDataURL('image/png');
+          out.imgSrc = l.img._cachedDataUrl;
+        } else if (l.img.src) {
+          out.imgSrc = l.img.src;
+        }
+      }
       out.img = null;
     }
     if (l.mask) {
@@ -5007,6 +5276,7 @@ function pushHist(label) {
     label,
     sliders: getSliders(),
     layers: serializeLayers(),
+    selLayerId,
     origImgSrc: _oSrc,
     canvasW: canvas.width,
     canvasH: canvas.height
@@ -5020,7 +5290,7 @@ function pushHist(label) {
   renderHistPanel();
   updateUndoBtns();
   triggerAutoSave();
-  if (typeof CollabEngine !== 'undefined' && CollabEngine.isActive() && !CollabEngine._isRemoteUpdate) {
+  if (typeof CollabEngine !== 'undefined' && CollabEngine.isActive() && !CollabEngine._isRemoteUpdate && canCollabEdit()) {
     CollabEngine.broadcast({ type: 'sync_layers', layers: serializeLayers(), selLayerId });
     CollabEngine.broadcast({ type: 'sync_sliders', sliders: getSliders() });
   }
@@ -5064,10 +5334,25 @@ function jumpHist(idx) {
     return out;
   });
 
-  if (!layers.some(l => l.id === selLayerId)) {
+  if (e.selLayerId && layers.some(l => l.id === e.selLayerId)) {
+    selLayerId = e.selLayerId;
+  } else if (!layers.some(l => l.id === selLayerId)) {
     selLayerId = layers[0]?.id || null;
   }
+  const maxId = layers.reduce((mx, l) => Math.max(mx, l.id || 0), 0);
+  if (maxId >= nextLayerId) nextLayerId = maxId + 1;
   invalidateAdjCache();
+
+  const applyRestoredCanvasSize = (w, h) => {
+    canvas.width = hudCanvas.width = lassoOverlay.width = w;
+    canvas.height = hudCanvas.height = lassoOverlay.height = h;
+    const stSize = document.getElementById('stsize');
+    if (stSize) stSize.textContent = `${w} × ${h}`;
+    const expOrig = document.getElementById('exp-orig-res');
+    if (expOrig) expOrig.textContent = `${w} × ${h}`;
+    if (typeof LaserEngine !== 'undefined' && LaserEngine.resize) LaserEngine.resize();
+    if (typeof positionCanvas === 'function') positionCanvas();
+  };
 
   return new Promise((resolve) => {
     if (e.origImgSrc) {
@@ -5076,8 +5361,7 @@ function jumpHist(idx) {
         origImg = img;
         const baseLayer = layers.find(l => l.type === 'base');
         if (baseLayer) baseLayer.img = img;
-        canvas.width = hudCanvas.width = lassoOverlay.width = e.canvasW || img.width;
-        canvas.height = hudCanvas.height = lassoOverlay.height = e.canvasH || img.height;
+        applyRestoredCanvasSize(e.canvasW || img.width, e.canvasH || img.height);
         invalidateAdjCache();
         updateAdjustHeader();
         updateContextPill();
@@ -5085,7 +5369,7 @@ function jumpHist(idx) {
         renderLayersPanel();
         renderHistPanel();
         updateUndoBtns();
-        if (typeof CollabEngine !== 'undefined' && CollabEngine.isActive && CollabEngine.isActive() && !CollabEngine._isRemoteUpdate) {
+        if (typeof CollabEngine !== 'undefined' && CollabEngine.isActive && CollabEngine.isActive() && !CollabEngine._isRemoteUpdate && canCollabEdit()) {
           CollabEngine.sendMasterImage();
           CollabEngine.broadcast({ type: 'sync_layers', layers: serializeLayers(), selLayerId });
           CollabEngine.broadcast({ type: 'sync_sliders', sliders: getSliders() });
@@ -5096,8 +5380,7 @@ function jumpHist(idx) {
       img.src = e.origImgSrc;
     } else {
       if (e.canvasW && e.canvasH) {
-        canvas.width = hudCanvas.width = lassoOverlay.width = e.canvasW;
-        canvas.height = hudCanvas.height = lassoOverlay.height = e.canvasH;
+        applyRestoredCanvasSize(e.canvasW, e.canvasH);
       }
       updateAdjustHeader();
       updateContextPill();
@@ -5105,7 +5388,7 @@ function jumpHist(idx) {
       renderLayersPanel();
       renderHistPanel();
       updateUndoBtns();
-      if (typeof CollabEngine !== 'undefined' && CollabEngine.isActive && CollabEngine.isActive() && !CollabEngine._isRemoteUpdate) {
+      if (typeof CollabEngine !== 'undefined' && CollabEngine.isActive && CollabEngine.isActive() && !CollabEngine._isRemoteUpdate && canCollabEdit()) {
         CollabEngine.broadcast({ type: 'sync_layers', layers: serializeLayers(), selLayerId });
         CollabEngine.broadcast({ type: 'sync_sliders', sliders: getSliders() });
       }
@@ -5121,15 +5404,25 @@ function renderHistPanel() {
   hist.forEach((e, i) => {
     const d = document.createElement('div');
     d.className = 'hi' + (i === hIdx ? ' cur' : '') + (i > hIdx ? ' fut' : '');
-    d.innerHTML = `<div class="hdot"></div><span>${e.label}</span>`;
-    d.onclick = () => jumpHist(i);
+    d.innerHTML = `<div class="hdot"></div><span>${escapeHTML(e.label)}</span>`;
+    d.onclick = () => { if (guardCollabViewOnly()) jumpHist(i); };
     list.appendChild(d);
   });
   list.scrollTop = list.scrollHeight;
 }
 
-function doUndo() { if (hIdx > 0) return jumpHist(hIdx - 1); else { toast('Nothing to undo'); return Promise.resolve(); } }
-function doRedo() { if (hIdx < hist.length - 1) return jumpHist(hIdx + 1); else { toast('At newest edit'); return Promise.resolve(); } }
+function doUndo() {
+  if (!guardCollabViewOnly()) return Promise.resolve();
+  if (hIdx > 0) return jumpHist(hIdx - 1);
+  toast('Nothing to undo');
+  return Promise.resolve();
+}
+function doRedo() {
+  if (!guardCollabViewOnly()) return Promise.resolve();
+  if (hIdx < hist.length - 1) return jumpHist(hIdx + 1);
+  toast('At newest edit');
+  return Promise.resolve();
+}
 function updateUndoBtns() {
   document.getElementById('ubtn').disabled = hIdx <= 0;
   document.getElementById('rbtn').disabled = hIdx >= hist.length - 1;
@@ -5271,11 +5564,13 @@ function applyAdjustments(srcCanvas, adj, curvesLUT) {
   }
   x.putImageData(id, 0, 0);
 
-  // Vignette
+  // Vignette (aspect-aware radial falloff for portrait, square, and landscape)
   const vi = s.vi || 0;
   if (vi !== 0) {
     const a = Math.abs(vi) / 100 * 0.75;
-    const vg = x.createRadialGradient(c.width / 2, c.height / 2, c.width * 0.2, c.width / 2, c.height / 2, c.width * 0.85);
+    const rOuter = Math.hypot(c.width, c.height) * 0.54;
+    const rInner = rOuter * 0.28;
+    const vg = x.createRadialGradient(c.width / 2, c.height / 2, rInner, c.width / 2, c.height / 2, rOuter);
     if (vi < 0) {
       vg.addColorStop(0, 'rgba(0,0,0,0)');
       vg.addColorStop(1, `rgba(0,0,0,${a})`);
@@ -5290,14 +5585,12 @@ function applyAdjustments(srcCanvas, adj, curvesLUT) {
     x.restore();
   }
 
-  // Sharpness
+  // Sharpness (cross-browser edge-clamped unsharp mask)
   const sp = s.sp || 0;
   if (sp > 0) {
     const _sa = sp / 100 * 1.5;
-    const _sb = document.createElement('canvas'); _sb.width = c.width; _sb.height = c.height;
+    const _sb = blurCanvasPixels(c, 1.2 + sp / 90, true);
     const _sx = _sb.getContext('2d');
-    _sx.filter = `blur(${1.2 + sp / 90}px)`;
-    _sx.drawImage(c, 0, 0);
     const _od = x.getImageData(0, 0, c.width, c.height);
     const _bd = _sx.getImageData(0, 0, c.width, c.height).data;
     const _dd = _od.data;
@@ -5310,14 +5603,10 @@ function applyAdjustments(srcCanvas, adj, curvesLUT) {
     x.putImageData(_od, 0, 0);
   }
 
-  // Gaussian Blur
+  // Gaussian Blur (cross-browser separable edge-clamped blur, zero transparent haloing)
   const bl = s.bl || 0;
   if (bl > 0) {
-    const blurPx = bl / 100 * 20;
-    const blurred = document.createElement('canvas'); blurred.width = c.width; blurred.height = c.height;
-    const bx = blurred.getContext('2d');
-    bx.filter = `blur(${blurPx}px)`;
-    bx.drawImage(c, 0, 0);
+    const blurred = blurCanvasPixels(c, bl / 100 * 20, true);
     x.clearRect(0, 0, c.width, c.height);
     x.drawImage(blurred, 0, 0);
   }
@@ -5567,8 +5856,63 @@ function renderCanvas() {
 
 let marchingAntsOffset = 0, marchingAntsTimer = null;
 let selectionActive = false, selectionMask = null;
+let _selEdgeCanvas = null, _selAnimCanvas = null, _selStripeTile = null;
+
+function clearSelectionCache() {
+  _selEdgeCanvas = null;
+  if (marchingAntsTimer) {
+    clearInterval(marchingAntsTimer);
+    marchingAntsTimer = null;
+  }
+}
+
+function rebuildSelectionEdgeCanvas() {
+  if (!selectionActive || !selectionMask || !canvas.width || !canvas.height) {
+    _selEdgeCanvas = null;
+    return;
+  }
+  const w = canvas.width, h = canvas.height;
+  if (selectionMask.length !== w * h) { _selEdgeCanvas = null; return; }
+  if (!_selEdgeCanvas) _selEdgeCanvas = document.createElement('canvas');
+  _selEdgeCanvas.width = w;
+  _selEdgeCanvas.height = h;
+  const ox = _selEdgeCanvas.getContext('2d');
+  const id = ox.createImageData(w, h), d = id.data;
+  for (let y = 0; y < h; y++) {
+    const row = y * w;
+    for (let x = 0; x < w; x++) {
+      const idx = row + x;
+      if (!selectionMask[idx]) continue;
+      const isEdge = (x === 0 || x === w - 1 || y === 0 || y === h - 1 ||
+        !selectionMask[idx - 1] || !selectionMask[idx + 1] || !selectionMask[idx - w] || !selectionMask[idx + w]);
+      if (isEdge) {
+        const p = idx * 4;
+        d[p] = 255; d[p + 1] = 255; d[p + 2] = 255; d[p + 3] = 255;
+      }
+    }
+  }
+  ox.putImageData(id, 0, 0);
+}
+
+function _getSelectionStripeTile() {
+  if (_selStripeTile) return _selStripeTile;
+  const tile = document.createElement('canvas');
+  tile.width = 12; tile.height = 12;
+  const tx = tile.getContext('2d');
+  tx.fillStyle = '#111827';
+  tx.fillRect(0, 0, 12, 12);
+  tx.strokeStyle = '#f5c469';
+  tx.lineWidth = 4;
+  tx.beginPath();
+  tx.moveTo(-6, 12); tx.lineTo(12, -6);
+  tx.moveTo(0, 18); tx.lineTo(18, 0);
+  tx.stroke();
+  _selStripeTile = tile;
+  return tile;
+}
 
 function startMarchingAnts() {
+  rebuildSelectionEdgeCanvas();
   if (!marchingAntsTimer) {
     marchingAntsTimer = setInterval(() => {
       if (!selectionActive || !selectionMask) {
@@ -5577,9 +5921,9 @@ function startMarchingAnts() {
         renderHUD();
         return;
       }
-      marchingAntsOffset = (marchingAntsOffset + 1) % 16;
+      marchingAntsOffset = (marchingAntsOffset + 2) % 12;
       renderHUD();
-    }, 80);
+    }, 90);
   }
   renderHUD();
 }
@@ -5647,32 +5991,34 @@ function hitTestHandle(cx, cy, b) {
 function renderHUD() {
   hudCtx.clearRect(0, 0, hudCanvas.width, hudCanvas.height);
 
-  // Selection Marching Ants
-  if (selectionActive && selectionMask) {
-    hudCtx.save();
-    hudCtx.lineWidth = 2 / S.zoom;
-    hudCtx.strokeStyle = '#d4a359';
-    hudCtx.setLineDash([6 / S.zoom, 6 / S.zoom]);
-    hudCtx.lineDashOffset = -marchingAntsOffset;
-
+  // Selection Marching Ants (GPU-composited from cached boundary mask)
+  if (selectionActive && selectionMask && _selEdgeCanvas && _selEdgeCanvas.width === canvas.width && _selEdgeCanvas.height === canvas.height) {
     const w = canvas.width, h = canvas.height;
-    const off = document.createElement('canvas'); off.width = w; off.height = h;
-    const ox = off.getContext('2d');
-    const id = ox.createImageData(w, h), d = id.data;
-    for (let y = 1; y < h - 1; y++) {
-      for (let x = 1; x < w - 1; x++) {
-        const idx = y * w + x;
-        if (selectionMask[idx]) {
-          if (!selectionMask[idx - 1] || !selectionMask[idx + 1] || !selectionMask[idx - w] || !selectionMask[idx + w]) {
-            const p = idx * 4;
-            d[p] = 212; d[p + 1] = 163; d[p + 2] = 89; d[p + 3] = 255;
-          }
-        }
-      }
+    if (!_selAnimCanvas) _selAnimCanvas = document.createElement('canvas');
+    if (_selAnimCanvas.width !== w || _selAnimCanvas.height !== h) {
+      _selAnimCanvas.width = w; _selAnimCanvas.height = h;
     }
-    ox.putImageData(id, 0, 0);
-    hudCtx.drawImage(off, 0, 0);
-    hudCtx.restore();
+    const ax = _selAnimCanvas.getContext('2d');
+    ax.clearRect(0, 0, w, h);
+    ax.globalCompositeOperation = 'source-over';
+    ax.drawImage(_selEdgeCanvas, 0, 0);
+    const pat = ax.createPattern ? ax.createPattern(_getSelectionStripeTile(), 'repeat') : null;
+    if (pat) {
+      ax.save();
+      ax.globalCompositeOperation = 'source-in';
+      const stepScale = Math.max(1, 1 / (S.zoom || 1));
+      if (typeof DOMMatrix !== 'undefined' && pat.setTransform) {
+        pat.setTransform(new DOMMatrix().translate(marchingAntsOffset * stepScale, 0).scale(stepScale, stepScale));
+      } else {
+        ax.translate(marchingAntsOffset, 0);
+      }
+      ax.fillStyle = pat;
+      ax.fillRect(-16, -16, w + 32, h + 32);
+      ax.restore();
+      hudCtx.drawImage(_selAnimCanvas, 0, 0);
+    } else {
+      hudCtx.drawImage(_selEdgeCanvas, 0, 0);
+    }
   }
 
   // Canvas Artboard Boundary & Corner Registration Brackets
@@ -6180,22 +6526,36 @@ function toggleHistogram() {
 }
 
 // SLIDERS & PRESETS
+function isAdjustableLayer(l) {
+  return Boolean(l && (l.type === 'base' || l.type === 'image' || l.type === 'adjustment'));
+}
+
 function getAdjTarget() {
-  if (!selLayerId) return layers.find(l => l.type === 'base') || layers[0];
-  return layers.find(l => l.id === selLayerId) || layers.find(l => l.type === 'base') || layers[0];
+  const base = layers.find(l => l.type === 'base');
+  if (selLayerId) {
+    const sel = layers.find(l => l.id === selLayerId);
+    if (isAdjustableLayer(sel)) return sel;
+  }
+  return base || layers.find(isAdjustableLayer) || layers[0];
 }
 
 let _slideRaf = null;
 let _isSliding = false;
 let _slideTimer = null;
 function slide(k, v) {
+  if (!guardCollabViewOnly()) return;
+  const target = getAdjTarget();
+  if (target && target.locked && !CollabEngine?._isRemoteUpdate) {
+    toast('🔒 Target layer is locked');
+    loadSlidersFromLayer(target);
+    return;
+  }
   const n = parseInt(v);
   const ve = document.getElementById('v-' + k);
   if (ve) ve.textContent = n > 0 ? `+${n}` : String(n);
   const se = document.getElementById('s-' + k);
   if (se && parseInt(se.value) !== n) se.value = n;
 
-  const target = getAdjTarget();
   if (target) {
     if (!target.adjustments) target.adjustments = {...DSLIDERS};
     target.adjustments[k] = n;
@@ -6211,7 +6571,7 @@ function slide(k, v) {
     renderCanvas();
   }, 180);
 
-  if (typeof CollabEngine !== 'undefined' && CollabEngine.isActive && CollabEngine.isActive() && !CollabEngine._isRemoteUpdate) {
+  if (typeof CollabEngine !== 'undefined' && CollabEngine.isActive && CollabEngine.isActive() && !CollabEngine._isRemoteUpdate && canCollabEdit()) {
     CollabEngine.sendSlider(k, n, target ? target.id : null);
   }
 
@@ -6235,19 +6595,19 @@ function loadSlidersFromLayer(layer) {
 }
 
 function updateAdjustHeader() {
+  const target = getAdjTarget();
   const select = document.getElementById('adj-target-select');
   const badge = document.getElementById('adj-target-badge');
   if (select) {
     select.innerHTML = '';
-    layers.forEach(l => {
+    layers.filter(isAdjustableLayer).forEach(l => {
       const opt = document.createElement('option');
       opt.value = l.id;
       opt.textContent = (l.type === 'base' ? '📷 Main Photo' : (l.name || l.text || 'Overlay Layer')) + ` (${l.type.toUpperCase()})`;
-      if (l.id === selLayerId) opt.selected = true;
+      if (target && l.id === target.id) opt.selected = true;
       select.appendChild(opt);
     });
   }
-  const target = getAdjTarget();
   if (badge && target) {
     badge.textContent = target.type === 'base' ? 'MAIN PHOTO' : (target.name || target.type).toUpperCase();
   }
@@ -6438,8 +6798,10 @@ function toggleAccordion(id) {
 
 function resetGroup(group, e) {
   if (e) e.stopPropagation();
+  if (!guardCollabViewOnly()) return;
   const target = getAdjTarget();
   if (!target) return;
+  if (target.locked) { toast('🔒 Target layer is locked'); return; }
   if (!target.adjustments) target.adjustments = {...DSLIDERS};
 
   const groupKeys = {
@@ -6468,24 +6830,40 @@ function resetGroup(group, e) {
   toast(`↺ Reset ${group} adjustments to 0`);
 }
 
+function cloneLayerObject(srcLayer, suffix = ' (Copy)', offsetPx = 24) {
+  const isBase = srcLayer.type === 'base';
+  const clone = { ...srcLayer };
+  delete clone._adjCache;
+  delete clone._proxyCache;
+  if (srcLayer.adjustments) clone.adjustments = { ...srcLayer.adjustments };
+  if (srcLayer.curves) {
+    clone.curves = JSON.parse(JSON.stringify(srcLayer.curves));
+    if (typeof CurvesEngine !== 'undefined') {
+      clone.curvesLUT = CurvesEngine.buildAllLUTs(clone.curves);
+    }
+  } else {
+    clone.curvesLUT = null;
+  }
+  clone.id = nextLayerId++;
+  clone.locked = false;
+  clone.name = (srcLayer.name || (isBase ? 'Photo' : srcLayer.type)) + suffix;
+  clone.type = isBase ? 'image' : srcLayer.type;
+  clone.x = (srcLayer.x ?? 0) + offsetPx;
+  clone.y = (srcLayer.y ?? 0) + offsetPx;
+  if (clone.type === 'image') clone.img = srcLayer.img || origImg;
+  if (srcLayer.mask) clone.mask = srcLayer.mask;
+  return clone;
+}
+
 // QUICK LAYER ACTIONS
 function duplicateActiveLayer() {
+  if (!guardCollabViewOnly()) return;
   const targetId = selLayerId || (layers[0] ? layers[0].id : null);
   if (!targetId) return;
   const sel = layers.find(l => l.id === targetId);
   if (!sel) return;
 
-  const isBase = sel.type === 'base';
-  const clone = {
-    ...JSON.parse(JSON.stringify(sel)),
-    id: nextLayerId++,
-    name: (sel.name || (isBase ? 'Photo' : sel.type)) + ' (Copy)',
-    type: isBase ? 'image' : sel.type,
-    x: (sel.x ?? 0) + 24,
-    y: (sel.y ?? 0) + 24
-  };
-  clone.img = sel.img || origImg;
-
+  const clone = cloneLayerObject(sel, ' (Copy)', 24);
   layers.push(clone);
   selLayerId = clone.id;
   updateAdjustHeader();
@@ -6496,10 +6874,12 @@ function duplicateActiveLayer() {
 }
 
 function centerActiveLayer() {
+  if (!guardCollabViewOnly()) return;
   const targetId = selLayerId || (layers[0] ? layers[0].id : null);
   if (!targetId) return;
   const sel = layers.find(l => l.id === targetId);
-  if (!sel || sel.locked) return;
+  if (!sel) return;
+  if (sel.locked) { toast('🔒 Layer is locked'); return; }
 
   const b = getLayerBounds(sel);
   if (sel.type === 'text') {
@@ -6520,10 +6900,12 @@ function centerActiveLayer() {
 }
 
 function fitActiveLayer() {
+  if (!guardCollabViewOnly()) return;
   const targetId = selLayerId || (layers[0] ? layers[0].id : null);
   if (!targetId) return;
   const sel = layers.find(l => l.id === targetId);
-  if (!sel || sel.locked) return;
+  if (!sel) return;
+  if (sel.locked) { toast('🔒 Layer is locked'); return; }
   const b = getLayerBounds(sel);
   if (b.w <= 0 || b.h <= 0) return;
 
@@ -6559,6 +6941,7 @@ function fitActiveLayer() {
 }
 
 function flipActiveLayerH() {
+  if (!guardCollabViewOnly()) return;
   const targetId = selLayerId || (layers[0] ? layers[0].id : null);
   if (!targetId) return;
   const sel = layers.find(l => l.id === targetId);
@@ -6572,6 +6955,7 @@ function flipActiveLayerH() {
 }
 
 function flipActiveLayerV() {
+  if (!guardCollabViewOnly()) return;
   const targetId = selLayerId || (layers[0] ? layers[0].id : null);
   if (!targetId) return;
   const sel = layers.find(l => l.id === targetId);
@@ -6585,6 +6969,7 @@ function flipActiveLayerV() {
 }
 
 function toggleLockActiveLayer() {
+  if (!guardCollabViewOnly()) return;
   const targetId = selLayerId || (layers[0] ? layers[0].id : null);
   if (!targetId) return;
   const sel = layers.find(l => l.id === targetId);
@@ -6597,10 +6982,12 @@ function toggleLockActiveLayer() {
 }
 
 function deleteActiveLayer() {
+  if (!guardCollabViewOnly()) return;
   const targetId = selLayerId || (layers[0] ? layers[0].id : null);
   if (!targetId) return;
   const sel = layers.find(l => l.id === targetId);
   if (!sel) return;
+  if (sel.locked) { toast('🔒 Layer is locked'); return; }
   if (sel.type === 'base' && layers.length === 1) {
     toast('⚠️ Cannot delete main photo layer');
     return;
@@ -6609,6 +6996,7 @@ function deleteActiveLayer() {
 }
 
 function deleteActiveLayerOrReset() {
+  if (!guardCollabViewOnly()) return;
   const targetId = selLayerId || (layers[0] ? layers[0].id : null);
   if (!targetId) return;
   const sel = layers.find(l => l.id === targetId);
@@ -6623,8 +7011,12 @@ function deleteActiveLayerOrReset() {
     sel.flipV = false;
     sel.locked = false;
     sel.adjustments = {...DSLIDERS};
-    resetSlidersUI();
-    invalidateAdjCache();
+    sel.curves = {rgb:[{x:0,y:0},{x:255,y:255}],r:[{x:0,y:0},{x:255,y:255}],g:[{x:0,y:0},{x:255,y:255}],b:[{x:0,y:0},{x:255,y:255}]};
+    sel.curvesLUT = null;
+    loadSlidersFromLayer(sel);
+    if (typeof CurvesEngine !== 'undefined') CurvesEngine.syncFromLayer(sel);
+    if (typeof ColorWheelsEngine !== 'undefined') ColorWheelsEngine.syncFromLayer(sel);
+    invalidateAdjCache(sel.id);
     renderCanvas();
     pushHist('↺ Reset Base Layer');
     toast('↺ Base photo reset to defaults');
@@ -6654,11 +7046,18 @@ function flipLayerV() {
 }
 
 function resetActiveLayerAdj() {
+  if (!guardCollabViewOnly()) return;
   const target = getAdjTarget();
-  if (target && target.adjustments) {
+  if (!target) return;
+  if (target.locked) { toast('🔒 Layer is locked'); return; }
+  if (target.adjustments) {
     target.adjustments = {...DSLIDERS};
-    resetSlidersUI();
-    invalidateAdjCache();
+    target.curves = {rgb:[{x:0,y:0},{x:255,y:255}],r:[{x:0,y:0},{x:255,y:255}],g:[{x:0,y:0},{x:255,y:255}],b:[{x:0,y:0},{x:255,y:255}]};
+    target.curvesLUT = null;
+    loadSlidersFromLayer(target);
+    if (typeof CurvesEngine !== 'undefined') CurvesEngine.syncFromLayer(target);
+    if (typeof ColorWheelsEngine !== 'undefined') ColorWheelsEngine.syncFromLayer(target);
+    invalidateAdjCache(target.id);
     renderCanvas();
     pushHist('↺ Reset Adjustments');
     toast('↺ Adjustments reset');
@@ -6803,11 +7202,11 @@ const HealBrush = {
   getSize() { return parseInt(document.getElementById('heal-size')?.value || 36); },
   getStr() { return parseInt(document.getElementById('heal-str')?.value || 90) / 100; },
 
-  clear() {
+  clear(silent = false) {
     this.strokes = [];
     this.currentStroke = null;
     renderHUD();
-    toast('↺ Heal strokes cleared');
+    if (!silent) toast('↺ Heal strokes cleared');
   },
 
   drawPreviewHUD(hctx) {
@@ -6852,12 +7251,16 @@ const HealBrush = {
   },
 
   apply() {
+    if (!guardCollabViewOnly()) return;
     if (!this.strokes.length) { toast('Paint over an area first!'); return; }
     if (!S.hasImg) { toast('Open a photo first!'); return; }
 
-    const targetLayer = (selLayerId && selLayerId !== layers[0]?.id)
-      ? layers.find(l => l.id === selLayerId && l.type === 'image')
-      : layers.find(l => l.type === 'base');
+    const baseLayer = layers.find(l => l.type === 'base');
+    const selectedLayer = selLayerId ? layers.find(l => l.id === selLayerId) : null;
+    const targetLayer = (selectedLayer && selectedLayer.type === 'image' && selectedLayer.img)
+      ? selectedLayer
+      : baseLayer;
+    if (targetLayer && targetLayer.locked) { toast('🔒 Target layer is locked'); return; }
     const sourceImg = (targetLayer && targetLayer.img) ? targetLayer.img : origImg;
     if (!sourceImg) return;
 
@@ -7063,6 +7466,7 @@ const CurvesEngine = {
   points: { rgb:[{x:0,y:0},{x:255,y:255}], r:[{x:0,y:0},{x:255,y:255}], g:[{x:0,y:0},{x:255,y:255}], b:[{x:0,y:0},{x:255,y:255}] },
   lut: { rgb:null, r:null, g:null, b:null },
   dragging: null,
+  _dragPointRef: null,
   _lastTapTime: 0,
 
   init() {
@@ -7071,13 +7475,16 @@ const CurvesEngine = {
     this.draw();
     c.addEventListener('pointerdown', e => {
       e.preventDefault();
-      const now = Date.now();
-      if (now - this._lastTapTime < 280) {
-        this._onDblClick(e);
-        this._lastTapTime = 0;
-        return;
+      if (!guardCollabViewOnly()) return;
+      if (e.pointerType === 'touch') {
+        const now = Date.now();
+        if (now - this._lastTapTime < 280) {
+          this._onDblClick(e);
+          this._lastTapTime = 0;
+          return;
+        }
+        this._lastTapTime = now;
       }
-      this._lastTapTime = now;
       try { c.setPointerCapture(e.pointerId); } catch {}
       this._onDown(e);
     });
@@ -7090,12 +7497,16 @@ const CurvesEngine = {
       if (this.dragging !== null) {
         try { c.releasePointerCapture(e.pointerId); } catch {}
         this.dragging = null;
+        this._dragPointRef = null;
         pushHist('Adjust Curves (' + this.channel.toUpperCase() + ')');
       }
     };
     c.addEventListener('pointerup', endDrag);
     c.addEventListener('pointercancel', endDrag);
-    c.addEventListener('dblclick', e => this._onDblClick(e));
+    c.addEventListener('dblclick', e => {
+      if (!guardCollabViewOnly()) return;
+      this._onDblClick(e);
+    });
   },
 
   getTargetLayer() {
@@ -7141,35 +7552,56 @@ const CurvesEngine = {
   },
 
   _onDown(e) {
+    if (!guardCollabViewOnly()) return;
+    const t = this.getTargetLayer();
+    if (t && t.locked) { toast('🔒 Target layer is locked'); return; }
     const pt = this._coords(e);
     const pts = this.points[this.channel];
     for (let i = 0; i < pts.length; i++) {
-      if (Math.abs(pts[i].x - pt.x) < 16 && Math.abs(pts[i].y - pt.y) < 16) { this.dragging = i; return; }
+      if (Math.abs(pts[i].x - pt.x) < 16 && Math.abs(pts[i].y - pt.y) < 16) {
+        this.dragging = i;
+        this._dragPointRef = pts[i];
+        return;
+      }
     }
-    pts.push(pt); pts.sort((a, b) => a.x - b.x);
-    this.dragging = pts.findIndex(p => p.x === pt.x && p.y === pt.y);
+    const newPt = { x: Math.max(1, Math.min(254, pt.x)), y: Math.max(0, Math.min(255, pt.y)) };
+    pts.push(newPt);
+    pts.sort((a, b) => a.x - b.x);
+    this._dragPointRef = newPt;
+    this.dragging = pts.indexOf(newPt);
     this._update();
   },
 
   _onMove(e) {
-    if (this.dragging === null) return;
+    if (this.dragging === null || !this._dragPointRef) return;
     const pt = this._coords(e);
     const pts = this.points[this.channel];
-    if (this.dragging === 0) pt.x = 0;
-    else if (this.dragging === pts.length - 1) pt.x = 255;
-    pt.x = Math.max(0, Math.min(255, pt.x));
-    pt.y = Math.max(0, Math.min(255, pt.y));
-    pts[this.dragging] = pt; pts.sort((a, b) => a.x - b.x);
-    this.dragging = pts.findIndex(p => p.x === pt.x && p.y === pt.y);
+    const ref = this._dragPointRef;
+    const idx = pts.indexOf(ref);
+    if (idx === 0) {
+      ref.x = 0;
+    } else if (idx === pts.length - 1) {
+      ref.x = 255;
+    } else {
+      ref.x = Math.max(1, Math.min(254, pt.x));
+    }
+    ref.y = Math.max(0, Math.min(255, pt.y));
+    pts.sort((a, b) => a.x - b.x);
+    this.dragging = pts.indexOf(ref);
     this._update();
   },
 
   _onDblClick(e) {
+    if (!guardCollabViewOnly()) return;
+    const t = this.getTargetLayer();
+    if (t && t.locked) { toast('🔒 Target layer is locked'); return; }
     const pt = this._coords(e);
     const pts = this.points[this.channel];
     for (let i = 1; i < pts.length - 1; i++) {
       if (Math.abs(pts[i].x - pt.x) < 16 && Math.abs(pts[i].y - pt.y) < 16) {
         pts.splice(i, 1);
+        this.dragging = null;
+        this._dragPointRef = null;
         this._update();
         pushHist('Removed Curve Point');
         return;
@@ -7245,11 +7677,13 @@ const CurvesEngine = {
   },
 
   reset() {
+    if (!guardCollabViewOnly()) return;
+    const target = this.getTargetLayer();
+    if (target && target.locked) { toast('🔒 Target layer is locked'); return; }
     ['rgb','r','g','b'].forEach(ch => {
       this.points[ch] = [{x:0,y:0},{x:255,y:255}];
       this.lut[ch] = null;
     });
-    const target = this.getTargetLayer();
     if (target) {
       target.curves = this.points;
       target.curvesLUT = this.lut;
@@ -7293,10 +7727,19 @@ const CurvesEngine = {
     ctx.beginPath(); ctx.moveTo(0, H); ctx.lineTo(W, 0); ctx.stroke(); ctx.setLineDash([]);
     const chC = {rgb:'#d4a359', r:'#f87171', g:'#4ade80', b:'#60a5fa'};
     const pts = this.points[this.channel];
+    const lut = this.calculateLUT(pts);
     ctx.strokeStyle = chC[this.channel]; ctx.lineWidth = 2;
     ctx.shadowColor = chC[this.channel]; ctx.shadowBlur = 6;
     ctx.beginPath();
-    pts.forEach((p, i) => { const sx = p.x/255*W, sy = (1-p.y/255)*H; i===0 ? ctx.moveTo(sx,sy) : ctx.lineTo(sx,sy); });
+    if (lut) {
+      for (let i = 0; i < 256; i++) {
+        const sx = (i / 255) * W, sy = (1 - lut[i] / 255) * H;
+        i === 0 ? ctx.moveTo(sx, sy) : ctx.lineTo(sx, sy);
+      }
+    } else {
+      ctx.moveTo(0, H);
+      ctx.lineTo(W, 0);
+    }
     ctx.stroke(); ctx.shadowBlur = 0;
     pts.forEach(p => {
       const sx = p.x/255*W, sy = (1-p.y/255)*H;
@@ -7309,6 +7752,7 @@ const CurvesEngine = {
 
 function addCurveAdjustmentLayer() {
   if (!S.hasImg) { toast('Open a photo first!'); return; }
+  if (!guardCollabViewOnly()) return;
   const defaultCurves = {
     rgb: [{x:0,y:0},{x:64,y:52},{x:192,y:206},{x:255,y:255}],
     r: [{x:0,y:0},{x:255,y:255}],
@@ -7355,6 +7799,9 @@ const ColorWheelsEngine = {
       if (!c) return;
       c.addEventListener('pointerdown', e => {
         e.preventDefault();
+        if (!guardCollabViewOnly()) return;
+        const target = (typeof getAdjTarget === 'function') ? getAdjTarget() : null;
+        if (target && target.locked) { toast('🔒 Target layer is locked'); return; }
         const now = Date.now();
         if (now - this._lastTap[zone] < 280) {
           this.resetWheel(zone);
@@ -7472,12 +7919,18 @@ const ColorWheelsEngine = {
   },
 
   resetWheel(zone) {
+    if (!guardCollabViewOnly()) return;
     const target = (typeof getAdjTarget === 'function') ? getAdjTarget() : null;
+    if (target && target.locked) { toast('🔒 Target layer is locked'); return; }
     if (target) {
       if (!target.adjustments) target.adjustments = {...DSLIDERS};
       target.adjustments[zone + 'Hue'] = 0;
       target.adjustments[zone + 'Sat'] = 0;
       invalidateAdjCache(target.id);
+      if (typeof CollabEngine !== 'undefined' && CollabEngine.isActive && CollabEngine.isActive() && !CollabEngine._isRemoteUpdate && canCollabEdit()) {
+        CollabEngine.sendSlider(zone + 'Hue', 0, target.id);
+        CollabEngine.sendSlider(zone + 'Sat', 0, target.id);
+      }
     }
     this.drawWheel(zone, 0, 0);
     if (S.hasImg) renderCanvas();
@@ -7731,8 +8184,10 @@ function toggleZenMode() {
 
 function quickFix() {
   if (!S.hasImg) { toast('Open a photo first!'); return; }
+  if (!guardCollabViewOnly()) return;
   const target = getAdjTarget();
   if (!target) return;
+  if (target.locked) { toast('🔒 Target layer is locked'); return; }
   if (!target.adjustments) target.adjustments = {...DSLIDERS};
 
   // Sample proxy canvas for ultra-fast (5-10ms) analysis
@@ -7915,22 +8370,32 @@ function generatePresetThumbnails() {
 
 function applyPreset(el, key) {
   if (!S.hasImg) { toast('Open a photo first!'); return; }
+  if (!CollabEngine?._isRemoteUpdate && !guardCollabViewOnly()) return;
+  const target = getAdjTarget();
+  if (target && target.locked && !CollabEngine?._isRemoteUpdate) {
+    toast('🔒 Target layer is locked');
+    return;
+  }
   document.querySelectorAll('.preset-card, .pi').forEach(p => p.classList.remove('active'));
   const btn = el || document.querySelector(`.preset-card[data-preset="${key}"], .pi[data-preset="${key}"]`);
   if (btn?.classList) btn.classList.add('active');
   
   const vals = {...DSLIDERS, ...(PRESETS[key] || {})};
-  const target = getAdjTarget();
-  if (!target.adjustments) target.adjustments = {...DSLIDERS};
-  Object.entries(vals).forEach(([k, v]) => {
-    target.adjustments[k] = v;
-    const s = document.getElementById('s-' + k); if (s) s.value = v;
-    const vEl = document.getElementById('v-' + k); if (vEl) vEl.textContent = v > 0 ? `+${v}` : String(v);
-  });
-  invalidateAdjCache();
+  if (target) {
+    if (!target.adjustments) target.adjustments = {...DSLIDERS};
+    Object.entries(vals).forEach(([k, v]) => {
+      target.adjustments[k] = v;
+      const s = document.getElementById('s-' + k); if (s) s.value = v;
+      const vEl = document.getElementById('v-' + k); if (vEl) vEl.textContent = v > 0 ? `+${v}` : String(v);
+    });
+    if (typeof ColorWheelsEngine !== 'undefined') ColorWheelsEngine.syncFromLayer(target);
+  }
+  invalidateAdjCache(target ? target.id : undefined);
   renderCanvas();
-  if (key !== 'none') pushHist(`Filter: ${PNAMES[key] || key}`);
-  if (typeof CollabEngine !== 'undefined' && CollabEngine.isActive() && !CollabEngine._isRemoteUpdate) {
+  if (!CollabEngine?._isRemoteUpdate) {
+    pushHist(`Filter: ${PNAMES[key] || key}`);
+  }
+  if (typeof CollabEngine !== 'undefined' && CollabEngine.isActive() && !CollabEngine._isRemoteUpdate && canCollabEdit()) {
     CollabEngine.broadcast({ type: 'preset_applied', key });
   }
   toast(`✨ Applied ${PNAMES[key] || key} filter!`);
@@ -8002,6 +8467,7 @@ function setTool(tool) {
   }
   if (S.tool === 'wm' && tool !== 'wm') cancelWMDrag();
   if (S.tool === 'heal' && tool !== 'heal') { HealBrush.end(); }
+  if (S.tool === 'eye' && tool !== 'eye') { stopEyedropper(); }
 
   S.tool = tool;
   updateToolstripUI(tool);
@@ -8317,18 +8783,34 @@ function initCropHandlers() {
 
       if (cropAspect) {
         const targetRatio = cropAspect.w / cropAspect.h;
-        if (cropDragMode === 'rc' || cropDragMode === 'lc') {
-          h = w / targetRatio;
-          if (y + h > cH) { h = cH - y; w = h * targetRatio; }
-        } else if (cropDragMode === 'tc' || cropDragMode === 'bc') {
+        const anchorX = cropStartR.x + cropStartR.w;
+        const anchorY = cropStartR.y + cropStartR.h;
+        const isT = cropDragMode.includes('t');
+        const isL = cropDragMode.includes('l');
+        if (cropDragMode === 'tc' || cropDragMode === 'bc') {
+          const maxH = isT ? anchorY : (cH - y);
+          const maxW = cW - x;
+          h = Math.min(h, maxH, maxW / targetRatio);
           w = h * targetRatio;
-          if (x + w > cW) { w = cW - x; h = w / targetRatio; }
-        } else {
+          if (isT) y = anchorY - h;
+        } else if (cropDragMode === 'lc' || cropDragMode === 'rc') {
+          const maxW = isL ? anchorX : (cW - x);
+          const maxH = cH - y;
+          w = Math.min(w, maxW, maxH * targetRatio);
           h = w / targetRatio;
-          if (y + h > cH) { h = cH - y; w = h * targetRatio; }
-          if (cropDragMode.includes('t')) y = cropStartR.y + cropStartR.h - h;
-          if (cropDragMode.includes('l')) x = cropStartR.x + cropStartR.w - w;
+          if (isL) x = anchorX - w;
+        } else {
+          const maxW = isL ? anchorX : (cW - cropStartR.x);
+          const maxH = isT ? anchorY : (cH - cropStartR.y);
+          w = Math.min(w, maxW, maxH * targetRatio);
+          h = w / targetRatio;
+          x = isL ? (anchorX - w) : cropStartR.x;
+          y = isT ? (anchorY - h) : cropStartR.y;
         }
+        x = Math.max(0, x);
+        y = Math.max(0, y);
+        w = Math.max(minSz, Math.min(cW - x, w));
+        h = Math.max(minSz, Math.min(cH - y, h));
       }
 
       cropR.x = Math.round(x);
@@ -8396,26 +8878,59 @@ function cancelCrop() {
 
 function applyCrop() {
   if (!cropOn) return;
+  if (!guardCollabViewOnly()) return;
   const x = Math.max(0, Math.round(cropR.x)), y = Math.max(0, Math.round(cropR.y));
   const w = Math.max(1, Math.min(Math.round(cropR.w), canvas.width - x));
   const h = Math.max(1, Math.min(Math.round(cropR.h), canvas.height - y));
 
-  const cleanCanvas = document.createElement('canvas');
-  cleanCanvas.width = canvas.width; cleanCanvas.height = canvas.height;
-  compositeClean(cleanCanvas.getContext('2d'), canvas.width, canvas.height);
+  // Crop only the unadjusted base image so adjustments, curves, and overlay layers stay non-destructive
+  const rawBaseCanvas = document.createElement('canvas');
+  rawBaseCanvas.width = canvas.width;
+  rawBaseCanvas.height = canvas.height;
+  const rbx = rawBaseCanvas.getContext('2d');
+  if (S.canvasBg && S.canvasBg !== 'transparent') {
+    rbx.fillStyle = S.canvasBg;
+    rbx.fillRect(0, 0, canvas.width, canvas.height);
+  }
+  const base = layers.find(l => l.type === 'base');
+  const baseSrc = (base && base.img) ? base.img : origImg;
+  if (baseSrc) {
+    const bx = base?.x ?? 0, by = base?.y ?? 0, bw = base?.w ?? canvas.width, bh = base?.h ?? canvas.height;
+    rbx.save();
+    if (base && (base.flipH || base.flipV)) {
+      rbx.translate(bx + bw / 2, by + bh / 2);
+      rbx.scale(base.flipH ? -1 : 1, base.flipV ? -1 : 1);
+      rbx.drawImage(baseSrc, -bw / 2, -bh / 2, bw, bh);
+    } else {
+      rbx.drawImage(baseSrc, bx, by, bw, bh);
+    }
+    rbx.restore();
+  }
 
   const tmp = document.createElement('canvas'); tmp.width = w; tmp.height = h;
-  tmp.getContext('2d').drawImage(cleanCanvas, x, y, w, h, 0, 0, w, h);
+  tmp.getContext('2d').drawImage(rawBaseCanvas, x, y, w, h, 0, 0, w, h);
 
   const newImg = new Image();
   newImg.onload = () => {
     _origDirty = true; origImg = newImg;
     canvas.width = hudCanvas.width = lassoOverlay.width = w;
     canvas.height = hudCanvas.height = lassoOverlay.height = h;
-    const base = layers.find(l => l.type === 'base');
-    if (base) { base.x = 0; base.y = 0; base.w = w; base.h = h; }
-    layers.forEach(l => { if (l.type !== 'base') { l.x = (l.x ?? 0) - x; l.y = (l.y ?? 0) - y; } });
-    
+    if (base) {
+      base.img = newImg;
+      base.x = 0; base.y = 0; base.w = w; base.h = h;
+      base.flipH = false; base.flipV = false;
+    }
+    layers.forEach(l => {
+      if (l.type !== 'base') {
+        l.x = (l.x ?? 0) - x;
+        l.y = (l.y ?? 0) - y;
+      }
+    });
+
+    selectionActive = false;
+    selectionMask = null;
+    clearSelectionCache();
+
     cropOn = false;
     cropDragMode = null;
     cro.classList.remove('on');
@@ -8423,14 +8938,19 @@ function applyCrop() {
     
     S.tool = 'move';
     updateToolstripUI('move');
-    resetSlidersUI();
     invalidateAdjCache();
-    renderCanvas();
-    zFit();
+    if (typeof LaserEngine !== 'undefined' && LaserEngine.resize) LaserEngine.resize();
     document.getElementById('stsize').textContent = `${w} × ${h}`;
+    const expOrig = document.getElementById('exp-orig-res');
+    if (expOrig) expOrig.textContent = `${w} × ${h}`;
+    positionCanvas();
+    renderCanvas();
+    renderLayersPanel();
+    updateContextPill();
+    zFit();
     pushHist(`✂ Cropped to ${w}×${h}`);
     toast(`✂ Image cropped to ${w} × ${h}!`);
-    if (typeof CollabEngine !== 'undefined' && CollabEngine.isActive && CollabEngine.isActive() && !CollabEngine._isRemoteUpdate) {
+    if (typeof CollabEngine !== 'undefined' && CollabEngine.isActive && CollabEngine.isActive() && !CollabEngine._isRemoteUpdate && canCollabEdit()) {
       CollabEngine.sendMasterImage();
       CollabEngine.broadcast({ type: 'sync_canvas_meta', width: w, height: h, canvasW: w, canvasH: h, name: S.imgName });
     }
@@ -8485,8 +9005,13 @@ ca.addEventListener('pointerdown', e => {
 
   if (S.tool === 'eye') {
     const color = sampleCanvasColor(e);
-    navigator.clipboard.writeText(color.hex);
-    toast(`🔬 Copied ${color.hex} to clipboard!`);
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(color.hex)
+        .then(() => toast(`🔬 Copied ${color.hex} to clipboard!`))
+        .catch(() => toast(`🔬 Sampled ${color.hex} (clipboard blocked)`));
+    } else {
+      toast(`🔬 Sampled ${color.hex}`);
+    }
     return;
   }
 
@@ -8503,6 +9028,7 @@ ca.addEventListener('pointerdown', e => {
   }
 
   if (S.tool === 'blurbrush') {
+    if (!guardCollabViewOnly()) return;
     isBlurDrawing = true;
     const sz = parseInt(document.getElementById('blur-brush-size').value) || 45;
     const str = parseInt(document.getElementById('blur-brush-strength').value) || 16;
@@ -8514,6 +9040,7 @@ ca.addEventListener('pointerdown', e => {
   }
 
   if (S.tool === 'heal') {
+    if (!guardCollabViewOnly()) return;
     HealBrush.start(cx, cy);
     renderHUD();
     e.preventDefault();
@@ -8537,6 +9064,7 @@ ca.addEventListener('pointerdown', e => {
   }
 
   if (S.tool === 'bgrbrush') {
+    if (!guardCollabViewOnly()) return;
     isLassoBrushDrawing = true;
     const sz = parseInt(document.getElementById('bb-size')?.value) || 32;
     currentLassoStroke = { mode: lassoBrushMode, size: sz, points: [{cx, cy}] };
@@ -8561,9 +9089,11 @@ ca.addEventListener('pointerdown', e => {
         isBADragging = false;
         window.removeEventListener('pointermove', onMove);
         window.removeEventListener('pointerup', onUp);
+        window.removeEventListener('pointercancel', onUp);
       };
       window.addEventListener('pointermove', onMove);
       window.addEventListener('pointerup', onUp);
+      window.addEventListener('pointercancel', onUp);
     }
     e.preventDefault();
     return;
@@ -8571,6 +9101,14 @@ ca.addEventListener('pointerdown', e => {
 
   // Move Tool & Adjust Mode: Select, Move & Scale Any Layer (including base photo)
   if (S.tool === 'move' || S.tool === 'overlay' || S.tool === 'wm' || S.tool === 'adjust') {
+    if (!canCollabEdit()) {
+      isPanning = true;
+      panStartX = e.clientX; panStartY = e.clientY;
+      panOrigX = S.panX; panOrigY = S.panY;
+      ca.classList.add('pg');
+      e.preventDefault();
+      return;
+    }
     // 1. Check if clicking any transform handle on the currently selected layer
     if (selLayerId) {
       const curSel = layers.find(l => l.id === selLayerId);
@@ -8708,27 +9246,33 @@ window.addEventListener('pointermove', e => {
         layer.y = Math.round(newY);
         layer.w = Math.round(newW);
         layer.h = Math.round(newH);
-      } else if (layer.type === 'text') {
+      } else if (layer.type === 'text' || layer.type === 'watermark') {
+        const bw = Math.max(10, layerResizeOrig.bounds.w);
+        const bh = Math.max(10, layerResizeOrig.bounds.h);
+        const sX = (bw + (m.includes('l') ? -dx : (m.includes('r') ? dx : 0))) / bw;
+        const sY = (bh + (m.includes('t') ? -dy : (m.includes('b') ? dy : 0))) / bh;
         let scaleFactor = 1;
-        if (m.includes('r') || m.includes('b')) {
-          scaleFactor = Math.max(0.2, (layerResizeOrig.bounds.w + dx) / layerResizeOrig.bounds.w);
-        } else if (m.includes('l') || m.includes('t')) {
-          scaleFactor = Math.max(0.2, (layerResizeOrig.bounds.w - dx) / layerResizeOrig.bounds.w);
-          layer.x = Math.round(layerResizeOrig.x + dx);
-          layer.y = Math.round(layerResizeOrig.y + dy);
+        if (m === 'tc' || m === 'bc') scaleFactor = Math.max(0.2, sY);
+        else if (m === 'lc' || m === 'rc') scaleFactor = Math.max(0.2, sX);
+        else scaleFactor = Math.max(0.2, Math.max(sX, sY));
+
+        if (layer.type === 'text') {
+          layer.size = Math.max(10, Math.round(layerResizeOrig.size * scaleFactor));
+          const realScale = layer.size / Math.max(1, layerResizeOrig.size);
+          if (m.includes('t')) {
+            layer.y = Math.round(layerResizeOrig.y + bh * (1 - realScale));
+          }
+          if (m.includes('l')) {
+            const dW = bw * (1 - realScale);
+            if (layer.align === 'left') layer.x = Math.round(layerResizeOrig.x + dW);
+            else if (layer.align === 'center') layer.x = Math.round(layerResizeOrig.x + dW / 2);
+          }
+        } else {
+          layer.size = Math.max(8, Math.min(300, Math.round(layerResizeOrig.size * scaleFactor)));
         }
-        layer.size = Math.max(10, Math.round(layerResizeOrig.size * scaleFactor));
-      } else if (layer.type === 'watermark') {
-        let scaleFactor = 1;
-        if (m.includes('r') || m.includes('b')) {
-          scaleFactor = Math.max(0.2, (layerResizeOrig.bounds.w + dx) / layerResizeOrig.bounds.w);
-        } else if (m.includes('l') || m.includes('t')) {
-          scaleFactor = Math.max(0.2, (layerResizeOrig.bounds.w - dx) / layerResizeOrig.bounds.w);
-        }
-        layer.size = Math.max(8, Math.min(300, Math.round(layerResizeOrig.size * scaleFactor)));
       }
       requestCanvasRender();
-      if (typeof CollabEngine !== 'undefined' && CollabEngine.isActive && CollabEngine.isActive() && !CollabEngine._isRemoteUpdate) {
+      if (typeof CollabEngine !== 'undefined' && CollabEngine.isActive && CollabEngine.isActive() && !CollabEngine._isRemoteUpdate && canCollabEdit()) {
         CollabEngine.sendLayerTransform(layer);
       }
     }
@@ -8812,7 +9356,7 @@ window.addEventListener('pointermove', e => {
   }
 });
 
-window.addEventListener('pointerup', () => {
+const _handleWindowPointerEnd = () => {
   if (_pointerRaf) {
     cancelAnimationFrame(_pointerRaf);
     _pointerRaf = null;
@@ -8872,7 +9416,9 @@ window.addEventListener('pointerup', () => {
     isLassoBrushDrawing = false;
     currentLassoStroke = null;
   }
-});
+};
+window.addEventListener('pointerup', _handleWindowPointerEnd);
+window.addEventListener('pointercancel', _handleWindowPointerEnd);
 
 function drawLassoPreview() {
   lassoCtx.clearRect(0, 0, lassoOverlay.width, lassoOverlay.height);
@@ -8931,49 +9477,67 @@ function doMagicWand(startX, startY) {
   const startIdx = (startY * w + startX) * 4;
   const sr = d[startIdx], sg = d[startIdx + 1], sb = d[startIdx + 2];
 
-  selectionMask = new Uint8Array(w * h);
-  const visited = new Uint8Array(w * h);
-  const queue = [startY * w + startX];
-  visited[startY * w + startX] = 1;
-  selectionMask[startY * w + startX] = 1;
+  const totalPx = w * h;
+  selectionMask = new Uint8Array(totalPx);
+  const visited = new Uint8Array(totalPx);
+  const queue = new Int32Array(totalPx);
+  const startIdxFlat = startY * w + startX;
+  queue[0] = startIdxFlat;
+  visited[startIdxFlat] = 1;
+  selectionMask[startIdxFlat] = 1;
 
-  let head = 0;
-  while (head < queue.length) {
+  let head = 0, tail = 1;
+  while (head < tail) {
     const curr = queue[head++];
     const cx = curr % w;
-    const cy = Math.floor(curr / w);
+    const cy = (curr - cx) / w;
 
-    const neighbors = [
-      cy > 0 ? (cy - 1) * w + cx : -1,
-      cy < h - 1 ? (cy + 1) * w + cx : -1,
-      cx > 0 ? cy * w + (cx - 1) : -1,
-      cx < w - 1 ? cy * w + (cx + 1) : -1
-    ];
-
-    for (let i = 0; i < 4; i++) {
-      const nIdx = neighbors[i];
-      if (nIdx !== -1 && !visited[nIdx]) {
+    if (cy > 0) {
+      const nIdx = curr - w;
+      if (!visited[nIdx]) {
         visited[nIdx] = 1;
         const pIdx = nIdx * 4;
-        const dr = d[pIdx] - sr;
-        const dg = d[pIdx + 1] - sg;
-        const db = d[pIdx + 2] - sb;
-        const distSq = dr * dr + dg * dg + db * db;
-        if (distSq <= tolSq) {
-          selectionMask[nIdx] = 1;
-          queue.push(nIdx);
-        }
+        const dr = d[pIdx] - sr, dg = d[pIdx + 1] - sg, db = d[pIdx + 2] - sb;
+        if (dr * dr + dg * dg + db * db <= tolSq) { selectionMask[nIdx] = 1; queue[tail++] = nIdx; }
+      }
+    }
+    if (cy < h - 1) {
+      const nIdx = curr + w;
+      if (!visited[nIdx]) {
+        visited[nIdx] = 1;
+        const pIdx = nIdx * 4;
+        const dr = d[pIdx] - sr, dg = d[pIdx + 1] - sg, db = d[pIdx + 2] - sb;
+        if (dr * dr + dg * dg + db * db <= tolSq) { selectionMask[nIdx] = 1; queue[tail++] = nIdx; }
+      }
+    }
+    if (cx > 0) {
+      const nIdx = curr - 1;
+      if (!visited[nIdx]) {
+        visited[nIdx] = 1;
+        const pIdx = nIdx * 4;
+        const dr = d[pIdx] - sr, dg = d[pIdx + 1] - sg, db = d[pIdx + 2] - sb;
+        if (dr * dr + dg * dg + db * db <= tolSq) { selectionMask[nIdx] = 1; queue[tail++] = nIdx; }
+      }
+    }
+    if (cx < w - 1) {
+      const nIdx = curr + 1;
+      if (!visited[nIdx]) {
+        visited[nIdx] = 1;
+        const pIdx = nIdx * 4;
+        const dr = d[pIdx] - sr, dg = d[pIdx + 1] - sg, db = d[pIdx + 2] - sb;
+        if (dr * dr + dg * dg + db * db <= tolSq) { selectionMask[nIdx] = 1; queue[tail++] = nIdx; }
       }
     }
   }
 
   selectionActive = true;
   startMarchingAnts();
-  toast(`🪄 Selected ${queue.length} pixels with Magic Wand`);
+  toast(`🪄 Selected ${tail} pixels with Magic Wand`);
 }
 
 function clearSelection() {
   selectionMask = null; selectionActive = false;
+  clearSelectionCache();
   renderHUD();
   toast('✕ Deselected');
 }
@@ -8985,10 +9549,18 @@ function invertSelection() {
   toast('🔄 Selection Inverted');
 }
 
+function getPixelEditableTarget() {
+  const sel = selLayerId ? layers.find(l => l.id === selLayerId) : null;
+  if (sel && sel.type === 'image' && sel.img) return sel;
+  return layers.find(l => l.type === 'base') || null;
+}
+
 function deleteSelectedPixels() {
+  if (!guardCollabViewOnly()) return;
   if (!selectionActive || !selectionMask) { toast('No active selection!'); return; }
-  const target = getAdjTarget();
-  if (!target) return;
+  const target = getPixelEditableTarget();
+  if (!target) { toast('Select a photo or image layer first'); return; }
+  if (target.locked) { toast('🔒 Target layer is locked'); return; }
   const baseSource = target.img || origImg;
   if (!baseSource) return;
 
@@ -9002,19 +9574,21 @@ function deleteSelectedPixels() {
   tx.drawImage(baseSource, 0, 0, srcW, srcH);
   const id = tx.getImageData(0, 0, srcW, srcH), d = id.data;
 
-  // Map canvas selection mask (w x h) to layer pixels (srcW x srcH)
+  // Map canvas selection mask (w x h) to layer pixels (srcW x srcH), respecting flip transforms
   const cW = canvas.width, cH = canvas.height;
   for (let cy = 0; cy < cH; cy++) {
     const lyPos = cy - ly;
     if (lyPos < 0 || lyPos >= lh) continue;
-    const sy = Math.floor((lyPos / lh) * srcH);
+    let sy = Math.floor((lyPos / lh) * srcH);
+    if (target.flipV) sy = (srcH - 1) - sy;
     if (sy < 0 || sy >= srcH) continue;
 
     for (let cx = 0; cx < cW; cx++) {
       if (!selectionMask[cy * cW + cx]) continue;
       const lxPos = cx - lx;
       if (lxPos < 0 || lxPos >= lw) continue;
-      const sx = Math.floor((lxPos / lw) * srcW);
+      let sx = Math.floor((lxPos / lw) * srcW);
+      if (target.flipH) sx = (srcW - 1) - sx;
       if (sx < 0 || sx >= srcW) continue;
 
       const pIdx = (sy * srcW + sx) * 4;
@@ -9037,7 +9611,7 @@ function deleteSelectedPixels() {
     renderCanvas();
     pushHist('Cut selected pixels');
     toast('🗑 Cut pixels from layer');
-    if (typeof CollabEngine !== 'undefined' && CollabEngine.isActive && CollabEngine.isActive() && !CollabEngine._isRemoteUpdate) {
+    if (typeof CollabEngine !== 'undefined' && CollabEngine.isActive && CollabEngine.isActive() && !CollabEngine._isRemoteUpdate && canCollabEdit()) {
       if (target.type === 'base') {
         CollabEngine.sendMasterImage();
       }
@@ -9070,9 +9644,11 @@ function undoLastBlurStroke() {
   if (blurStrokes.length) { blurStrokes.pop(); renderHUD(); }
 }
 function applyBlurBrush() {
+  if (!guardCollabViewOnly()) return;
   if (!blurStrokes.length) { toast('⚠️ Paint over areas to blur first!'); return; }
-  const target = getAdjTarget();
-  if (!target) return;
+  const target = getPixelEditableTarget();
+  if (!target) { toast('Select a photo or image layer first'); return; }
+  if (target.locked) { toast('🔒 Target layer is locked'); return; }
   const baseSource = target.img || origImg;
   if (!baseSource) return;
 
@@ -9083,6 +9659,11 @@ function applyBlurBrush() {
   const srcH = baseSource.naturalHeight || baseSource.height || lh;
   const scaleX = srcW / Math.max(1, lw);
   const scaleY = srcH / Math.max(1, lh);
+
+  const mapPt = (pt) => ({
+    x: (target.flipH ? (lw - (pt.x - lx)) : (pt.x - lx)) * scaleX,
+    y: (target.flipV ? (lh - (pt.y - ly)) : (pt.y - ly)) * scaleY
+  });
 
   const maskCanvas = document.createElement('canvas'); maskCanvas.width = srcW; maskCanvas.height = srcH;
   const mx = maskCanvas.getContext('2d');
@@ -9095,28 +9676,25 @@ function applyBlurBrush() {
     mx.lineWidth = strokeR * 2;
     if (!str.points || !str.points.length) return;
     if (str.points.length === 1) {
-      const px = (str.points[0].x - lx) * scaleX;
-      const py = (str.points[0].y - ly) * scaleY;
-      mx.beginPath(); mx.arc(px, py, strokeR, 0, Math.PI * 2); mx.fill();
+      const p0 = mapPt(str.points[0]);
+      mx.beginPath(); mx.arc(p0.x, p0.y, strokeR, 0, Math.PI * 2); mx.fill();
     } else {
       mx.beginPath();
-      const p0x = (str.points[0].x - lx) * scaleX;
-      const p0y = (str.points[0].y - ly) * scaleY;
-      mx.moveTo(p0x, p0y);
+      const p0 = mapPt(str.points[0]);
+      mx.moveTo(p0.x, p0.y);
       for (let i = 1; i < str.points.length; i++) {
-        const px = (str.points[i].x - lx) * scaleX;
-        const py = (str.points[i].y - ly) * scaleY;
-        mx.lineTo(px, py);
+        const pi = mapPt(str.points[i]);
+        mx.lineTo(pi.x, pi.y);
       }
       mx.stroke();
     }
   });
 
   const maxStrength = Math.max(...blurStrokes.map(s => (s.strength || 16) * Math.max(scaleX, scaleY)));
-  const blurred = document.createElement('canvas'); blurred.width = srcW; blurred.height = srcH;
-  const bx = blurred.getContext('2d');
-  bx.filter = `blur(${Math.max(2, maxStrength)}px)`;
+  const srcCanvas = document.createElement('canvas'); srcCanvas.width = srcW; srcCanvas.height = srcH;
+  const bx = srcCanvas.getContext('2d');
   bx.drawImage(baseSource, 0, 0, srcW, srcH);
+  const blurred = blurCanvasPixels(srcCanvas, Math.max(2, maxStrength), true);
 
   const result = document.createElement('canvas'); result.width = srcW; result.height = srcH;
   const rx = result.getContext('2d');
@@ -9132,7 +9710,7 @@ function applyBlurBrush() {
   rx.drawImage(maskedBlur, 0, 0);
 
   // Synchronous visual update right after clicking Apply (0ms latency):
-  result._v = Date.now();
+  result._v = ++_imgVerSeq;
   if (target.type === 'base') {
     _origDirty = true;
     origImg = result;
@@ -9151,6 +9729,7 @@ function applyBlurBrush() {
   // Async Image object creation for undo/redo serialization & persistence
   const newImg = new Image();
   newImg.onload = () => {
+    newImg._v = result._v;
     if (target.type === 'base' && origImg === result) {
       origImg = newImg;
       const bl = layers.find(l => l.type === 'base');
@@ -9343,6 +9922,7 @@ function openTxtModal(layer) {
 function closeTxtModal() { document.getElementById('txt-modal').classList.remove('on'); }
 
 function commitText() {
+  if (!guardCollabViewOnly()) return;
   const text = document.getElementById('txt-content').value.trim();
   if (!text) { toast('Please enter text'); return; }
   const font = document.getElementById('txt-font').value;
@@ -9356,6 +9936,7 @@ function commitText() {
 
   if (editingLayerId) {
     const layer = layers.find(l => l.id === editingLayerId);
+    if (layer?.locked) { toast('🔒 Layer is locked'); return; }
     if (layer) Object.assign(layer, {text, font, size, color, align, weight, strokeWidth, shadowBlur, arc});
     pushHist('Edited text');
   } else {
@@ -9421,6 +10002,7 @@ function getBGRTarget() {
 }
 
 function openBGRModal() {
+  if (!guardCollabViewOnly()) return;
   if (!S.hasImg) { toast('Open a photo first!'); return; }
   const target = getBGRTarget();
   document.getElementById('bgr-target-label').style.display = 'block';
@@ -9490,16 +10072,12 @@ function onBGRRefineSliderInput() {
       const p = i * 4;
       md[p] = val; md[p + 1] = val; md[p + 2] = val; md[p + 3] = val;
     }
-    mx.putImageData(mData, 0, 0);
 
-    // Spatial morphological shift & smoothing via offscreen canvas blur
+    // Spatial morphological shift & smoothing via cross-browser pixel Gaussian blur
     const blurRadius = Math.max(0.5, Math.abs(shift) * 0.75 + smooth * 0.55 + feather * 0.4);
-    const sc = document.createElement('canvas'); sc.width = w; sc.height = h;
-    const sx = sc.getContext('2d');
-    sx.filter = `blur(${blurRadius}px)`;
-    sx.drawImage(mc, 0, 0);
+    blurImageDataInPlace(mData, w, h, blurRadius, false);
 
-    const blurredAlpha = sx.getImageData(0, 0, w, h).data;
+    const blurredAlpha = mData.data;
     const tc = document.createElement('canvas'); tc.width = w; tc.height = h;
     const tx = tc.getContext('2d');
     tx.drawImage(BGRRefine.originalImg, 0, 0, w, h);
@@ -9677,7 +10255,7 @@ function runIntelligentSaliencyCutout(btn, fillEl, statusEl, progEl) {
     const yw = y * sw;
     for (let x = 1; x < sw - 1; x++) {
       const idx = yw + x;
-      const gx = ((lum[idx + 1] - lum[idx - 1]) * 2 + (lum[idx - sw + 1] - lum[idx - sw - 1]) + (lum[idx + sw + 1] - lum[idx - sw - 1])) / 4;
+      const gx = ((lum[idx + 1] - lum[idx - 1]) * 2 + (lum[idx - sw + 1] - lum[idx - sw - 1]) + (lum[idx + sw + 1] - lum[idx + sw - 1])) / 4;
       const gy = ((lum[idx + sw] - lum[idx - sw]) * 2 + (lum[idx + sw - 1] - lum[idx - sw - 1]) + (lum[idx + sw + 1] - lum[idx - sw + 1])) / 4;
       grad[idx] = Math.sqrt(gx * gx + gy * gy);
     }
@@ -10055,9 +10633,11 @@ function setLassoBrush(mode, btn) {
 }
 
 function startLassoBrush() {
+  if (!guardCollabViewOnly()) return;
   closeBGR();
   document.getElementById('bgr-refine-bar')?.classList.remove('on', 'vis');
   S.tool = 'bgrbrush';
+  updateToolstripUI('bgrbrush');
   lassoBrushStrokes = [];
   document.getElementById('bgr-brush-bar')?.classList.add('on');
   renderCanvas();
@@ -10272,6 +10852,7 @@ function updateWMPreview() {
   renderCanvas();
 }
 function startWMDrag() {
+  if (!guardCollabViewOnly()) return;
   closeWM();
   wmLayer = {
     id: nextLayerId++, type: 'watermark', name: 'Brand Stamp', visible: true,
@@ -10290,6 +10871,7 @@ function startWMDrag() {
   toast('💧 Position watermark on canvas, then click Add Layer.');
 }
 function acceptWatermark() {
+  if (!guardCollabViewOnly()) return;
   document.getElementById('wm-bar').classList.remove('on');
   const addedId = wmLayer ? wmLayer.id : selLayerId;
   wmLayer = null;
@@ -10355,30 +10937,101 @@ function onResizeH(v) {
     document.getElementById('resize-w').value = Math.max(1, Math.round(val * (origImg.width / origImg.height)));
   }
 }
-function applyResize() {
-  const rawW = parseFloat(document.getElementById('resize-w').value) || (resizeMode === 'pct' ? 100 : canvas.width);
-  const rawH = parseFloat(document.getElementById('resize-h').value) || (resizeMode === 'pct' ? 100 : canvas.height);
-  const nw = resizeMode === 'pct' ? Math.max(1, Math.round(canvas.width * (rawW / 100))) : Math.max(1, Math.round(rawW));
-  const nh = resizeMode === 'pct' ? Math.max(1, Math.round(canvas.height * (rawH / 100))) : Math.max(1, Math.round(rawH));
-  const tc = document.createElement('canvas'); tc.width = nw; tc.height = nh;
-  tc.getContext('2d').drawImage(canvas, 0, 0, nw, nh);
+function renderRawBaseToCanvas() {
+  const cW = canvas.width, cH = canvas.height;
+  const raw = document.createElement('canvas');
+  raw.width = cW; raw.height = cH;
+  const rx = raw.getContext('2d');
+  if (S.canvasBg && S.canvasBg !== 'transparent') {
+    rx.fillStyle = sanitizeColor(S.canvasBg, '#ffffff');
+    rx.fillRect(0, 0, cW, cH);
+  }
+  const base = layers.find(l => l.type === 'base');
+  const baseSrc = (base && base.img) ? base.img : origImg;
+  if (baseSrc) {
+    const bx = base?.x ?? 0, by = base?.y ?? 0, bw = base?.w ?? cW, bh = base?.h ?? cH;
+    rx.save();
+    if (base && (base.flipH || base.flipV)) {
+      rx.translate(bx + bw / 2, by + bh / 2);
+      rx.scale(base.flipH ? -1 : 1, base.flipV ? -1 : 1);
+      rx.drawImage(baseSrc, -bw / 2, -bh / 2, bw, bh);
+    } else {
+      rx.drawImage(baseSrc, bx, by, bw, bh);
+    }
+    rx.restore();
+  }
+  return raw;
+}
+
+function commitBaseImageTransform(srcCanvas, nw, nh, { histLabel, toastMsg, transformLayer, onBeforeRender } = {}) {
   const newImg = new Image();
   newImg.onload = () => {
-    _origDirty = true; origImg = newImg;
+    newImg._v = ++_imgVerSeq;
+    _origDirty = true;
+    origImg = newImg;
     canvas.width = hudCanvas.width = lassoOverlay.width = nw;
     canvas.height = hudCanvas.height = lassoOverlay.height = nh;
     const base = layers.find(l => l.type === 'base');
-    if (base) { base.w = nw; base.h = nh; }
+    if (base) {
+      base.img = newImg;
+      base.x = 0; base.y = 0; base.w = nw; base.h = nh;
+      base.flipH = false; base.flipV = false;
+    }
+    if (typeof transformLayer === 'function') {
+      layers.forEach(l => { if (l.type !== 'base') transformLayer(l); });
+    }
+    selectionActive = false;
+    selectionMask = null;
+    clearSelectionCache();
     invalidateAdjCache();
-    closeResize(); zFit(); renderCanvas();
-    pushHist(`⤡ Resized to ${nw}×${nh}`);
-    toast(`⤡ Resized to ${nw} × ${nh} px!`);
-    if (typeof CollabEngine !== 'undefined' && CollabEngine.isActive && CollabEngine.isActive() && !CollabEngine._isRemoteUpdate) {
+    if (typeof onBeforeRender === 'function') onBeforeRender();
+    if (typeof LaserEngine !== 'undefined' && LaserEngine.resize) LaserEngine.resize();
+    document.getElementById('stsize').textContent = `${nw} × ${nh}`;
+    const expOrig = document.getElementById('exp-orig-res');
+    if (expOrig) expOrig.textContent = `${nw} × ${nh}`;
+    positionCanvas();
+    zFit();
+    renderCanvas();
+    renderLayersPanel();
+    updateContextPill();
+    if (histLabel) pushHist(histLabel);
+    if (toastMsg) toast(toastMsg);
+    if (typeof CollabEngine !== 'undefined' && CollabEngine.isActive && CollabEngine.isActive() && !CollabEngine._isRemoteUpdate && canCollabEdit()) {
       CollabEngine.sendMasterImage();
       CollabEngine.broadcast({ type: 'sync_canvas_meta', width: nw, height: nh, canvasW: nw, canvasH: nh, name: S.imgName });
     }
   };
-  newImg.src = tc.toDataURL('image/png');
+  newImg.src = srcCanvas.toDataURL('image/png');
+}
+
+function applyResize() {
+  if (!guardCollabViewOnly()) return;
+  if (!S.hasImg) return;
+  const oldW = canvas.width, oldH = canvas.height;
+  const rawW = parseFloat(document.getElementById('resize-w').value) || (resizeMode === 'pct' ? 100 : oldW);
+  const rawH = parseFloat(document.getElementById('resize-h').value) || (resizeMode === 'pct' ? 100 : oldH);
+  const nw = resizeMode === 'pct' ? Math.max(1, Math.round(oldW * (rawW / 100))) : Math.max(1, Math.round(rawW));
+  const nh = resizeMode === 'pct' ? Math.max(1, Math.round(oldH * (rawH / 100))) : Math.max(1, Math.round(rawH));
+  const rawBase = renderRawBaseToCanvas();
+  const tc = document.createElement('canvas'); tc.width = nw; tc.height = nh;
+  const tx = tc.getContext('2d');
+  tx.imageSmoothingEnabled = true;
+  tx.imageSmoothingQuality = 'high';
+  tx.drawImage(rawBase, 0, 0, nw, nh);
+  const sx = nw / Math.max(1, oldW), sy = nh / Math.max(1, oldH);
+  const uniScale = Math.sqrt(sx * sy);
+  commitBaseImageTransform(tc, nw, nh, {
+    histLabel: `⤡ Resized to ${nw}×${nh}`,
+    toastMsg: `⤡ Resized to ${nw} × ${nh} px!`,
+    onBeforeRender: () => closeResize(),
+    transformLayer: l => {
+      l.x = Math.round((l.x ?? 0) * sx);
+      l.y = Math.round((l.y ?? 0) * sy);
+      if (l.w != null) l.w = Math.max(1, Math.round(l.w * sx));
+      if (l.h != null) l.h = Math.max(1, Math.round(l.h * sy));
+      if (l.size != null) l.size = Math.max(8, Math.round(l.size * uniScale));
+    }
+  });
 }
 
 // BORDER & FRAME
@@ -10397,8 +11050,10 @@ function onBorderSize(v) {
   borderSize = parseInt(v) || 40;
   document.getElementById('border-size-val').textContent = v + 'px';
 }
-function setBorderColorCustom(c) { borderColor = c; }
+function setBorderColorCustom(c) { borderColor = sanitizeColor(c, '#ffffff'); }
 function applyBorder() {
+  if (!guardCollabViewOnly()) return;
+  if (!S.hasImg) return;
   const pad = borderSize;
   const cw0 = canvas.width, ch0 = canvas.height;
   let padTop = pad, padBottom = pad, padLeft = pad, padRight = pad;
@@ -10409,18 +11064,20 @@ function applyBorder() {
   }
   const nw = cw0 + padLeft + padRight;
   const nh = ch0 + padTop + padBottom;
+  const rawBase = renderRawBaseToCanvas();
   const tc = document.createElement('canvas'); tc.width = nw; tc.height = nh;
   const tx = tc.getContext('2d');
-  
-  tx.fillStyle = borderColor;
+  const safeBorderColor = sanitizeColor(borderColor, '#ffffff');
+
+  tx.fillStyle = safeBorderColor;
   tx.fillRect(0, 0, nw, nh);
-  tx.drawImage(canvas, padLeft, padTop);
+  tx.drawImage(rawBase, padLeft, padTop);
 
   if (borderStyle === 'double') {
     const inset = Math.max(4, Math.round(pad * 0.62));
     const lineW = Math.max(2, Math.round(pad * 0.12));
     tx.save();
-    tx.strokeStyle = borderColor.toLowerCase() === '#000000' ? 'rgba(255,255,255,0.65)' : 'rgba(0,0,0,0.55)';
+    tx.strokeStyle = safeBorderColor.toLowerCase() === '#000000' ? 'rgba(255,255,255,0.65)' : 'rgba(0,0,0,0.55)';
     tx.lineWidth = lineW;
     tx.strokeRect(inset, inset, nw - inset * 2, nh - inset * 2);
     tx.restore();
@@ -10437,24 +11094,20 @@ function applyBorder() {
     tx.strokeRect(padLeft - 1, padTop - 1, cw0 + 2, ch0 + 2);
     tx.restore();
   }
-  
-  const newImg = new Image();
-  newImg.onload = () => {
-    _origDirty = true; origImg = newImg;
-    canvas.width = hudCanvas.width = lassoOverlay.width = nw;
-    canvas.height = hudCanvas.height = lassoOverlay.height = nh;
-    const base = layers.find(l => l.type === 'base');
-    if (base) { base.w = nw; base.h = nh; }
-    invalidateAdjCache();
-    closeBorderModal(); zFit(); renderCanvas();
-    pushHist(`🖼 Added ${borderStyle} frame`);
-    toast(`🖼 ${borderStyle} frame added!`);
-    if (typeof CollabEngine !== 'undefined' && CollabEngine.isActive && CollabEngine.isActive() && !CollabEngine._isRemoteUpdate) {
-      CollabEngine.sendMasterImage();
-      CollabEngine.broadcast({ type: 'sync_canvas_meta', width: nw, height: nh, canvasW: nw, canvasH: nh, name: S.imgName });
+
+  commitBaseImageTransform(tc, nw, nh, {
+    histLabel: `🖼 Added ${borderStyle} frame`,
+    toastMsg: `🖼 ${borderStyle} frame added!`,
+    onBeforeRender: () => closeBorderModal(),
+    transformLayer: l => {
+      if (l.type === 'watermark' && l.tile) {
+        l.x = nw / 2; l.y = nh / 2;
+      } else {
+        l.x = (l.x ?? 0) + padLeft;
+        l.y = (l.y ?? 0) + padTop;
+      }
     }
-  };
-  newImg.src = tc.toDataURL('image/png');
+  });
 }
 
 // STICKERS & EMOJIS
@@ -10498,6 +11151,7 @@ function renderStickerGrid(cat) {
   });
 }
 function addSticker(emoji) {
+  if (!guardCollabViewOnly()) return;
   const sz = parseInt(document.getElementById('sticker-size').value) || 120;
   const oc = document.createElement('canvas'); oc.width = sz * 2; oc.height = sz * 2;
   const ox = oc.getContext('2d');
@@ -10525,9 +11179,13 @@ function addSticker(emoji) {
 
 // LAYER STACK & OVERLAY ENGINE
 function addImageOverlayFromFile(f) {
+  if (!f) return;
+  if (!guardCollabViewOnly()) return;
   const r = new FileReader();
+  r.onerror = () => toast('❌ Failed to read overlay image file.');
   r.onload = e => {
     const img = new Image();
+    img.onerror = () => toast('❌ Unsupported or corrupted overlay image.');
     img.onload = () => {
       const maxW = canvas.width * 0.6, maxH = canvas.height * 0.6;
       const scale = Math.min(1, maxW / img.width, maxH / img.height);
@@ -10560,6 +11218,7 @@ function addImageOverlayFromFile(f) {
 }
 
 function addAdjustmentLayer() {
+  if (!guardCollabViewOnly()) return;
   if (!S.hasImg) { toast('Open a photo first!'); return; }
   const layer = {
     id: nextLayerId++,
@@ -10582,6 +11241,7 @@ function addAdjustmentLayer() {
 
 // LAYER REORDERING & MANIPULATION
 function moveLayerUp(id) {
+  if (!guardCollabViewOnly()) return;
   const idx = layers.findIndex(l => l.id === id);
   if (idx < 0 || idx >= layers.length - 1) return;
   const temp = layers[idx];
@@ -10595,6 +11255,7 @@ function moveLayerUp(id) {
 }
 
 function moveLayerDown(id) {
+  if (!guardCollabViewOnly()) return;
   const idx = layers.findIndex(l => l.id === id);
   if (idx <= 0) return;
   const temp = layers[idx];
@@ -10608,22 +11269,17 @@ function moveLayerDown(id) {
 }
 
 function duplicateLayer(id) {
+  if (!guardCollabViewOnly()) return;
   const layer = layers.find(l => l.id === id);
   if (!layer) return;
-  const clone = JSON.parse(JSON.stringify(layer));
-  clone.id = nextLayerId++;
-  clone.name = (layer.name || layer.type) + ' Copy';
-  clone.x = (layer.x ?? 0) + 24;
-  clone.y = (layer.y ?? 0) + 24;
-  if (layer.img) clone.img = layer.img;
-  
+  const clone = cloneLayerObject(layer, ' Copy', 24);
   const idx = layers.findIndex(l => l.id === id);
   layers.splice(idx + 1, 0, clone);
   selLayerId = clone.id;
   updateAdjustHeader();
   renderCanvas();
   renderLayersPanel();
-  pushHist('Duplicated ' + layer.name);
+  pushHist('Duplicated ' + (layer.name || layer.type));
   toast('📋 Layer duplicated!');
 }
 
@@ -10644,6 +11300,7 @@ function onLayerDragLeave(e) {
 function onLayerDrop(e, targetId) {
   e.preventDefault();
   e.currentTarget.classList.remove('drag-target');
+  if (!guardCollabViewOnly()) { draggedLayerId = null; return; }
   if (!draggedLayerId || draggedLayerId === targetId) return;
 
   const srcIdx = layers.findIndex(l => l.id === draggedLayerId);
@@ -10662,9 +11319,11 @@ function onLayerDrop(e, targetId) {
 }
 
 function setLayerBlendMode(id, blendMode) {
+  if (!guardCollabViewOnly()) { renderLayersPanel(); return; }
   const l = layers.find(x => x.id === id);
   if (l) {
     l.blend = blendMode;
+    l.blendMode = blendMode;
     renderCanvas();
     pushHist('Changed blend mode');
     toast(`Blend mode: ${blendMode === 'source-over' ? 'Normal' : blendMode}`);
@@ -10672,6 +11331,7 @@ function setLayerBlendMode(id, blendMode) {
 }
 
 function toggleLockLayer(id) {
+  if (!guardCollabViewOnly()) return;
   const l = layers.find(x => x.id === id);
   if (l) {
     l.locked = !l.locked;
@@ -10705,16 +11365,18 @@ function renderLayersPanel() {
 
     const blends = ['source-over', 'multiply', 'screen', 'overlay', 'darken', 'lighten', 'color-dodge', 'color-burn', 'hard-light', 'soft-light', 'difference', 'exclusion', 'hue', 'saturation', 'color', 'luminosity'];
     const blendOpts = blends.map(b => `<option value="${b}" ${layer.blend === b ? 'selected' : ''}>${b === 'source-over' ? 'Normal' : b}</option>`).join('');
+    const safeLayerTitle = escapeHTML(layer.name || layer.text || 'Layer');
+    const safeLayerType = escapeHTML(layer.type || 'layer').toUpperCase();
 
     div.innerHTML = `
       <div class="lthumb">${layer.type==='text'?'T':layer.type==='watermark'?'💧':layer.type==='adjustment'?'🎚':'📷'}</div>
       <div class="linfo" style="flex:1;min-width:0">
         <div style="display:flex;align-items:center;justify-content:space-between;gap:4px;min-width:0">
-          <div class="lname" title="${layer.name||layer.text||'Layer'}" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1">${layer.name||layer.text||'Layer'}</div>
+          <div class="lname" title="${safeLayerTitle}" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1">${safeLayerTitle}</div>
           ${isLocked ? '<span style="font-size:10px;flex-shrink:0">🔒</span>' : ''}
         </div>
         <div class="lsub" style="display:flex;align-items:center;gap:6px;margin-top:2px;flex-wrap:wrap">
-          <span class="lbadge">${layer.type.toUpperCase()}</span>
+          <span class="lbadge">${safeLayerType}</span>
           <span>${layer.opacity}%</span>
           <select class="lblend-select" onclick="event.stopPropagation()" onchange="setLayerBlendMode(${layer.id}, this.value)">
             ${blendOpts}
@@ -10744,6 +11406,7 @@ function renderLayersPanel() {
 }
 
 function toggleLayerVis(id) {
+  if (!guardCollabViewOnly()) return;
   const l = layers.find(x => x.id === id);
   if (l) {
     l.visible = !l.visible;
@@ -10753,6 +11416,11 @@ function toggleLayerVis(id) {
   }
 }
 function deleteLayer(id) {
+  if (!guardCollabViewOnly()) return;
+  const target = layers.find(l => l.id === id);
+  if (!target) return;
+  if (target.type === 'base') { toast('⚠️ Cannot delete main photo layer'); return; }
+  if (target.locked) { toast('🔒 Layer is locked'); return; }
   layers = layers.filter(l => l.id !== id);
   if (selLayerId === id) selLayerId = layers[0]?.id;
   updateAdjustHeader();
@@ -10760,6 +11428,7 @@ function deleteLayer(id) {
   toast('🗑 Layer deleted');
 }
 function setLayerOpacity(val) {
+  if (!guardCollabViewOnly()) { updateLayerPropsUI(); return; }
   const sel = layers.find(l => l.id === selLayerId);
   if (sel) {
     sel.opacity = parseInt(val);
@@ -10769,6 +11438,7 @@ function setLayerOpacity(val) {
   }
 }
 function setLayerBlend(val) {
+  if (!guardCollabViewOnly()) { updateLayerPropsUI(); return; }
   const sel = layers.find(l => l.id === selLayerId);
   if (sel) {
     sel.blend = val;
@@ -11057,11 +11727,22 @@ async function compressCanvasToMaxBytes(expCanvas, mime, initialQuality, maxByte
   return { blob: bestBlob, canvas: curCanvas, quality: 0.72 };
 }
 
+const EXPORT_PRESET_SIZES = {
+  instagram: [1080, 1080],
+  ig_story: [1080, 1920],
+  twitter: [1200, 675],
+  facebook: [1200, 630],
+  youtube: [1280, 720],
+  tiktok: [1080, 1920],
+  print: [3000, 2000],
+  uhd4k: [3840, 2160]
+};
+
 async function doExport() {
   if (!S.hasImg) { toast('Open a photo first!'); closeEM(); return; }
   const quality = (parseInt(document.getElementById('exp-quality').value) || 92) / 100;
   const mime = {jpg: 'image/jpeg', png: 'image/png', webp: 'image/webp'}[S.fmt] || 'image/jpeg';
-  const sizes = {instagram: [1080, 1080], youtube: [1280, 720], tiktok: [1080, 1920], uhd4k: [3840, 2160]};
+  const sizes = EXPORT_PRESET_SIZES;
   const scale = S.expScale || 1;
 
   const src = document.createElement('canvas');
@@ -11139,15 +11820,7 @@ async function doExport() {
 function doCopyImage() {
   if (!S.hasImg) { toast('Open a photo first!'); return; }
   const scale = S.expScale || 1;
-  const sizes = {
-    instagram: [1080, 1080],
-    ig_story: [1080, 1920],
-    twitter: [1200, 675],
-    facebook: [1200, 630],
-    youtube: [1280, 720],
-    print: [3000, 2000],
-    uhd4k: [3840, 2160]
-  };
+  const sizes = EXPORT_PRESET_SIZES;
 
   const src = document.createElement('canvas');
   src.width = canvas.width;
@@ -11207,53 +11880,47 @@ function doCopyImage() {
 }
 
 // ROTATE & TRANSFORM HELPERS
+function _recenterRotatedLayer(l, oldW, oldH, newW, newH, mapCenterFn) {
+  if (l.type === 'watermark' && l.tile) {
+    l.x = newW / 2; l.y = newH / 2;
+    return;
+  }
+  const b = getLayerBounds(l);
+  const cx = b.x + b.w / 2, cy = b.y + b.h / 2;
+  const [ncx, ncy] = mapCenterFn(cx, cy, oldW, oldH, newW, newH);
+  l.x = Math.round((l.x ?? 0) + (ncx - cx));
+  l.y = Math.round((l.y ?? 0) + (ncy - cy));
+}
+
 function rotateCW() {
   if (!S.hasImg) return;
-  const sw = origImg.width, sh = origImg.height;
+  if (!guardCollabViewOnly()) return;
+  const rawBase = renderRawBaseToCanvas();
+  const sw = rawBase.width, sh = rawBase.height;
   const tmp = document.createElement('canvas'); tmp.width = sh; tmp.height = sw;
   const tCtx = tmp.getContext('2d');
   tCtx.translate(sh / 2, sw / 2); tCtx.rotate(Math.PI / 2);
-  tCtx.drawImage(origImg, -sw / 2, -sh / 2);
-  const newImg = new Image();
-  newImg.onload = () => {
-    _origDirty = true; origImg = newImg;
-    canvas.width = hudCanvas.width = lassoOverlay.width = sh;
-    canvas.height = hudCanvas.height = lassoOverlay.height = sw;
-    const base = layers.find(l => l.type === 'base');
-    if (base) { base.w = sh; base.h = sw; }
-    resetSlidersUI(); renderCanvas(); zFit();
-    pushHist('↻ Rotated 90° CW');
-    toast('↻ Rotated 90° clockwise');
-    if (typeof CollabEngine !== 'undefined' && CollabEngine.isActive && CollabEngine.isActive() && !CollabEngine._isRemoteUpdate) {
-      CollabEngine.sendMasterImage();
-      CollabEngine.broadcast({ type: 'sync_canvas_meta', width: sh, height: sw, canvasW: sh, canvasH: sw, name: S.imgName });
-    }
-  };
-  newImg.src = tmp.toDataURL('image/png');
+  tCtx.drawImage(rawBase, -sw / 2, -sh / 2);
+  commitBaseImageTransform(tmp, sh, sw, {
+    histLabel: '↻ Rotated 90° CW',
+    toastMsg: '↻ Rotated 90° clockwise',
+    transformLayer: l => _recenterRotatedLayer(l, sw, sh, sh, sw, (cx, cy) => [sh - cy, cx])
+  });
 }
 function rotateCCW() {
   if (!S.hasImg) return;
-  const sw = origImg.width, sh = origImg.height;
+  if (!guardCollabViewOnly()) return;
+  const rawBase = renderRawBaseToCanvas();
+  const sw = rawBase.width, sh = rawBase.height;
   const tmp = document.createElement('canvas'); tmp.width = sh; tmp.height = sw;
   const tCtx = tmp.getContext('2d');
   tCtx.translate(sh / 2, sw / 2); tCtx.rotate(-Math.PI / 2);
-  tCtx.drawImage(origImg, -sw / 2, -sh / 2);
-  const newImg = new Image();
-  newImg.onload = () => {
-    _origDirty = true; origImg = newImg;
-    canvas.width = hudCanvas.width = lassoOverlay.width = sh;
-    canvas.height = hudCanvas.height = lassoOverlay.height = sw;
-    const base = layers.find(l => l.type === 'base');
-    if (base) { base.w = sh; base.h = sw; }
-    resetSlidersUI(); renderCanvas(); zFit();
-    pushHist('↺ Rotated 90° CCW');
-    toast('↺ Rotated 90° counter-clockwise');
-    if (typeof CollabEngine !== 'undefined' && CollabEngine.isActive && CollabEngine.isActive() && !CollabEngine._isRemoteUpdate) {
-      CollabEngine.sendMasterImage();
-      CollabEngine.broadcast({ type: 'sync_canvas_meta', width: sh, height: sw, canvasW: sh, canvasH: sw, name: S.imgName });
-    }
-  };
-  newImg.src = tmp.toDataURL('image/png');
+  tCtx.drawImage(rawBase, -sw / 2, -sh / 2);
+  commitBaseImageTransform(tmp, sh, sw, {
+    histLabel: '↺ Rotated 90° CCW',
+    toastMsg: '↺ Rotated 90° counter-clockwise',
+    transformLayer: l => _recenterRotatedLayer(l, sw, sh, sh, sw, (cx, cy) => [cy, sw - cx])
+  });
 }
 function rotate90() { rotateCW(); }
 function rotate90CCW() { rotateCCW(); }
@@ -11272,35 +11939,32 @@ function onRotateSlider(val) {
 }
 function applyFreeRotate() {
   if (!freeRotateAngle) return;
+  if (!guardCollabViewOnly()) { cancelFreeRotate(); return; }
   canvas.style.transform = '';
   const bakedAngle = freeRotateAngle;
   const rad = bakedAngle * Math.PI / 180;
-  const sw = origImg.width, sh = origImg.height;
+  const rawBase = renderRawBaseToCanvas();
+  const sw = rawBase.width, sh = rawBase.height;
   const nw = Math.round(Math.abs(sw * Math.cos(rad)) + Math.abs(sh * Math.sin(rad)));
   const nh = Math.round(Math.abs(sw * Math.sin(rad)) + Math.abs(sh * Math.cos(rad)));
   const tmp = document.createElement('canvas'); tmp.width = nw; tmp.height = nh;
   const tCtx = tmp.getContext('2d');
   tCtx.translate(nw / 2, nh / 2); tCtx.rotate(rad);
-  tCtx.drawImage(origImg, -sw / 2, -sh / 2);
-  const newImg = new Image();
-  newImg.onload = () => {
-    _origDirty = true; origImg = newImg;
-    canvas.width = hudCanvas.width = lassoOverlay.width = nw;
-    canvas.height = hudCanvas.height = lassoOverlay.height = nh;
-    const base = layers.find(l => l.type === 'base');
-    if (base) { base.w = nw; base.h = nh; }
-    document.getElementById('s-rot').value = 0;
-    document.getElementById('v-rot').textContent = '0°';
-    freeRotateAngle = 0;
-    resetSlidersUI(); renderCanvas(); zFit();
-    pushHist(`Straightened ${bakedAngle}°`);
-    toast('✓ Straighten rotation baked into image');
-    if (typeof CollabEngine !== 'undefined' && CollabEngine.isActive && CollabEngine.isActive() && !CollabEngine._isRemoteUpdate) {
-      CollabEngine.sendMasterImage();
-      CollabEngine.broadcast({ type: 'sync_canvas_meta', width: nw, height: nh, canvasW: nw, canvasH: nh, name: S.imgName });
-    }
-  };
-  newImg.src = tmp.toDataURL('image/png');
+  tCtx.drawImage(rawBase, -sw / 2, -sh / 2);
+  const cosA = Math.cos(rad), sinA = Math.sin(rad);
+  commitBaseImageTransform(tmp, nw, nh, {
+    histLabel: `Straightened ${bakedAngle}°`,
+    toastMsg: '✓ Straighten rotation baked into image',
+    onBeforeRender: () => {
+      document.getElementById('s-rot').value = 0;
+      document.getElementById('v-rot').textContent = '0°';
+      freeRotateAngle = 0;
+    },
+    transformLayer: l => _recenterRotatedLayer(l, sw, sh, nw, nh, (cx, cy) => {
+      const dx = cx - sw / 2, dy = cy - sh / 2;
+      return [nw / 2 + dx * cosA - dy * sinA, nh / 2 + dx * sinA + dy * cosA];
+    })
+  });
 }
 function cancelFreeRotate() {
   freeRotateAngle = 0;
@@ -11310,13 +11974,26 @@ function cancelFreeRotate() {
 }
 
 function resetAll() {
+  if (!guardCollabViewOnly()) return;
   if (!origImg) return;
   const base = layers.find(l => l.type === 'base');
-  if (base) base.adjustments = {...DSLIDERS};
+  if (base) {
+    base.adjustments = {...DSLIDERS};
+    base.curves = {rgb:[{x:0,y:0},{x:255,y:255}],r:[{x:0,y:0},{x:255,y:255}],g:[{x:0,y:0},{x:255,y:255}],b:[{x:0,y:0},{x:255,y:255}]};
+    base.curvesLUT = null;
+    base.x = 0; base.y = 0;
+    base.w = canvas.width; base.h = canvas.height;
+    base.flipH = false; base.flipV = false;
+    base.locked = false;
+  }
   layers = base ? [base] : [];
   selLayerId = base ? base.id : null;
   loadSlidersFromLayer(base);
+  if (typeof CurvesEngine !== 'undefined') CurvesEngine.syncFromLayer(base);
+  if (typeof ColorWheelsEngine !== 'undefined') ColorWheelsEngine.syncFromLayer(base);
+  invalidateAdjCache();
   updateAdjustHeader();
+  updateContextPill();
   renderCanvas(); renderLayersPanel();
   pushHist('↺ Reset All Edits');
   toast('↺ Workspace restored to original');
@@ -11367,7 +12044,7 @@ const StudioTour = {
       title: '2. Creative Precision Toolstrip',
       desc: 'Essential desktop editing and retouching tools mapped for muscle memory.',
       points: [
-        { icon: '↖', text: '<strong><kbd>M</kbd> Move & Transform</strong>: Move, rotate, scale, or mirror any active layer with handles.' },
+        { icon: '↖', text: '<strong><kbd>V</kbd> / <kbd>M</kbd> Move & Transform</strong>: Move, rotate, scale, or mirror any active layer with handles.' },
         { icon: '✋', text: '<strong><kbd>H</kbd> Hand Pan (<kbd>Space</kbd>)</strong>: Pan across ultra-high-resolution images with zero lag.' },
         { icon: '✂', text: '<strong><kbd>C</kbd> Crop & Rotate</strong>: Rule-of-thirds grid with free angle straightening.' },
         { icon: '🔤', text: '<strong><kbd>T</kbd> Typography</strong>: Rich text layers with curved arc pathing, shadows, and outlines.' },
@@ -11379,7 +12056,7 @@ const StudioTour = {
       onEnter: () => {}
     },
     {
-      target: '#ca',
+      target: '#canvas-area',
       tag: 'Center Viewport • GPU Canvas',
       title: '3. Interactive Studio Viewport',
       desc: 'Hardware-accelerated viewport rendering your creative edits in real time.',
@@ -11396,10 +12073,10 @@ const StudioTour = {
       target: '#rp',
       tag: 'Right Inspector • Adjustments',
       title: '4. Pro Adjustments & Film Presets',
-      desc: '12 non-destructive sliders and 6 curated film emulation styles.',
+      desc: 'Precision non-destructive Tone, Color & Detail sliders and 10 curated Film Presets.',
       points: [
-        { icon: '🎚', text: '<strong>12 Precision Sliders</strong>: Brightness, Contrast, Highlights, Shadows, Temperature, Tint, Clarity, Vignette, and Film Grain.' },
-        { icon: '🎞', text: '<strong>6 Film Presets</strong>: Golden Hour, Warm Film, Cyberpunk, Portrait, Noir B&W, and Original.' },
+        { icon: '🎚', text: '<strong>16 Precision Sliders</strong>: Exposure, Contrast, Highlights, Shadows, Temperature, Tint, Saturation, Vibrance, Clarity, Dehaze, Vignette, Film Grain, and more.' },
+        { icon: '🎞', text: '<strong>10 Film Presets</strong>: Golden Hour, Warm Film 1975, Cyberpunk Neon, Studio Portrait, Noir B&W, Dramatic HDR, and more.' },
         { icon: '📊', text: '<strong>Live RGB Histogram</strong>: Real-time multi-channel luminance histogram tracking dynamic range.' }
       ],
       pos: 'left',
@@ -11656,7 +12333,7 @@ const COMMANDS = [
   { id:'collab-voice-mic', title:'🎙️ Toggle P2P Voice Intercom', desc:'1-Click encrypted peer-to-peer microphone voice intercom', cat:'Multiplayer', icon:'🎙️', shortcut:'', keywords:'voice mic intercom audio talk speak chat peer call webrtc', run: () => VoiceIntercomEngine.toggleMic() },
   { id:'collab-proofing', title:'⭐ Client Proofing & Star Rating', desc:'Rate photo 1-5 stars and toggle In Review / Approved status', cat:'Multiplayer', icon:'⭐', shortcut:'', keywords:'proofing rating stars review approved revisions client status', run: () => openCollabModal('proofing') },
   { id:'tool-wand', title:'Magic Wand Selection', desc:'Select contiguous color areas with tolerance', cat:'Tools', icon:'🪄', shortcut:'W', keywords:'wand magic select flood color tolerance chroma marching ants', run: () => setTool('magic') },
-  { id:'tool-lasso', title:'Polygonal Lasso Tool', desc:'Draw freehand custom polygonal pixel selections', cat:'Tools', icon:'➰', shortcut:'L', keywords:'lasso polygon freehand select outline lasso cut', run: () => setTool('lasso') },
+  { id:'tool-lasso', title:'Polygonal Lasso Tool', desc:'Draw freehand custom polygonal pixel selections', cat:'Tools', icon:'➰', shortcut:'Q', keywords:'lasso polygon freehand select outline lasso cut', run: () => setTool('lasso') },
   { id:'tool-wm', title:'Brand Stamp & Watermark', desc:'Position tiled copyright or signature mark', cat:'Tools', icon:'💧', shortcut:'', keywords:'watermark stamp brand copyright signature logo protect text', run: () => openWM() },
   { id:'tool-eye', title:'Eyedropper Color Loupe', desc:'Sample canvas color and copy HEX code', cat:'Tools', icon:'🔬', shortcut:'I', keywords:'eyedropper loupe color sample hex picker pipette inspect', run: () => setTool('eye') },
   { id:'tool-hand', title:'Hand Pan Tool', desc:'Pan around high-resolution canvas viewport', cat:'Tools', icon:'✋', shortcut:'H / Space', keywords:'hand pan scroll move navigate space viewport canvas drag', run: () => setTool('hand') },
@@ -11968,6 +12645,12 @@ window.addEventListener('keydown', e => {
 }, true);
 
 // KEYBOARD SHORTCUTS
+let _nudgeHistTimer = null;
+function _scheduleNudgeHist() {
+  clearTimeout(_nudgeHistTimer);
+  _nudgeHistTimer = setTimeout(() => { pushHist('Moved layer'); }, 350);
+}
+
 document.addEventListener('keydown', e => {
   if (isCommandPaletteOpen()) return;
 
@@ -11997,13 +12680,15 @@ document.addEventListener('keydown', e => {
     ctx.drawImage(origImg, 0, 0, canvas.width, canvas.height);
     return;
   }
+  const kLower = e.key.length === 1 ? e.key.toLowerCase() : e.key;
   if (e.ctrlKey || e.metaKey) {
-    if (e.key === 'z' || e.key === 'Z') { e.preventDefault(); e.shiftKey ? doRedo() : doUndo(); }
-    else if (e.key === 'y') { e.preventDefault(); doRedo(); }
-    else if (e.key === 'd' || e.key === 'D') { e.preventDefault(); duplicateActiveLayer(); }
-    else if (e.key === 's' || e.key === 'e') { e.preventDefault(); openEM(); }
-    else if (e.key === 'n' || e.key === 'N') { e.preventDefault(); openNewModal(); }
-    else if (e.key === 'o') { e.preventDefault(); openFile(); }
+    if (kLower === 'z') { e.preventDefault(); e.shiftKey ? doRedo() : doUndo(); }
+    else if (kLower === 'y') { e.preventDefault(); doRedo(); }
+    else if (kLower === 'd') { e.preventDefault(); duplicateActiveLayer(); }
+    else if (kLower === 's' || kLower === 'e') { e.preventDefault(); openEM(); }
+    else if (kLower === 'n') { e.preventDefault(); openNewModal(); }
+    else if (kLower === 'o') { e.preventDefault(); openFile(); }
+    else if (kLower === 'm') { e.preventDefault(); setTool('adjust'); document.getElementById('curves-wrap')?.scrollIntoView({behavior:'smooth'}); }
     else if (e.key === '=' || e.key === '+') { e.preventDefault(); zIn(); }
     else if (e.key === '-') { e.preventDefault(); zOut(); }
     return;
@@ -12011,23 +12696,28 @@ document.addEventListener('keydown', e => {
   if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
     if (selLayerId) {
       const curSel = layers.find(l => l.id === selLayerId);
-      if (curSel && !curSel.locked) {
-        e.preventDefault();
-        const delta = e.shiftKey ? 10 : 1;
-        if (e.key === 'ArrowUp') curSel.y = (curSel.y ?? 0) - delta;
-        if (e.key === 'ArrowDown') curSel.y = (curSel.y ?? 0) + delta;
-        if (e.key === 'ArrowLeft') curSel.x = (curSel.x ?? 0) - delta;
-        if (e.key === 'ArrowRight') curSel.x = (curSel.x ?? 0) + delta;
-        renderCanvas();
-        if (typeof CollabEngine !== 'undefined' && CollabEngine.isActive && CollabEngine.isActive() && !CollabEngine._isRemoteUpdate) {
-          CollabEngine.sendLayerTransform(curSel);
+      if (curSel) {
+        if (!canCollabEdit()) { e.preventDefault(); guardCollabViewOnly(); return; }
+        if (!curSel.locked) {
+          e.preventDefault();
+          const delta = e.shiftKey ? 10 : 1;
+          if (e.key === 'ArrowUp') curSel.y = (curSel.y ?? 0) - delta;
+          if (e.key === 'ArrowDown') curSel.y = (curSel.y ?? 0) + delta;
+          if (e.key === 'ArrowLeft') curSel.x = (curSel.x ?? 0) - delta;
+          if (e.key === 'ArrowRight') curSel.x = (curSel.x ?? 0) + delta;
+          renderCanvas();
+          renderHUD();
+          _scheduleNudgeHist();
+          if (typeof CollabEngine !== 'undefined' && CollabEngine.isActive && CollabEngine.isActive() && !CollabEngine._isRemoteUpdate) {
+            CollabEngine.sendLayerTransform(curSel);
+          }
+          return;
         }
-        return;
       }
     }
   }
-  if (e.key === ']') moveActiveLayerUp();
-  if (e.key === '[') moveActiveLayerDown();
+  if (e.key === ']') { moveActiveLayerUp(); return; }
+  if (e.key === '[') { moveActiveLayerDown(); return; }
   if (e.key === 'Escape') {
     if (typeof StudioTour !== 'undefined' && StudioTour.active) StudioTour.close();
     document.querySelectorAll('.modal-bg').forEach(m => m.classList.remove('on'));
@@ -12036,23 +12726,27 @@ document.addEventListener('keydown', e => {
     if (selLayerId && selLayerId !== layers[0]?.id) { selLayerId = layers[0]?.id; updateAdjustHeader(); renderCanvas(); renderLayersPanel(); }
     return;
   }
-  if (e.key === 'Enter' && cropOn) { e.preventDefault(); applyCrop(); }
+  if (e.key === 'Enter' && cropOn) { e.preventDefault(); applyCrop(); return; }
   if (e.key === 'Delete' || e.key === 'Backspace') {
     if (selectionActive) deleteSelectedPixels();
     else if (selLayerId && selLayerId !== layers[0]?.id) deleteLayer(selLayerId);
     return;
   }
-  if (e.key === 'm' || e.key === 'v') setTool('move');
-  else if (e.key === 'h') setTool('hand');
-  else if (e.key === 'c') setTool('crop');
-  else if (e.key === 't') setTool('text');
-  else if (e.key === 'i') setTool('eye');
-  else if (e.key === 'b') setTool('blurbrush');
-  else if (e.key === 'g') setTool('heal');
-  else if (e.key === 'l' || e.key === 'L') setTool('laser');
-  else if (e.key === 'p' || e.key === 'P') setTool('comment');
+  if (kLower === 'm' || kLower === 'v') setTool('move');
+  else if (kLower === 'h') setTool('hand');
+  else if (kLower === 'c') setTool('crop');
+  else if (kLower === 'a') setTool('adjust');
+  else if (kLower === 'f') { setTool('adjust'); document.getElementById('presets-anchor')?.scrollIntoView({behavior:'smooth'}); }
+  else if (kLower === 't') setTool('text');
+  else if (kLower === 'i') setTool('eye');
+  else if (kLower === 'b') setTool('blurbrush');
+  else if (kLower === 'g') setTool('heal');
+  else if (kLower === 'w') setTool('magic');
+  else if (kLower === 'q') setTool('lasso');
+  else if (kLower === 'l') setTool('laser');
+  else if (kLower === 'p') setTool('comment');
   else if (e.key === 'Tab') { e.preventDefault(); toggleZenMode(); }
-  else if (e.key === 's') toggleSnapEngine();
+  else if (kLower === 's') toggleSnapEngine();
   else if (e.key === '0') { e.preventDefault(); zFit(); }
   else if (e.key === '?') openKB();
 });
@@ -12093,7 +12787,14 @@ function resetRangeSliderToDefault(slider) {
 function initApp() {
   if (typeof window.CollabEngine !== 'undefined' && window.CollabEngine.init) window.CollabEngine.init();
   initWelcomeParticles();
-  initDB();
+  const cmdCountEl = document.getElementById('cmd-palette-count');
+  if (cmdCountEl && typeof COMMANDS !== 'undefined') {
+    cmdCountEl.textContent = `${COMMANDS.length} command${COMMANDS.length === 1 ? '' : 's'}`;
+  }
+  const hasRoomParam = /[?&]room=|(?:^#|&)room=/.test((window.location.search || '') + (window.location.hash || ''));
+  initDB().then(db => {
+    if (db && !hasRoomParam && !S.hasImg) restoreWorkspace();
+  });
   initCropHandlers();
 
   // Mini-map interaction
@@ -12314,13 +13015,24 @@ function copyRoomCode() {
   });
 }
 
-function openCollabModal() {
+function openCollabModal(section) {
   if (!CollabEngine.isActive()) {
     CollabEngine.startHosting();
   } else {
     CollabEngine.updateUI();
   }
   document.getElementById('collab-modal').classList.add('on');
+  if (section === 'proofing') {
+    const proofEl = document.getElementById('collab-proofing-section');
+    if (proofEl) {
+      setTimeout(() => {
+        proofEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        const prevShadow = proofEl.style.boxShadow;
+        proofEl.style.boxShadow = '0 0 0 2px #d4a359, 0 0 20px rgba(212,163,89,0.35)';
+        setTimeout(() => { proofEl.style.boxShadow = prevShadow; }, 1400);
+      }, 60);
+    }
+  }
 }
 
 function closeCollabModal() {
@@ -12336,6 +13048,7 @@ function loadPeerJs() {
   if (_peerJsScriptPromise) return _peerJsScriptPromise;
   _peerJsScriptPromise = new Promise((resolve) => {
     const s = document.createElement('script');
+    s.crossOrigin = 'anonymous';
     s.src = 'https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js';
     s.onload = () => resolve(window.Peer);
     s.onerror = () => {
@@ -12444,10 +13157,11 @@ var LaserEngine = {
     }
     const nx = (cx / this.canvas.width) * 100;
     const ny = (cy / this.canvas.height) * 100;
+    const safeColor = sanitizeColor(color, '#3b82f6');
     tip.style.left = nx + '%';
     tip.style.top = ny + '%';
-    tip.style.background = color || '#3b82f6';
-    tip.innerHTML = `⚡ ${name || 'Artist'}`;
+    tip.style.background = safeColor;
+    tip.textContent = '⚡ ' + (name || 'Artist');
     tip.style.opacity = '1';
 
     clearTimeout(tip._fadeTimer);
@@ -12732,36 +13446,50 @@ var CommentsEngine = {
     const visiblePins = this.hideResolved ? this.pins.filter(p => !p.resolved) : this.pins;
 
     visiblePins.forEach(pin => {
+      const safeId = escapeHTML(String(pin.id ?? ''));
+      const safeAuthor = escapeHTML(pin.author || 'Collaborator');
+      const safeCreatedAt = escapeHTML(pin.createdAt || '');
+      const safeText = escapeHTML(pin.text || '');
+      const safeColor = sanitizeColor(pin.authorColor, '#10b981');
+      const safeNum = pin.resolved ? '✓' : escapeHTML(String(pin.number ?? ''));
+
       const marker = document.createElement('div');
       marker.className = 'collab-pin-marker' + (pin.resolved ? ' resolved' : '') + (this.selectedPinId === pin.id ? ' active-open' : '');
-      marker.setAttribute('data-id', pin.id);
+      marker.setAttribute('data-id', String(pin.id ?? ''));
       marker.style.left = (pin.nx * 100) + '%';
       marker.style.top = (pin.ny * 100) + '%';
 
       marker.innerHTML = `
-        <div class="collab-pin-head" style="background:${pin.authorColor || '#10b981'};">
-          <span>${pin.resolved ? '✓' : pin.number}</span>
+        <div class="collab-pin-head" style="background:${safeColor};">
+          <span>${safeNum}</span>
         </div>
         <div class="collab-pin-pulse"></div>
-        <div class="collab-pin-popover ${this.selectedPinId === pin.id ? 'open' : ''}" onclick="event.stopPropagation()">
+        <div class="collab-pin-popover ${this.selectedPinId === pin.id ? 'open' : ''}">
           <div class="collab-pin-popover-header">
             <div class="collab-pin-author-badge">
-              <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:${pin.authorColor || '#10b981'}"></span>
-              <strong style="color:var(--text-main)">${pin.author || 'Collaborator'}</strong>
+              <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:${safeColor}"></span>
+              <strong style="color:var(--text-main)">${safeAuthor}</strong>
             </div>
-            <span class="collab-pin-time">${pin.createdAt || ''}</span>
+            <span class="collab-pin-time">${safeCreatedAt}</span>
           </div>
-          <div class="collab-pin-body">${pin.text}</div>
+          <div class="collab-pin-body">${safeText}</div>
           <div class="collab-pin-actions">
-            <button class="collab-pin-act-btn collab-pin-act-resolve" onclick="CommentsEngine.toggleResolve('${pin.id}')">
+            <button class="collab-pin-act-btn collab-pin-act-resolve" data-pin-id="${safeId}">
               ${pin.resolved ? '↺ Reopen' : '✓ Resolve'}
             </button>
-            <button class="collab-pin-act-btn collab-pin-act-del" onclick="CommentsEngine.deletePin('${pin.id}')" title="Delete pin">
+            <button class="collab-pin-act-btn collab-pin-act-del" data-pin-id="${safeId}" title="Delete pin">
               🗑 Delete
             </button>
           </div>
         </div>
       `;
+
+      const popover = marker.querySelector('.collab-pin-popover');
+      if (popover) popover.addEventListener('click', e => e.stopPropagation());
+      const resBtn = marker.querySelector('.collab-pin-act-resolve');
+      if (resBtn) resBtn.addEventListener('click', () => this.toggleResolve(pin.id));
+      const delBtn = marker.querySelector('.collab-pin-act-del');
+      if (delBtn) delBtn.addEventListener('click', () => this.deletePin(pin.id));
 
       marker.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -12784,24 +13512,43 @@ var CommentsEngine = {
           </div>
         `;
       } else {
-        drawerList.innerHTML = this.pins.map(pin => `
-          <div class="collab-drawer-item ${pin.resolved ? 'resolved' : ''} ${this.selectedPinId === pin.id ? 'active-pin' : ''}" data-id="${pin.id}" onclick="CommentsEngine.selectPin('${pin.id}')">
+        drawerList.innerHTML = '';
+        this.pins.forEach(pin => {
+          const safeAuthor = escapeHTML(pin.author || 'Collaborator');
+          const safeCreatedAt = escapeHTML(pin.createdAt || '');
+          const safeText = escapeHTML(pin.text || '');
+          const safeColor = sanitizeColor(pin.authorColor, '#10b981');
+          const safeNum = escapeHTML(String(pin.number ?? ''));
+
+          const item = document.createElement('div');
+          item.className = `collab-drawer-item ${pin.resolved ? 'resolved' : ''} ${this.selectedPinId === pin.id ? 'active-pin' : ''}`;
+          item.setAttribute('data-id', String(pin.id ?? ''));
+          item.innerHTML = `
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
               <div style="display:flex;align-items:center;gap:6px">
-                <span style="font-size:10px;font-weight:800;background:${pin.authorColor || '#10b981'};color:#fff;padding:1px 5px;border-radius:4px">#${pin.number}</span>
-                <strong style="font-size:11px;color:var(--text-main)">${pin.author}</strong>
+                <span style="font-size:10px;font-weight:800;background:${safeColor};color:#fff;padding:1px 5px;border-radius:4px">#${safeNum}</span>
+                <strong style="font-size:11px;color:var(--text-main)">${safeAuthor}</strong>
               </div>
-              <span style="font-size:9.5px;color:var(--text-dim)">${pin.createdAt || ''}</span>
+              <span style="font-size:9.5px;color:var(--text-dim)">${safeCreatedAt}</span>
             </div>
-            <div style="font-size:11.5px;color:var(--text);margin-bottom:6px;line-height:1.35;word-break:break-word">${pin.text}</div>
+            <div style="font-size:11.5px;color:var(--text);margin-bottom:6px;line-height:1.35;word-break:break-word">${safeText}</div>
             <div style="display:flex;align-items:center;justify-content:space-between">
               <span style="font-size:10px;font-weight:700;color:${pin.resolved ? '#10b981' : 'var(--text-muted)'}">${pin.resolved ? '✓ Resolved' : '● Active'}</span>
-              <button class="collab-pin-act-btn" onclick="event.stopPropagation(); CommentsEngine.toggleResolve('${pin.id}')" style="font-size:10px">
+              <button class="collab-pin-act-btn" style="font-size:10px">
                 ${pin.resolved ? '↺ Reopen' : '✓ Resolve'}
               </button>
             </div>
-          </div>
-        `).join('');
+          `;
+          item.addEventListener('click', () => this.selectPin(pin.id));
+          const toggleBtn = item.querySelector('.collab-pin-act-btn');
+          if (toggleBtn) {
+            toggleBtn.addEventListener('click', (e) => {
+              e.stopPropagation();
+              this.toggleResolve(pin.id);
+            });
+          }
+          drawerList.appendChild(item);
+        });
       }
     }
   }
@@ -13267,7 +14014,7 @@ var CollabEngine = window.CollabEngine = {
       // Cryptographically random room ID: OF-XXXX-XXXX-XXXX
       // 12 alphanumeric chars (A-Z 0-9) = 36^12 ≈ 4.7 trillion combos vs 9,000 for 4-digit numeric
       const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // no I,O,0,1 to avoid confusion
-      const rnd = (n) => Array.from({length: n}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+      const rnd = (n) => cryptoRandomString(n, chars);
       this.roomId = `OF-${rnd(4)}-${rnd(4)}-${rnd(4)}`;
     }
     this.active = true;
@@ -13498,7 +14245,8 @@ var CollabEngine = window.CollabEngine = {
   },
 
   broadcast(pkt) {
-    if (!this.active) return;
+    if (!this.active || !pkt) return;
+    if (!this.isHost && this.roomMode === 'view' && COLLAB_EDIT_PACKET_TYPES.has(pkt.type)) return;
     pkt.senderId = pkt.senderId || this.myId;
     pkt.roomId = this.roomId;
     pkt.ts = Date.now();
@@ -13626,6 +14374,7 @@ var CollabEngine = window.CollabEngine = {
   handleInboundPacket(pkt, sourceConn) {
     if (!pkt || pkt.senderId === this.myId) return;
     if (pkt.roomId && this.roomId && pkt.roomId.toUpperCase() !== this.roomId.toUpperCase()) return;
+    if (this.isHost && this.roomMode === 'view' && COLLAB_EDIT_PACKET_TYPES.has(pkt.type)) return;
 
     // Refresh last-seen timestamp for this peer (used by host heartbeat eviction)
     if (this.isHost && pkt.senderId && this.connectedPeers.has(pkt.senderId)) {
@@ -13959,13 +14708,15 @@ var CollabEngine = window.CollabEngine = {
   applyReceivedMasterImage(fullData, name) {
     const img = new Image();
     img.onload = () => {
+      img._v = ++_imgVerSeq;
+      _origDirty = true;
       origImg = img;
       canvas.width = hudCanvas.width = lassoOverlay.width = origImg.width;
       canvas.height = hudCanvas.height = lassoOverlay.height = origImg.height;
       S.hasImg = true;
       S.imgName = name || 'Shared Photo';
       const docname = document.getElementById('docname');
-      if (docname) docname.innerHTML = `<strong>${S.imgName}</strong>`;
+      if (docname) docname.innerHTML = `<strong>${escapeHTML(S.imgName)}</strong>`;
       const ca = document.getElementById('canvas-area');
       if (ca) ca.classList.add('has-img');
       const cw = document.getElementById('cw');
@@ -13987,6 +14738,7 @@ var CollabEngine = window.CollabEngine = {
           opacity: 100,
           blend: 'source-over',
           blendMode: 'source-over',
+          img,
           adjustments: { ...DSLIDERS },
           curves: null,
           curvesLUT: null,
@@ -13996,15 +14748,25 @@ var CollabEngine = window.CollabEngine = {
         layers.unshift(base);
         if (!selLayerId) selLayerId = base.id;
       } else {
+        base.img = img;
+        base.x = 0; base.y = 0;
         base.w = origImg.width;
         base.h = origImg.height;
+        base.flipH = false; base.flipV = false;
       }
 
+      clearSelectionCache();
       invalidateAdjCache();
+      if (typeof LaserEngine !== 'undefined' && LaserEngine.resize) LaserEngine.resize();
+      const stSz = document.getElementById('stsize');
+      if (stSz) stSz.textContent = `${origImg.width} × ${origImg.height}`;
+      const expOrig = document.getElementById('exp-orig-res');
+      if (expOrig) expOrig.textContent = `${origImg.width} × ${origImg.height}`;
       positionCanvas();
       zFit();
       renderCanvas();
       renderLayersPanel();
+      updateContextPill();
       this._hasReceivedInitialState = true;
       toast('🖼 Master image synchronized! Ready for co-editing.');
     };
@@ -14147,22 +14909,30 @@ var CollabEngine = window.CollabEngine = {
 
   onCursorMove(pkt) {
     const layer = document.getElementById('collab-cursors-layer');
-    if (!layer) return;
-    let c = layer.querySelector(`.collab-cursor[data-peer="${pkt.senderId}"]`);
+    if (!layer || !pkt || !pkt.senderId) return;
+    const rawPeer = String(pkt.senderId);
+    const escSelector = (typeof CSS !== 'undefined' && CSS.escape) ? CSS.escape(rawPeer) : rawPeer.replace(/[^a-zA-Z0-9_-]/g, '_');
+    const safeColor = sanitizeColor(pkt.color, '#3b82f6');
+    const safeName = escapeHTML(pkt.name || 'Artist');
+    const safeTool = escapeHTML(pkt.tool || '');
+    let c = layer.querySelector(`.collab-cursor[data-peer="${escSelector}"]`);
     if (!c) {
       c = document.createElement('div');
       c.className = 'collab-cursor';
-      c.setAttribute('data-peer', pkt.senderId);
+      c.setAttribute('data-peer', rawPeer);
       c.innerHTML = `
         <svg viewBox="0 0 24 24" width="20" height="20" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.6))">
-          <path fill="${pkt.color || '#3b82f6'}" stroke="#000000" stroke-width="1.5" d="M3 2l6.5 18 3.5-6.5L20 10 3 2z"/>
+          <path fill="${safeColor}" stroke="#000000" stroke-width="1.5" d="M3 2l6.5 18 3.5-6.5L20 10 3 2z"/>
         </svg>
-        <div class="collab-cursor-badge" style="background:${pkt.color || '#3b82f6'}">
-          <span>${pkt.name || 'Artist'}</span>
-          <span class="collab-cursor-tool">${pkt.tool || ''}</span>
+        <div class="collab-cursor-badge" style="background:${safeColor}">
+          <span>${safeName}</span>
+          <span class="collab-cursor-tool">${safeTool}</span>
         </div>
       `;
       layer.appendChild(c);
+    } else {
+      const toolEl = c.querySelector('.collab-cursor-tool');
+      if (toolEl) toolEl.textContent = pkt.tool || '';
     }
 
     c.style.left = `${pkt.x * 100}%`;
@@ -14193,7 +14963,9 @@ var CollabEngine = window.CollabEngine = {
   onPeerLeave(pkt) {
     this.connectedPeers.delete(pkt.senderId);
     const layer = document.getElementById('collab-cursors-layer');
-    const c = layer ? layer.querySelector(`.collab-cursor[data-peer="${pkt.senderId}"]`) : null;
+    const rawPeer = pkt.senderId != null ? String(pkt.senderId) : '';
+    const escSelector = rawPeer ? ((typeof CSS !== 'undefined' && CSS.escape) ? CSS.escape(rawPeer) : rawPeer.replace(/[^a-zA-Z0-9_-]/g, '_')) : '';
+    const c = (layer && escSelector) ? layer.querySelector(`.collab-cursor[data-peer="${escSelector}"]`) : null;
     if (c) c.remove();
     this.updateUI();
     toast(`👋 ${pkt.name || 'A collaborator'} left the session.`);
@@ -14299,29 +15071,37 @@ var CollabEngine = window.CollabEngine = {
       // Render Peer List
       if (countLabel) countLabel.textContent = `${totalPeople} in Studio`;
       if (peersList) {
+        const safeMyColor = sanitizeColor(this.myColor, '#10b981');
+        const safeMyName = escapeHTML(this.myName || 'Artist');
+        const safeRoomId = escapeHTML(this.roomId || '');
+        const myRole = escapeHTML(this.isHost ? 'Host' : (this.roomMode === 'view' ? 'Viewer' : 'Editor'));
         let listHtml = `
           <div class="collab-peer-item" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:8px 10px;margin-bottom:6px">
             <div class="collab-peer-meta">
-              <div class="collab-peer-dot" style="background:${this.myColor};box-shadow:0 0 8px ${this.myColor}"></div>
-              <strong style="color:var(--text-main)">${this.myName} <span style="font-size:10px;color:var(--text-dim)">(You)</span></strong>
-              <span class="collab-role-tag" style="background:rgba(16,185,129,0.18);color:#10b981;font-size:10px;padding:2px 6px;border-radius:4px">${this.isHost ? 'Host' : (this.roomMode === 'view' ? 'Viewer' : 'Editor')}</span>
+              <div class="collab-peer-dot" style="background:${safeMyColor};box-shadow:0 0 8px ${safeMyColor}"></div>
+              <strong style="color:var(--text-main)">${safeMyName} <span style="font-size:10px;color:var(--text-dim)">(You)</span></strong>
+              <span class="collab-role-tag" style="background:rgba(16,185,129,0.18);color:#10b981;font-size:10px;padding:2px 6px;border-radius:4px">${myRole}</span>
             </div>
             <div style="font-size:10px;color:#10b981;font-weight:600">Active</div>
           </div>
         `;
 
         if (totalCount === 0) {
-          listHtml += `<div style="font-size:11px;color:var(--text-dim);padding:10px 8px;text-align:center">Waiting for guests... Share room code <strong style="color:#d4a359">${this.roomId}</strong> or scan QR code!</div>`;
+          listHtml += `<div style="font-size:11px;color:var(--text-dim);padding:10px 8px;text-align:center">Waiting for guests... Share room code <strong style="color:#d4a359">${safeRoomId}</strong> or scan QR code!</div>`;
         } else {
           this.connectedPeers.forEach(p => {
+            const safePeerColor = sanitizeColor(p.color, '#3b82f6');
+            const safePeerName = escapeHTML(p.name || 'Collaborator');
+            const safePeerRole = escapeHTML(p.role || 'Editor');
+            const safePing = Number.isFinite(Number(p.ping)) ? Math.max(1, Math.round(Number(p.ping))) : 8;
             listHtml += `
               <div class="collab-peer-item" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-radius:8px;padding:8px 10px;margin-bottom:6px">
                 <div class="collab-peer-meta">
-                  <div class="collab-peer-dot" style="background:${p.color || '#3b82f6'};box-shadow:0 0 6px ${p.color || '#3b82f6'}"></div>
-                  <strong style="color:var(--text-main)">${p.name}</strong>
-                  <span class="collab-role-tag" style="background:rgba(59,130,246,0.18);color:#60a5fa;font-size:10px;padding:2px 6px;border-radius:4px">${p.role || 'Editor'}</span>
+                  <div class="collab-peer-dot" style="background:${safePeerColor};box-shadow:0 0 6px ${safePeerColor}"></div>
+                  <strong style="color:var(--text-main)">${safePeerName}</strong>
+                  <span class="collab-role-tag" style="background:rgba(59,130,246,0.18);color:#60a5fa;font-size:10px;padding:2px 6px;border-radius:4px">${safePeerRole}</span>
                 </div>
-                <div style="font-size:10px;color:var(--text-dim)">${p.ping || 8}ms</div>
+                <div style="font-size:10px;color:var(--text-dim)">${safePing}ms</div>
               </div>
             `;
           });
