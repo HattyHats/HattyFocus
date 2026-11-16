@@ -34,7 +34,7 @@
   --blue:#3b82f6;
   --purple:#a855f7;
   --tool-w:66px;
-  --panel-w:324px;
+  --panel-w:328px;
   --top-h:54px;
   --r:10px;
   --rs:6px;
@@ -350,7 +350,7 @@ input,textarea,select{user-select:text;}
   backdrop-filter:var(--backdrop-blur);-webkit-backdrop-filter:var(--backdrop-blur);
   border:1px solid var(--glass-border);
   border-radius:var(--r);padding:7px 16px;display:none;align-items:center;gap:10px;
-  z-index:30;box-shadow:var(--glass-shadow);flex-wrap:wrap;max-width:92vw;
+  z-index:30;box-shadow:var(--glass-shadow);flex-wrap:wrap;max-width:calc(100% - 24px);
   animation:hud-slide-up 0.22s var(--ease-spring);
   touch-action:pan-x;
 }
@@ -372,7 +372,7 @@ input,textarea,select{user-select:text;}
 /* DROP ZONE POLISH */
 #dz{
   position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
-  justify-content:center;gap:20px;z-index:10;padding:24px;
+  justify-content:center;gap:18px;z-index:10;padding:20px;overflow-y:auto;
 }
 #canvas-area.has-img #dz{display:none;}
 .dz-card{
@@ -747,7 +747,7 @@ input[type=range]::-moz-range-thumb{
   display:none;align-items:center;gap:10px;
   background:rgba(14,16,22,0.94);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
   border:1px solid rgba(212,163,89,0.35);border-radius:24px;
-  padding:6px 16px;z-index:27;
+  padding:6px 16px;z-index:27;max-width:calc(100% - 24px);
   box-shadow:0 6px 28px rgba(0,0,0,0.6),0 0 0 1px rgba(255,255,255,0.04);
   font-size:12px;color:var(--text-muted);font-family:var(--font-b);
 }
@@ -1964,8 +1964,10 @@ body.theme-light .btn-ghost:hover{background:rgba(0,0,0,0.06);color:#0f172a;}
   }
   #topbar{
     padding:0 8px;gap:5px;
-    overflow:hidden;white-space:nowrap;
+    overflow-x:auto;overflow-y:hidden;white-space:nowrap;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;
   }
+  #topbar > *{flex-shrink:0;}
   #topbar::-webkit-scrollbar{display:none;}
   #topbar button, #topbar a, #topbar .snap-btn, #topbar .logo, #topbar .zoom-ctrl{touch-action:manipulation;}
   .btn-shortcuts{display:inline-flex;}
@@ -2002,7 +2004,7 @@ body.theme-light .btn-ghost:hover{background:rgba(0,0,0,0.06);color:#0f172a;}
   /* Floating bars on tablets: Always scrollable horizontally, never clipped */
   .floating-bar{
     bottom:12px;padding:6px 12px;gap:8px;font-size:11.5px;
-    max-width:calc(100vw - 32px);flex-wrap:nowrap !important;
+    max-width:calc(100% - 20px);flex-wrap:nowrap !important;
     overflow-x:auto;-webkit-overflow-scrolling:touch;
     touch-action:pan-x;scrollbar-width:none;
   }
@@ -2013,7 +2015,7 @@ body.theme-light .btn-ghost:hover{background:rgba(0,0,0,0.06);color:#0f172a;}
 
   #heal-bar{
     top:54px;padding:6px 12px;gap:8px;font-size:11.5px;
-    max-width:calc(100vw - 32px);flex-wrap:nowrap !important;
+    max-width:calc(100% - 20px);flex-wrap:nowrap !important;
     overflow-x:auto;-webkit-overflow-scrolling:touch;
     touch-action:pan-x;scrollbar-width:none;
   }
@@ -2092,7 +2094,7 @@ body.theme-light .btn-ghost:hover{background:rgba(0,0,0,0.06);color:#0f172a;}
   /* Floating UI on Mobile */
   .floating-bar{
     bottom:8px;padding:5px 10px;gap:6px;font-size:11px;
-    max-width:calc(100vw - 16px);border-radius:20px;
+    max-width:calc(100% - 12px);border-radius:20px;
     flex-wrap:nowrap !important;overflow-x:auto;-webkit-overflow-scrolling:touch;
     touch-action:pan-x;scrollbar-width:none;
   }
@@ -2104,7 +2106,7 @@ body.theme-light .btn-ghost:hover{background:rgba(0,0,0,0.06);color:#0f172a;}
 
   #heal-bar{
     top:50px;padding:5px 10px;gap:6px;font-size:11px;
-    max-width:calc(100vw - 16px);border-radius:20px;
+    max-width:calc(100% - 12px);border-radius:20px;
     flex-wrap:nowrap !important;overflow-x:auto;-webkit-overflow-scrolling:touch;
     touch-action:pan-x;scrollbar-width:none;
   }
@@ -2214,7 +2216,7 @@ body.theme-light .btn-ghost:hover{background:rgba(0,0,0,0.06);color:#0f172a;}
   /* Floating Toolbars in Landscape: Horizontal single-line scrollable */
   .floating-bar{
     bottom:6px;padding:4px 10px;gap:6px;
-    font-size:11px;border-radius:20px;max-width:calc(100vw - 56px);
+    font-size:11px;border-radius:20px;max-width:calc(100% - 12px);
     flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;
     scrollbar-width:none;box-shadow:0 6px 24px rgba(0,0,0,0.7);
   }
@@ -2229,7 +2231,7 @@ body.theme-light .btn-ghost:hover{background:rgba(0,0,0,0.06);color:#0f172a;}
   }
   #heal-bar{
     top:6px;padding:4px 10px;gap:6px;font-size:11px;
-    border-radius:20px;max-width:calc(100vw - 56px);
+    border-radius:20px;max-width:calc(100% - 12px);
     flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;
     scrollbar-width:none;box-shadow:0 6px 24px rgba(0,0,0,0.7);
   }
@@ -3138,6 +3140,128 @@ input[type=range].slider-gradient-exp::-webkit-slider-runnable-track {
   color: #ef4444;
   border-color: rgba(239,68,68,0.5);
 }
+
+/* AD CONTAINERS (AFFIZY NETWORK + RESPONSIVE STUDIO FIT) */
+.ad-tag-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  line-height: 1;
+}
+.ad-dz-dock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px 10px;
+  border-radius: 14px;
+  background: rgba(18, 22, 31, 0.72);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  max-width: calc(100% - 16px);
+  flex-shrink: 0;
+}
+.ad-dz-frame {
+  width: 728px;
+  min-height: 90px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 6px;
+}
+.rp-ad-dock {
+  flex-shrink: 0;
+  border-top: 1px solid var(--border);
+  background: rgba(10, 12, 18, 0.78);
+  padding: 6px 12px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.rp-ad-hdr {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.rp-ad-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  border-radius: 5px;
+  font-size: 10px;
+  padding: 1px 6px;
+  cursor: pointer;
+  line-height: 1.4;
+}
+.rp-ad-toggle:hover {
+  color: var(--text);
+  border-color: var(--border-light);
+}
+.rp-ad-body {
+  width: 300px;
+  min-height: 250px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+}
+.rp-ad-dock.collapsed .rp-ad-body {
+  display: none;
+}
+.rp-ad-dock.collapsed {
+  padding: 5px 12px;
+}
+.ad-em-dock {
+  margin: 10px auto 2px;
+  padding: 6px 10px 8px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  max-width: 100%;
+}
+.ad-em-frame {
+  width: 320px;
+  min-height: 50px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 4px;
+}
+.affizy-ad {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+}
+body.zen-mode #rp-ad-dock {
+  display: none;
+}
+@media (max-width: 1200px), (max-height: 540px) {
+  #rp-ad-dock {
+    display: none;
+  }
+}
+@media (max-width: 780px), (max-height: 540px) {
+  #ad-dz-dock {
+    display: none;
+  }
+}
 </style>
 <script>
 try {
@@ -3312,6 +3436,12 @@ try {
         </div>
       </div>
       <div id="recent-edits-home" class="recent-home" style="display:none"></div>
+      <div class="ad-dz-dock" id="ad-dz-dock">
+        <span class="ad-tag-label">Sponsored</span>
+        <div class="ad-dz-frame">
+          <div class="affizy-ad" data-zone="1167"></div>
+        </div>
+      </div>
     </div>
 
     <div id="cs">
@@ -4009,6 +4139,15 @@ try {
         <button class="btn btn-ghost" style="width:100%;margin-top:6px;justify-content:center;font-size:12px;border:1px solid var(--border)" onclick="resetAll()">↺ Reset Everything</button>
       </div>
     </div>
+    <div class="rp-ad-dock" id="rp-ad-dock">
+      <div class="rp-ad-hdr">
+        <span class="ad-tag-label">Sponsored</span>
+        <button class="rp-ad-toggle" id="rp-ad-toggle-btn" onclick="toggleInspectorAdDock()" title="Show or hide sidebar ad">▾ Hide</button>
+      </div>
+      <div class="rp-ad-body">
+        <div class="affizy-ad" data-zone="1166"></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -4216,10 +4355,10 @@ try {
       🎯 Target Layer: <strong id="bgr-target-name">—</strong>
     </div>
     
-    <div style="display:flex;gap:6px;margin-bottom:16px">
-      <button class="crop-ratio-btn active" id="bgr-tab-auto" style="flex:1" onclick="switchBGRTab('auto',this)">⚡ One-Click AI</button>
-      <button class="crop-ratio-btn" id="bgr-tab-color" style="flex:1" onclick="switchBGRTab('color',this)">🎨 Color Sample</button>
-      <button class="crop-ratio-btn" id="bgr-tab-lasso" style="flex:1" onclick="switchBGRTab('lasso',this)">✏️ Smart Brush</button>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px">
+      <button class="crop-ratio-btn active" id="bgr-tab-auto" style="flex:1;min-width:96px" onclick="switchBGRTab('auto',this)">⚡ One-Click AI</button>
+      <button class="crop-ratio-btn" id="bgr-tab-color" style="flex:1;min-width:96px" onclick="switchBGRTab('color',this)">🎨 Color Sample</button>
+      <button class="crop-ratio-btn" id="bgr-tab-lasso" style="flex:1;min-width:96px" onclick="switchBGRTab('lasso',this)">✏️ Smart Brush</button>
     </div>
 
     <div class="bgr-panel active" id="bgr-panel-auto">
@@ -4262,6 +4401,10 @@ try {
         <div class="shdr"><span class="slbl">Color Tolerance</span><span class="sval" id="bgr-tol-val">35</span></div>
         <input type="range" id="bgr-tol" min="1" max="120" value="35" oninput="document.getElementById('bgr-tol-val').textContent=this.value">
       </div>
+      <label style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-muted);margin-bottom:12px;cursor:pointer;user-select:none">
+        <input type="checkbox" id="bgr-color-contiguous" checked style="accent-color:var(--accent)">
+        <span>Only remove connected background (protect foreground interior)</span>
+      </label>
       <div class="macts">
         <button class="btn btn-ghost" onclick="closeBGR()">Cancel</button>
         <button class="btn btn-accent" id="bgr-apply-btn" onclick="applyBGR()">✂ Cut Background</button>
@@ -4441,6 +4584,13 @@ try {
 
     <div class="exp-quality-notice" id="exp-quality-notice">
       💡 Modern formats compress efficiently without visual loss. For ultra-detailed master prints, select <strong>Ultra Master</strong> or <strong>2x Super-Detail 4K</strong>.
+    </div>
+
+    <div class="ad-em-dock" id="ad-em-dock">
+      <span class="ad-tag-label">Sponsored</span>
+      <div class="ad-em-frame">
+        <div class="affizy-ad" data-zone="1168"></div>
+      </div>
     </div>
 
     <div class="macts">
@@ -5367,6 +5517,7 @@ async function _applyLoadedWorkspace(ws, toastMsg) {
   if (baActive && typeof exitBA === 'function') exitBA();
   if (eyeActive && typeof stopEyedropper === 'function') stopEyedropper();
   if (typeof BGRRefine !== 'undefined') BGRRefine.cleanup();
+  if (typeof resetBGRSampleState === 'function') resetBGRSampleState();
   if (typeof HealBrush !== 'undefined') HealBrush.clear(true);
   blurStrokes = [];
   lassoPoints = [];
@@ -5397,6 +5548,7 @@ async function _applyLoadedWorkspace(ws, toastMsg) {
   if (typeof ColorWheelsEngine !== 'undefined' && ColorWheelsEngine.syncFromLayer) ColorWheelsEngine.syncFromLayer(tgt);
   ca.classList.add('has-img');
   cw.style.display = 'block';
+  cw.classList.toggle('transparent-bg', S.canvasBg === 'transparent');
   const dn = document.getElementById('docname');
   if (dn) dn.innerHTML = `<strong>${escapeHTML(S.imgName)}</strong>`;
   if (document.getElementById('welcome')) enterApp(true);
@@ -5830,6 +5982,7 @@ function confirmResetAll() {
   if (typeof CurvesEngine !== 'undefined') CurvesEngine.resetForNewProject();
   if (typeof HealBrush !== 'undefined') HealBrush.clear(true);
   if (typeof BGRRefine !== 'undefined') BGRRefine.cleanup();
+  if (typeof resetBGRSampleState === 'function') resetBGRSampleState();
   document.getElementById('bgr-refine-bar')?.classList.remove('on', 'vis');
   document.getElementById('bgr-brush-bar')?.classList.remove('on', 'vis');
   blurStrokes = [];
@@ -5880,6 +6033,7 @@ function initCanvas(img, name, existingDocId = null) {
   if (typeof CurvesEngine !== 'undefined') CurvesEngine.resetForNewProject();
   if (typeof HealBrush !== 'undefined') HealBrush.clear(true);
   if (typeof BGRRefine !== 'undefined') BGRRefine.cleanup();
+  if (typeof resetBGRSampleState === 'function') resetBGRSampleState();
   document.getElementById('bgr-refine-bar')?.classList.remove('on', 'vis');
   document.getElementById('bgr-brush-bar')?.classList.remove('on', 'vis');
   blurStrokes = [];
@@ -5917,6 +6071,7 @@ function initCanvas(img, name, existingDocId = null) {
   
   ca.classList.add('has-img');
   cw.style.display = 'block';
+  cw.classList.toggle('transparent-bg', S.canvasBg === 'transparent');
   document.getElementById('docname').innerHTML = `<strong>${escapeHTML(name || 'Photo')}</strong>`;
   document.getElementById('stsize').textContent = `${img.width} × ${img.height}`;
   document.getElementById('exp-orig-res').textContent = `${img.width} × ${img.height}`;
@@ -6033,6 +6188,7 @@ function pushHist(label) {
 function jumpHist(idx) {
   if (idx < 0 || idx >= hist.length) return Promise.resolve();
   if (typeof BGRRefine !== 'undefined') BGRRefine.cleanup();
+  if (typeof resetBGRSampleState === 'function') resetBGRSampleState();
   document.getElementById('bgr-refine-bar')?.classList.remove('on', 'vis');
   hIdx = idx;
   const e = hist[idx];
@@ -6739,9 +6895,10 @@ function getTransformHandles(b, layer) {
   return out;
 }
 
-function hitTestHandle(cx, cy, b, layer) {
+function hitTestHandle(cx, cy, b, layer, isTouch = false) {
   const handles = getTransformHandles(b, layer);
-  const radius = 14 / (S.zoom || 1);
+  const coarse = isTouch || (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+  const radius = (coarse ? 22 : 14) / (S.zoom || 1);
   const maxDistSq = radius * radius;
   let best = null, bestDistSq = maxDistSq;
   for (const [key, pt] of Object.entries(handles)) {
@@ -7597,6 +7754,14 @@ function toggleAccordion(id) {
   if (card) {
     card.classList.toggle('open');
   }
+}
+
+function toggleInspectorAdDock() {
+  const dock = document.getElementById('rp-ad-dock');
+  const btn = document.getElementById('rp-ad-toggle-btn');
+  if (!dock) return;
+  const collapsed = dock.classList.toggle('collapsed');
+  if (btn) btn.textContent = collapsed ? '▸ Show' : '▾ Hide';
 }
 
 function resetGroup(group, e) {
@@ -9975,7 +10140,7 @@ ca.addEventListener('pointerdown', e => {
       const curSel = layers.find(l => l.id === selLayerId);
       if (curSel && curSel.visible && !curSel.locked && curSel.type !== 'adjustment') {
         const b = getLayerBounds(curSel);
-        const handleHit = hitTestHandle(cx, cy, b, curSel);
+        const handleHit = hitTestHandle(cx, cy, b, curSel, e.pointerType === 'touch');
         if (handleHit) {
           if (handleHit.handle === 'rot') {
             const pivotX = b.x + b.w / 2;
@@ -10256,7 +10421,7 @@ window.addEventListener('pointermove', e => {
     if (sel && sel.visible && sel.type !== 'adjustment') {
       const {cx, cy} = canvasCoords(e);
       const b = getLayerBounds(sel);
-      const handleHit = hitTestHandle(cx, cy, b, sel);
+      const handleHit = hitTestHandle(cx, cy, b, sel, e.pointerType === 'touch');
       if (handleHit) {
         cw.style.cursor = handleHit.cursor;
       } else if (pointInLayerBounds(cx, cy, sel)) {
@@ -10951,6 +11116,86 @@ function getBGRTarget() {
   };
 }
 
+function _bgrTargetKey(target) {
+  return target?.isBase ? '__base__' : String(selLayerId || '');
+}
+
+function _bgrColorDist(r1, g1, b1, r2, g2, b2) {
+  const rmean = (r1 + r2) * 0.5;
+  const dr = r1 - r2, dg = g1 - g2, db = b1 - b2;
+  return Math.sqrt((2 + rmean / 256) * dr * dr + 4 * dg * dg + (2 + (255 - rmean) / 256) * db * db) * 0.57735;
+}
+
+function _bgrDrawImageData(img, w, h) {
+  const tc = document.createElement('canvas');
+  tc.width = w; tc.height = h;
+  const tx = tc.getContext('2d');
+  tx.drawImage(img, 0, 0, w, h);
+  return { tc, tx, imgData: tx.getImageData(0, 0, w, h) };
+}
+
+function _bgrUpscaleAlpha(smallAlpha, sw, sh, w, h) {
+  const scMask = document.createElement('canvas');
+  scMask.width = sw; scMask.height = sh;
+  const scmCtx = scMask.getContext('2d');
+  const sImgData = scmCtx.createImageData(sw, sh);
+  const sd = sImgData.data;
+  for (let i = 0; i < smallAlpha.length; i++) {
+    const p = i * 4;
+    sd[p] = 255; sd[p + 1] = 255; sd[p + 2] = 255;
+    sd[p + 3] = smallAlpha[i];
+  }
+  scmCtx.putImageData(sImgData, 0, 0);
+  if (sw === w && sh === h) return new Uint8Array(smallAlpha);
+  const tcMask = document.createElement('canvas');
+  tcMask.width = w; tcMask.height = h;
+  const tcmCtx = tcMask.getContext('2d');
+  tcmCtx.imageSmoothingEnabled = true;
+  tcmCtx.imageSmoothingQuality = 'high';
+  tcmCtx.drawImage(scMask, 0, 0, w, h);
+  const fullData = tcmCtx.getImageData(0, 0, w, h).data;
+  const rawMask = new Uint8Array(w * h);
+  for (let i = 0; i < rawMask.length; i++) rawMask[i] = fullData[i * 4 + 3];
+  return rawMask;
+}
+
+function _bgrGetPreCutoutImg(target) {
+  const key = _bgrTargetKey(target);
+  if (BGRRefine.active && BGRRefine.originalImg && BGRRefine.targetLayerId === key && BGRRefine.w === target.w && BGRRefine.h === target.h) {
+    return BGRRefine.originalImg;
+  }
+  return target.img || origImg;
+}
+
+function _bgrCommitCutout(target, srcImg, w, h, rawMask, histLabel, toastMsg, resolve, onBeforeBake) {
+  const { tc, tx, imgData } = _bgrDrawImageData(srcImg, w, h);
+  const d = imgData.data;
+  for (let i = 0; i < rawMask.length; i++) {
+    const origA = d[i * 4 + 3];
+    const finalA = origA < 255 ? Math.round((rawMask[i] * origA) / 255) : rawMask[i];
+    d[i * 4 + 3] = finalA;
+  }
+  tx.putImageData(imgData, 0, 0);
+  const newImg = new Image();
+  newImg.onload = () => {
+    if (onBeforeBake) onBeforeBake(true);
+    cw.classList.toggle('transparent-bg', S.canvasBg === 'transparent');
+    target.bake(newImg, histLabel);
+    BGRRefine.init(target, srcImg, newImg, rawMask);
+    closeBGR();
+    document.getElementById('bgr-brush-bar')?.classList.remove('on', 'vis');
+    document.getElementById('bgr-refine-bar')?.classList.add('on');
+    renderCanvas();
+    if (toastMsg) toast(toastMsg);
+    resolve(true);
+  };
+  newImg.onerror = () => {
+    if (onBeforeBake) onBeforeBake(false);
+    resolve(false);
+  };
+  newImg.src = tc.toDataURL('image/png');
+}
+
 function openBGRModal() {
   if (!guardCollabViewOnly()) return;
   if (!S.hasImg) { toast('Open a photo first!'); return; }
@@ -10961,7 +11206,7 @@ function openBGRModal() {
 }
 function closeBGR() {
   document.getElementById('bgr-modal').classList.remove('on');
-  cw.classList.add('transparent-bg');
+  cw.classList.toggle('transparent-bg', S.canvasBg === 'transparent');
 }
 function switchBGRTab(tab, btn) {
   ['auto', 'color', 'lasso'].forEach(t => {
@@ -10973,10 +11218,12 @@ function switchBGRTab(tab, btn) {
 
 // BGR Refine State Machine
 const BGRRefine = {
-  active: false, target: null, originalImg: null, rawMask: null, w: 0, h: 0,
+  active: false, target: null, targetLayerId: null, originalImg: null, rawMask: null, w: 0, h: 0, _seq: 0,
   init(target, orig, cutout, rawMask) {
     this.active = true;
     this.target = target;
+    this.targetLayerId = _bgrTargetKey(target);
+    this._seq++;
     if (this.target) this.target.img = cutout;
     this.originalImg = orig;
     this.w = target.w;
@@ -10997,7 +11244,9 @@ const BGRRefine = {
   },
   cleanup() {
     this.active = false;
+    this._seq++;
     this.target = null;
+    this.targetLayerId = null;
     this.originalImg = null;
     this.rawMask = null;
   }
@@ -11006,6 +11255,7 @@ const BGRRefine = {
 function onBGRRefineSliderInput() {
   return new Promise((resolve) => {
     if (!BGRRefine.active || !BGRRefine.target || !BGRRefine.rawMask || !BGRRefine.originalImg) return resolve(false);
+    const seq = ++BGRRefine._seq;
     const shift = parseInt(document.getElementById('bgr-refine-shift')?.value) || 0;
     const smooth = parseInt(document.getElementById('bgr-refine-smooth')?.value) || 0;
     const feather = parseInt(document.getElementById('bgr-refine-feather')?.value) || 0;
@@ -11023,18 +11273,13 @@ function onBGRRefineSliderInput() {
       md[p] = val; md[p + 1] = val; md[p + 2] = val; md[p + 3] = val;
     }
 
-    // Spatial morphological shift & smoothing via cross-browser pixel Gaussian blur
     const blurRadius = Math.max(0.5, Math.abs(shift) * 0.75 + smooth * 0.55 + feather * 0.4);
     blurImageDataInPlace(mData, w, h, blurRadius, false);
 
     const blurredAlpha = mData.data;
-    const tc = document.createElement('canvas'); tc.width = w; tc.height = h;
-    const tx = tc.getContext('2d');
-    tx.drawImage(BGRRefine.originalImg, 0, 0, w, h);
-    const imgData = tx.getImageData(0, 0, w, h);
+    const { tc, tx, imgData } = _bgrDrawImageData(BGRRefine.originalImg, w, h);
     const d = imgData.data;
 
-    // True edge threshold shift: shift < 0 erodes edge inward, shift > 0 dilates edge outward
     const mid = Math.max(20, Math.min(235, 128 - shift * 6.5));
     const halfSpan = Math.max(6, 14 + feather * 4.5 + smooth * 2.5);
     const lo = Math.max(0, mid - halfSpan);
@@ -11047,12 +11292,13 @@ function onBGRRefineSliderInput() {
       if (ba <= lo) a = 0;
       else if (ba >= hi) a = 255;
       else a = Math.round(((ba - lo) / range) * 255);
-      d[i * 4 + 3] = a;
+      d[i * 4 + 3] = d[i * 4 + 3] < 255 ? Math.round((a * d[i * 4 + 3]) / 255) : a;
     }
     tx.putImageData(imgData, 0, 0);
 
     const newImg = new Image();
     newImg.onload = () => {
+      if (!BGRRefine.active || seq !== BGRRefine._seq) return resolve(false);
       BGRRefine.target.bake(newImg);
       resolve(true);
     };
@@ -11067,6 +11313,7 @@ function cancelBGRRefine() {
   }
   document.getElementById('bgr-refine-bar')?.classList.remove('on', 'vis');
   BGRRefine.cleanup();
+  if (S.tool === 'bgr' || S.tool === 'bgrbrush') setTool('move');
   renderCanvas();
   toast('↺ Background restored');
 }
@@ -11075,9 +11322,101 @@ function applyBGRRefine() {
   if (!guardCollabViewOnly()) return;
   document.getElementById('bgr-refine-bar')?.classList.remove('on', 'vis');
   BGRRefine.cleanup();
+  if (S.tool === 'bgr' || S.tool === 'bgrbrush') setTool('move');
   pushHist('✓ Refined Cutout');
   toast('✓ Cutout edge finalized!');
 }
+
+// CLIENT-SIDE NEURAL SEGMENTATION LOADER (Transformers.js + Automatic Offline Fallback)
+const _AIBgrEngine = {
+  _tfPromise: null,
+  _segmenters: {},
+  async _loadLib(timeoutMs = 12000) {
+    if (typeof navigator !== 'undefined' && navigator.onLine === false) {
+      throw new Error('Offline');
+    }
+    if (!this._tfPromise) {
+      this._tfPromise = Promise.race([
+        import('https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.5.1'),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('AI library load timeout')), timeoutMs))
+      ]).then(mod => {
+        if (mod && mod.env) {
+          mod.env.allowLocalModels = false;
+          if (mod.env.backends?.onnx?.wasm) {
+            mod.env.backends.onnx.wasm.numThreads = 1;
+          }
+        }
+        return mod;
+      }).catch(err => {
+        this._tfPromise = null;
+        throw err;
+      });
+    }
+    return this._tfPromise;
+  },
+  async _getSegmenter(modelId, onProgress) {
+    if (!this._segmenters[modelId]) {
+      const { pipeline } = await this._loadLib();
+      this._segmenters[modelId] = pipeline('image-segmentation', modelId, {
+        progress_callback: (info) => {
+          if (onProgress && info && typeof info.progress === 'number') onProgress(info);
+        }
+      }).catch(err => {
+        delete this._segmenters[modelId];
+        throw err;
+      });
+    }
+    return this._segmenters[modelId];
+  },
+  async run(srcImg, w, h, quality, fillEl, statusEl) {
+    const candidates = quality === 'fast'
+      ? ['Xenova/modnet']
+      : ['briaai/RMBG-1.4', 'Xenova/modnet'];
+    const maxDim = quality === 'ultra' ? 1440 : (quality === 'fast' ? 640 : 1024);
+    const scale = Math.min(1, maxDim / Math.max(w, h));
+    const sw = Math.max(8, Math.round(w * scale));
+    const sh = Math.max(8, Math.round(h * scale));
+    const { tc: workCanvas } = _bgrDrawImageData(srcImg, sw, sh);
+
+    for (const modelId of candidates) {
+      try {
+        if (statusEl) statusEl.textContent = `Loading AI model (${modelId.split('/')[1]})…`;
+        if (fillEl) fillEl.style.width = '28%';
+        const segmenter = await this._getSegmenter(modelId, (info) => {
+          if (fillEl && info.status === 'progress') {
+            fillEl.style.width = Math.min(72, 20 + Math.round(info.progress * 0.5)) + '%';
+          }
+        });
+        if (statusEl) statusEl.textContent = 'Running AI neural matte extraction…';
+        if (fillEl) fillEl.style.width = '82%';
+
+        const mod = await this._loadLib();
+        const input = (mod.RawImage && mod.RawImage.fromCanvas)
+          ? mod.RawImage.fromCanvas(workCanvas)
+          : workCanvas.toDataURL('image/png');
+        const out = await segmenter(input);
+        const maskImg = Array.isArray(out) ? out[0]?.mask : (out?.mask || out);
+        if (!maskImg || !maskImg.data || !maskImg.width || !maskImg.height) continue;
+
+        const mW = maskImg.width, mH = maskImg.height;
+        const ch = maskImg.channels || Math.max(1, Math.round(maskImg.data.length / (mW * mH)));
+        const smallAlpha = new Uint8Array(mW * mH);
+        let fgPixels = 0;
+        for (let i = 0; i < mW * mH; i++) {
+          const val = maskImg.data[i * ch];
+          smallAlpha[i] = val;
+          if (val >= 128) fgPixels++;
+        }
+        if (fgPixels < mW * mH * 0.002) continue;
+
+        return _bgrUpscaleAlpha(smallAlpha, mW, mH, w, h);
+      } catch (err) {
+        console.warn(`AI BGR model (${modelId}) skipped:`, err && err.message ? err.message : err);
+      }
+    }
+    return null;
+  }
+};
 
 function applyAutoBGR() {
   return new Promise((resolve) => {
@@ -11097,15 +11436,36 @@ function applyAutoBGR() {
     const fill = document.getElementById('bgr-auto-fill');
     const status = document.getElementById('bgr-auto-status');
     if (prog) prog.style.display = 'block';
-    if (fill) fill.style.width = '25%';
-    if (status) status.textContent = 'Scanning subject boundaries & contours…';
+    if (fill) fill.style.width = '15%';
+    if (status) status.textContent = 'Preparing AI cutout…';
 
     requestAnimationFrame(() => {
       setTimeout(async () => {
         try {
-          if (fill) fill.style.width = '60%';
-          if (status) status.textContent = 'Isolating background & preserving subject…';
-          await runIntelligentSaliencyCutout(btn, fill, status, prog);
+          const srcImg = _bgrGetPreCutoutImg(target);
+          const quality = document.getElementById('bgr-ai-quality')?.value || 'balanced';
+          const aiMask = await _AIBgrEngine.run(srcImg, target.w, target.h, quality, fill, status);
+          if (aiMask) {
+            if (fill) fill.style.width = '95%';
+            if (status) status.textContent = 'Finalizing AI cutout…';
+            await new Promise((resCommit, rejCommit) => {
+              _bgrCommitCutout(
+                target, srcImg, target.w, target.h, aiMask,
+                '🔮 AI Background Removed',
+                '✨ AI Background removed! Use Edge Refine below to fine-tune.',
+                (ok) => ok ? resCommit(true) : rejCommit(new Error('Image bake failed')),
+                () => {
+                  if (prog) prog.style.display = 'none';
+                  if (btn) btn.disabled = false;
+                }
+              );
+            });
+            return resolve(true);
+          }
+
+          if (fill) fill.style.width = '55%';
+          if (status) status.textContent = 'Running on-device geodesic cutout…';
+          await runIntelligentSaliencyCutout(btn, fill, status, prog, srcImg);
           resolve(true);
         } catch (err) {
           console.error('Cutout error:', err);
@@ -11114,391 +11474,414 @@ function applyAutoBGR() {
           toast('⚠️ Cutout error: ' + (err && err.message ? err.message : 'Processing error'));
           resolve(false);
         }
-      }, 40);
+      }, 30);
     });
   });
 }
 
-// MULTI-CUE SALIENCY & TORSO-AWARE GEODESIC MATTING ENGINE (100% PRIVATE & CLIENT-SIDE)
-function runIntelligentSaliencyCutout(btn, fillEl, statusEl, progEl) {
+// ADAPTIVE PERCEPTUAL GEODESIC SALIENCY CUTOUT (OFFLINE / CLIENT-SIDE ENGINE)
+function runIntelligentSaliencyCutout(btn, fillEl, statusEl, progEl, srcOverride = null) {
   return new Promise((resolve, reject) => {
     const target = getBGRTarget();
-    if (!target || !target.img || !target.w || !target.h || target.w <= 0 || target.h <= 0) {
+    const srcImg = srcOverride || (target && (target.img || origImg));
+    if (!target || !srcImg || !target.w || !target.h || target.w <= 0 || target.h <= 0) {
       if (progEl) progEl.style.display = 'none';
       if (btn) btn.disabled = false;
       toast('⚠️ Open a photo first before removing background!');
       return resolve(false);
     }
 
-  const w = target.w, h = target.h;
-  const tc = document.createElement('canvas'); tc.width = w; tc.height = h;
-  const tx = tc.getContext('2d');
-  tx.drawImage(target.img || origImg, 0, 0, w, h);
-  const imgData = tx.getImageData(0, 0, w, h);
-  const d = imgData.data;
+    const w = target.w, h = target.h;
+    const quality = document.getElementById('bgr-ai-quality')?.value || 'balanced';
+    const maxDim = quality === 'ultra' ? 768 : (quality === 'fast' ? 384 : 540);
+    const scale = Math.min(1.0, maxDim / Math.max(w, h));
+    const sw = Math.max(8, Math.round(w * scale));
+    const sh = Math.max(8, Math.round(h * scale));
+    const sN = sw * sh;
 
-  // Read precision quality dropdown
-  const quality = document.getElementById('bgr-ai-quality')?.value || 'balanced';
-  const maxDim = quality === 'ultra' ? 1024 : (quality === 'fast' ? 420 : 680);
-  const scale = Math.min(1.0, maxDim / Math.max(w, h));
-  const sw = Math.max(2, Math.round(w * scale));
-  const sh = Math.max(2, Math.round(h * scale));
-  const sN = sw * sh;
+    const { imgData: smallImgData } = _bgrDrawImageData(srcImg, sw, sh);
+    const sd = smallImgData.data;
 
-  const sc = document.createElement('canvas'); sc.width = sw; sc.height = sh;
-  const scx = sc.getContext('2d');
-  scx.drawImage(target.img || origImg, 0, 0, sw, sh);
-  const sd = scx.getImageData(0, 0, sw, sh).data;
-
-  // 1. Upper Perimeter Background Palette Sampling
-  const bgClusters = [];
-  function addBgCluster(r, g, b) {
-    for (const c of bgClusters) {
-      if (Math.hypot(r - c.r, g - c.g, b - c.b) < 22) {
-        c.r = (c.r * c.n + r) / (c.n + 1);
-        c.g = (c.g * c.n + g) / (c.n + 1);
-        c.b = (c.b * c.n + b) / (c.n + 1);
-        c.n++;
-        return;
+    // 1. Sample 4-edge outer background palette + measure local border gradient variation
+    const bgClusters = [];
+    function addBgCluster(r, g, b) {
+      for (const c of bgClusters) {
+        if (_bgrColorDist(r, g, b, c.r, c.g, c.b) < 18) {
+          c.r = (c.r * c.n + r) / (c.n + 1);
+          c.g = (c.g * c.n + g) / (c.n + 1);
+          c.b = (c.b * c.n + b) / (c.n + 1);
+          c.n++;
+          return;
+        }
       }
+      if (bgClusters.length < 48) bgClusters.push({ r, g, b, n: 1 });
     }
-    if (bgClusters.length < 40) {
-      bgClusters.push({ r, g, b, n: 1 });
-    }
-  }
 
-  const stepX = Math.max(2, Math.floor(sw / 45));
-  const stepY = Math.max(2, Math.floor(sh / 45));
-  const mTop = Math.max(1, Math.floor(sh * 0.03));
-  const mSide = Math.max(1, Math.floor(sw * 0.03));
+    const stepX = Math.max(1, Math.floor(sw / 56));
+    const stepY = Math.max(1, Math.floor(sh / 56));
+    const mTop = Math.max(1, Math.floor(sh * 0.025));
+    const mSide = Math.max(1, Math.floor(sw * 0.025));
+    let borderStepSum = 0, borderStepCount = 0;
 
-  // Sample Top border and Upper Left/Right borders
-  for (let x = 0; x < sw; x += stepX) {
-    const p0 = (0 * sw + x) * 4;
-    const p1 = (mTop * sw + x) * 4;
-    if (sd[p0 + 3] >= 20) addBgCluster(sd[p0], sd[p0 + 1], sd[p0 + 2]);
-    if (sd[p1 + 3] >= 20) addBgCluster(sd[p1], sd[p1 + 1], sd[p1 + 2]);
-  }
-  const maxSideY = Math.floor(sh * 0.70);
-  for (let y = 0; y < maxSideY; y += stepY) {
-    const pl = (y * sw + 0) * 4;
-    const pr = (y * sw + (sw - 1)) * 4;
-    if (sd[pl + 3] >= 20) addBgCluster(sd[pl], sd[pl + 1], sd[pl + 2]);
-    if (sd[pr + 3] >= 20) addBgCluster(sd[pr], sd[pr + 1], sd[pr + 2]);
-  }
-
-  if (!bgClusters.length) {
-    bgClusters.push({ r: sd[0] || 240, g: sd[1] || 240, b: sd[2] || 240, n: 1 });
-  }
-
-  function minBgDist(r, g, b) {
-    let minD = 9999;
-    for (const c of bgClusters) {
-      const dVal = Math.hypot(r - c.r, g - c.g, b - c.b);
-      if (dVal < minD) minD = dVal;
-    }
-    return minD;
-  }
-
-  // 2. Normalized Sobel Gradient
-  const lum = new Float32Array(sN);
-  for (let i = 0; i < sN; i++) {
-    const p = i * 4;
-    lum[i] = 0.299 * sd[p] + 0.587 * sd[p + 1] + 0.114 * sd[p + 2];
-  }
-  const grad = new Float32Array(sN);
-  for (let y = 1; y < sh - 1; y++) {
-    const yw = y * sw;
-    for (let x = 1; x < sw - 1; x++) {
-      const idx = yw + x;
-      const gx = ((lum[idx + 1] - lum[idx - 1]) * 2 + (lum[idx - sw + 1] - lum[idx - sw - 1]) + (lum[idx + sw + 1] - lum[idx + sw - 1])) / 4;
-      const gy = ((lum[idx + sw] - lum[idx - sw]) * 2 + (lum[idx + sw - 1] - lum[idx - sw - 1]) + (lum[idx + sw + 1] - lum[idx - sw + 1])) / 4;
-      grad[idx] = Math.sqrt(gx * gx + gy * gy);
-    }
-  }
-
-  // 3. Inclusive Portrait Skin, Hair & Torso Protection Zone
-  const isProtectedFG = new Uint8Array(sN);
-  const skinIndices = [];
-  let sumSkinX = 0, sumSkinY = 0;
-
-  for (let y = Math.floor(sh * 0.08); y < Math.floor(sh * 0.82); y++) {
-    for (let x = Math.floor(sw * 0.12); x < Math.floor(sw * 0.88); x++) {
-      const idx = y * sw + x;
+    function sampleBorderPixel(idx, prevIdx) {
       const p = idx * 4;
-      const r = sd[p], g = sd[p + 1], b = sd[p + 2];
-      const cb = -0.168736 * r - 0.331264 * g + 0.5 * b + 128;
-      const cr = 0.5 * r - 0.418688 * g - 0.081312 * b + 128;
-      // Inclusive skin tone check across complexions
-      const skinLike = (cb >= 70 && cb <= 135 && cr >= 130 && cr <= 180 && r > g && r > b);
-      if (skinLike && minBgDist(r, g, b) > 26) {
-        skinIndices.push(idx);
-        sumSkinX += x;
-        sumSkinY += y;
-      }
-    }
-  }
-
-  const hasPortraitSubject = skinIndices.length >= Math.max(16, sN * 0.003);
-  let torsoMinX = 0, torsoMaxX = 0, torsoMinY = 0;
-
-  if (hasPortraitSubject) {
-    const avgSkinX = sumSkinX / skinIndices.length;
-    const avgSkinY = sumSkinY / skinIndices.length;
-    let minSx = sw, maxSx = 0, minSy = sh, maxSy = 0;
-    for (const idx of skinIndices) {
-      isProtectedFG[idx] = 1;
-      const sx = idx % sw, sy = Math.floor(idx / sw);
-      if (sx < minSx) minSx = sx;
-      if (sx > maxSx) maxSx = sx;
-      if (sy < minSy) minSy = sy;
-      if (sy > maxSy) maxSy = sy;
-    }
-    const faceW = Math.max(sw * 0.15, maxSx - minSx);
-    torsoMinX = Math.max(0, Math.floor(avgSkinX - faceW * 1.55));
-    torsoMaxX = Math.min(sw - 1, Math.ceil(avgSkinX + faceW * 1.55));
-    torsoMinY = Math.max(0, Math.floor(minSy));
-
-    // Mark torso/body column down to bottom of frame as protected foreground
-    for (let y = torsoMinY; y < sh; y++) {
-      const yw = y * sw;
-      for (let x = torsoMinX; x <= torsoMaxX; x++) {
-        const idx = yw + x;
-        const p = idx * 4;
-        if (minBgDist(sd[p], sd[p + 1], sd[p + 2]) > 28) {
-          isProtectedFG[idx] = 1;
+      if (sd[p + 3] < 24) return;
+      addBgCluster(sd[p], sd[p + 1], sd[p + 2]);
+      if (prevIdx >= 0) {
+        const pp = prevIdx * 4;
+        if (sd[pp + 3] >= 24) {
+          borderStepSum += _bgrColorDist(sd[p], sd[p + 1], sd[p + 2], sd[pp], sd[pp + 1], sd[pp + 2]);
+          borderStepCount++;
         }
       }
     }
-  }
 
-  // 4. Foreground Saliency Model (Center Ellipse & Bottom Horizon Protection)
-  const fgClusters = [];
-  function addFgCluster(r, g, b) {
-    for (const c of fgClusters) {
-      if (Math.hypot(r - c.r, g - c.g, b - c.b) < 26) {
-        c.r = (c.r * c.n + r) / (c.n + 1);
-        c.g = (c.g * c.n + g) / (c.n + 1);
-        c.b = (c.b * c.n + b) / (c.n + 1);
-        c.n++;
-        return;
+    let prev = -1;
+    for (let x = 0; x < sw; x += stepX) {
+      const i0 = x;
+      sampleBorderPixel(i0, prev);
+      sampleBorderPixel(mTop * sw + x, -1);
+      prev = i0;
+    }
+    const maxSideY = Math.floor(sh * 0.82);
+    prev = -1;
+    for (let y = 0; y < maxSideY; y += stepY) {
+      const il = y * sw;
+      sampleBorderPixel(il, prev);
+      sampleBorderPixel(y * sw + mSide, -1);
+      prev = il;
+    }
+    prev = -1;
+    for (let y = 0; y < maxSideY; y += stepY) {
+      const ir = y * sw + (sw - 1);
+      sampleBorderPixel(ir, prev);
+      sampleBorderPixel(y * sw + Math.max(0, sw - 1 - mSide), -1);
+      prev = ir;
+    }
+    // Outer bottom corners (safe against portraits standing in bottom center)
+    const botLeftEnd = Math.floor(sw * 0.18);
+    const botRightStart = Math.floor(sw * 0.82);
+    for (let x = 0; x < sw; x += stepX) {
+      if (x <= botLeftEnd || x >= botRightStart) {
+        sampleBorderPixel((sh - 1) * sw + x, -1);
       }
     }
-    if (fgClusters.length < 32) fgClusters.push({ r, g, b, n: 1 });
-  }
 
-  const cxCenter = sw * 0.5, cyCenter = sh * 0.55;
-  const rxCenter = sw * 0.32, ryCenter = sh * 0.36;
+    if (!bgClusters.length) {
+      bgClusters.push({ r: sd[0] || 240, g: sd[1] || 240, b: sd[2] || 240, n: 1 });
+    }
+    // Rank dominant background clusters so minor foreground edge touches don't hijack bg palette
+    bgClusters.sort((a, b) => b.n - a.n);
+    const primaryBg = bgClusters.slice(0, Math.min(20, bgClusters.length));
 
-  for (let y = Math.floor(sh * 0.15); y < Math.floor(sh * 0.90); y += stepY) {
-    for (let x = Math.floor(sw * 0.15); x < Math.floor(sw * 0.85); x += stepX) {
-      const dxNorm = (x - cxCenter) / rxCenter;
-      const dyNorm = (y - cyCenter) / ryCenter;
-      if (dxNorm * dxNorm + dyNorm * dyNorm <= 1.0) {
-        const p = (y * sw + x) * 4;
-        if (minBgDist(sd[p], sd[p + 1], sd[p + 2]) > 36) {
+    function minBgDist(r, g, b) {
+      let minD = 9999;
+      for (const c of primaryBg) {
+        const dVal = _bgrColorDist(r, g, b, c.r, c.g, c.b);
+        if (dVal < minD) minD = dVal;
+      }
+      return minD;
+    }
+
+    const avgBorderNoise = borderStepCount > 0 ? borderStepSum / borderStepCount : 4;
+    const adaptiveTol = Math.min(48, Math.max(18, 22 + avgBorderNoise * 0.65));
+
+    // 2. Perceptual Sobel Edge Magnitude (luminance + chroma so equiluminant color edges still block floods)
+    const lum = new Float32Array(sN);
+    const crArr = new Float32Array(sN);
+    const cbArr = new Float32Array(sN);
+    for (let i = 0; i < sN; i++) {
+      const p = i * 4;
+      const r = sd[p], g = sd[p + 1], b = sd[p + 2];
+      lum[i] = 0.299 * r + 0.587 * g + 0.114 * b;
+      crArr[i] = r - g;
+      cbArr[i] = b - g;
+    }
+    const grad = new Float32Array(sN);
+    for (let y = 1; y < sh - 1; y++) {
+      const yw = y * sw;
+      for (let x = 1; x < sw - 1; x++) {
+        const idx = yw + x;
+        const gLx = ((lum[idx + 1] - lum[idx - 1]) * 2 + (lum[idx - sw + 1] - lum[idx - sw - 1]) + (lum[idx + sw + 1] - lum[idx + sw - 1])) / 4;
+        const gLy = ((lum[idx + sw] - lum[idx - sw]) * 2 + (lum[idx + sw - 1] - lum[idx - sw - 1]) + (lum[idx + sw + 1] - lum[idx - sw + 1])) / 4;
+        const gRx = (crArr[idx + 1] - crArr[idx - 1]) * 0.5;
+        const gRy = (crArr[idx + sw] - crArr[idx - sw]) * 0.5;
+        const gBx = (cbArr[idx + 1] - cbArr[idx - 1]) * 0.5;
+        const gBy = (cbArr[idx + sw] - cbArr[idx - sw]) * 0.5;
+        grad[idx] = Math.hypot(gLx, gLy) + 0.55 * (Math.hypot(gRx, gRy) + Math.hypot(gBx, gBy));
+      }
+    }
+
+    // 3. Central Salient Foreground Palette (strictly excluding pixels similar to border background)
+    const fgClusters = [];
+    function addFgCluster(r, g, b) {
+      for (const c of fgClusters) {
+        if (_bgrColorDist(r, g, b, c.r, c.g, c.b) < 22) {
+          c.r = (c.r * c.n + r) / (c.n + 1);
+          c.g = (c.g * c.n + g) / (c.n + 1);
+          c.b = (c.b * c.n + b) / (c.n + 1);
+          c.n++;
+          return;
+        }
+      }
+      if (fgClusters.length < 28) fgClusters.push({ r, g, b, n: 1 });
+    }
+    for (let y = Math.floor(sh * 0.18); y < Math.floor(sh * 0.86); y += stepY) {
+      for (let x = Math.floor(sw * 0.22); x < Math.floor(sw * 0.78); x += stepX) {
+        const idx = y * sw + x;
+        const p = idx * 4;
+        if (sd[p + 3] < 64) continue;
+        const distBg = minBgDist(sd[p], sd[p + 1], sd[p + 2]);
+        if (distBg > adaptiveTol + 14) {
           addFgCluster(sd[p], sd[p + 1], sd[p + 2]);
         }
       }
     }
-  }
-
-  function minFgDist(r, g, b) {
-    let minD = 9999;
-    for (const c of fgClusters) {
-      const dVal = Math.hypot(r - c.r, g - c.g, b - c.b);
-      if (dVal < minD) minD = dVal;
+    function minFgDist(r, g, b) {
+      let minD = 9999;
+      for (const c of fgClusters) {
+        const dVal = _bgrColorDist(r, g, b, c.r, c.g, c.b);
+        if (dVal < minD) minD = dVal;
+      }
+      return minD;
     }
-    return minD;
-  }
 
-  // 5. Geodesic Flood from Valid Outer Background Seeds
-  const barrier = new Float32Array(sN).fill(9999);
-  const BUCKETS = 128;
-  const buckets = Array.from({ length: BUCKETS }, () => []);
+    // 4. Gradient-Tolerant Cumulative Geodesic Diffusion (0..255 cost buckets)
+    const cost = new Float32Array(sN).fill(9999);
+    const BUCKETS = 256;
+    const buckets = Array.from({ length: BUCKETS }, () => []);
 
-  function seedPixel(idx) {
-    if (isProtectedFG[idx]) return;
-    const p = idx * 4;
-    const cDist = minBgDist(sd[p], sd[p + 1], sd[p + 2]);
-    let b = Math.floor(cDist > 25 ? (cDist - 25) * 0.85 : 0);
-    if (isNaN(b) || b < 0) b = 0;
-    else if (b >= BUCKETS) b = BUCKETS - 1;
-
-    if (b < barrier[idx]) {
-      barrier[idx] = b;
-      if (buckets[b]) buckets[b].push(idx);
+    function pushCost(idx, val) {
+      const cVal = Math.max(0, Math.min(BUCKETS - 1, val));
+      if (cVal < cost[idx]) {
+        cost[idx] = cVal;
+        buckets[Math.floor(cVal)].push(idx);
+      }
     }
-  }
 
-  // Seed top edge
-  for (let x = 0; x < sw; x++) seedPixel(x);
-  // Seed side edges down to 72%
-  for (let y = 1; y < Math.floor(sh * 0.72); y++) {
-    seedPixel(y * sw);
-    seedPixel(y * sw + (sw - 1));
-  }
-  // Bottom border: ONLY seed pixels that genuinely match upper background and outside portrait torso
-  const botY = sh - 1;
-  for (let x = 0; x < sw; x++) {
-    if (hasPortraitSubject && x >= torsoMinX && x <= torsoMaxX) continue;
-    const p = (botY * sw + x) * 4;
-    if (minBgDist(sd[p], sd[p + 1], sd[p + 2]) < 36) {
-      seedPixel(botY * sw + x);
+    function seedEdge(idx) {
+      const p = idx * 4;
+      if (sd[p + 3] < 24) { pushCost(idx, 0); return; }
+      const cDist = minBgDist(sd[p], sd[p + 1], sd[p + 2]);
+      const initCost = cDist <= adaptiveTol ? 0 : (cDist - adaptiveTol) * 1.4;
+      pushCost(idx, initCost);
     }
-  }
 
-  const dxs = [-1, 1, 0, 0];
-  const dys = [0, 0, -1, 1];
+    for (let x = 0; x < sw; x++) seedEdge(x);
+    for (let y = 1; y < Math.floor(sh * 0.85); y++) {
+      seedEdge(y * sw);
+      seedEdge(y * sw + (sw - 1));
+    }
+    for (let x = 0; x < sw; x++) {
+      const bIdx = (sh - 1) * sw + x;
+      const bp = bIdx * 4;
+      if (sd[bp + 3] < 24 || x <= botLeftEnd || x >= botRightStart || minBgDist(sd[bp], sd[bp + 1], sd[bp + 2]) < adaptiveTol) {
+        seedEdge(bIdx);
+      }
+    }
 
-  for (let b = 0; b < BUCKETS; b++) {
-    const q = buckets[b];
-    if (!q) continue;
-    for (let i = 0; i < q.length; i++) {
-      const curr = q[i];
-      if (barrier[curr] < b) continue;
-      const cx = curr % sw, cy = Math.floor(curr / sw);
-      const curBarrier = barrier[curr];
+    const dxs = [-1, 1, 0, 0];
+    const dys = [0, 0, -1, 1];
+    const edgeFloor = Math.max(12, 14 + avgBorderNoise * 0.5);
+    const stepFloor = Math.max(8, 9 + avgBorderNoise * 0.45);
 
+    for (let b = 0; b < BUCKETS; b++) {
+      const q = buckets[b];
+      for (let i = 0; i < q.length; i++) {
+        const curr = q[i];
+        if (Math.floor(cost[curr]) < b) continue;
+        const curCost = cost[curr];
+        const cx = curr % sw, cy = (curr / sw) | 0;
+        const cp = curr * 4;
+        const pr = sd[cp], pg = sd[cp + 1], pb = sd[cp + 2];
+
+        for (let s = 0; s < 4; s++) {
+          const nx = cx + dxs[s], ny = cy + dys[s];
+          if (nx < 0 || nx >= sw || ny < 0 || ny >= sh) continue;
+          const nidx = ny * sw + nx;
+          const np = nidx * 4;
+
+          if (sd[np + 3] < 24) {
+            pushCost(nidx, curCost);
+            continue;
+          }
+
+          const nr = sd[np], ng = sd[np + 1], nb = sd[np + 2];
+          const localStep = _bgrColorDist(nr, ng, nb, pr, pg, pb);
+          const localEdge = grad[nidx];
+          const bgDist = minBgDist(nr, ng, nb);
+
+          // Smooth gradients pass cheaply; strong outlines or strong foreground shifts build fast barriers
+          let stepCost;
+          if (localEdge <= edgeFloor && localStep <= stepFloor && bgDist <= adaptiveTol * 2.5) {
+            stepCost = 0.06 + Math.max(0, bgDist - adaptiveTol * 1.4) * 0.04;
+          } else {
+            const fDist = fgClusters.length ? minFgDist(nr, ng, nb) : 9999;
+            const fgPull = (fgClusters.length && fDist + 10 < bgDist) ? 14 : 0;
+            stepCost = 0.12
+              + Math.max(0, localEdge - edgeFloor) * 1.15
+              + Math.max(0, localStep - stepFloor) * 1.35
+              + Math.max(0, bgDist - adaptiveTol) * 0.45
+              + fgPull;
+          }
+          pushCost(nidx, curCost + stepCost);
+        }
+      }
+    }
+
+    // 5. Continuous Alpha Matte & Smart Hole-Preservation (keep arm/handle gaps, fill tiny pinholes)
+    const rawAlphaSmall = new Uint8Array(sN);
+    const bgCut = 26, fgCut = 62, span = fgCut - bgCut;
+    for (let i = 0; i < sN; i++) {
+      if (sd[i * 4 + 3] < 24) { rawAlphaSmall[i] = 0; continue; }
+      const cVal = cost[i];
+      if (cVal <= bgCut) rawAlphaSmall[i] = 0;
+      else if (cVal >= fgCut) rawAlphaSmall[i] = 255;
+      else rawAlphaSmall[i] = Math.round(((cVal - bgCut) / span) * 255);
+    }
+
+    // Flood outer border-connected background components first
+    const extBg = new Uint8Array(sN);
+    const bgQ = [];
+    function markExt(x, y) {
+      const idx = y * sw + x;
+      if (!extBg[idx] && rawAlphaSmall[idx] < 128) {
+        extBg[idx] = 1;
+        bgQ.push(idx);
+      }
+    }
+    for (let x = 0; x < sw; x++) { markExt(x, 0); markExt(x, sh - 1); }
+    for (let y = 1; y < sh - 1; y++) { markExt(0, y); markExt(sw - 1, y); }
+    for (let hq = 0; hq < bgQ.length; hq++) {
+      const curr = bgQ[hq];
+      const cx = curr % sw, cy = (curr / sw) | 0;
       for (let s = 0; s < 4; s++) {
-        const nx = cx + dxs[s];
-        const ny = cy + dys[s];
-        if (nx < 0 || nx >= sw || ny < 0 || ny >= sh) continue;
-        const nidx = ny * sw + nx;
-        if (isProtectedFG[nidx]) continue;
-
-        const np = nidx * 4;
-        const cDist = minBgDist(sd[np], sd[np + 1], sd[np + 2]);
-        const fDist = fgClusters.length ? minFgDist(sd[np], sd[np + 1], sd[np + 2]) : 9999;
-        const edge = grad[nidx];
-
-        let stepBarrier = 0;
-        if (edge > 24) stepBarrier += (edge - 24) * 1.6;
-        if (cDist > 28) stepBarrier += (cDist - 28) * 1.3;
-        if (fgClusters.length && fDist < cDist - 10) stepBarrier += 38;
-
-        let nextBarrier = Math.max(curBarrier, stepBarrier);
-        if (isNaN(nextBarrier)) nextBarrier = 9999;
-
-        if (nextBarrier < barrier[nidx]) {
-          barrier[nidx] = nextBarrier;
-          let bIdx = Math.floor(nextBarrier);
-          if (bIdx >= 0 && bIdx < BUCKETS && buckets[bIdx]) {
-            buckets[bIdx].push(nidx);
+        const nx = cx + dxs[s], ny = cy + dys[s];
+        if (nx >= 0 && nx < sw && ny >= 0 && ny < sh) {
+          const nidx = ny * sw + nx;
+          if (!extBg[nidx] && rawAlphaSmall[nidx] < 128) {
+            extBg[nidx] = 1;
+            bgQ.push(nidx);
           }
         }
       }
     }
-  }
 
-  // 6. Build High-Resolution Mask with Hole-Filling BFS
-  const scMask = document.createElement('canvas'); scMask.width = sw; scMask.height = sh;
-  const scmCtx = scMask.getContext('2d');
-  const sImgData = scmCtx.createImageData(sw, sh);
-  const sMaskData = sImgData.data;
-
-  // Initial thresholding
-  const rawAlphaSmall = new Uint8Array(sN);
-  for (let i = 0; i < sN; i++) {
-    let alpha = 255;
-    if (isProtectedFG[i]) {
-      alpha = 255;
-    } else if (barrier[i] <= 32) {
-      alpha = 0;
-    } else if (barrier[i] >= 68) {
-      alpha = 255;
-    } else {
-      alpha = Math.round(((barrier[i] - 32) / 36) * 255);
-    }
-    rawAlphaSmall[i] = Math.max(0, Math.min(255, alpha));
-  }
-
-  // Hole-filling BFS: any background pixel completely enclosed inside foreground is restored
-  const extBg = new Uint8Array(sN);
-  const bgQueue = [];
-  function pushExtBg(x, y) {
-    const idx = y * sw + x;
-    if (!extBg[idx] && rawAlphaSmall[idx] < 128) {
-      extBg[idx] = 1;
-      bgQueue.push(idx);
-    }
-  }
-  for (let x = 0; x < sw; x++) { pushExtBg(x, 0); pushExtBg(x, sh - 1); }
-  for (let y = 1; y < sh - 1; y++) { pushExtBg(0, y); pushExtBg(sw - 1, y); }
-
-  let qHead = 0;
-  while (qHead < bgQueue.length) {
-    const curr = bgQueue[qHead++];
-    const cx = curr % sw, cy = Math.floor(curr / sw);
-    for (let s = 0; s < 4; s++) {
-      const nx = cx + dxs[s], ny = cy + dys[s];
-      if (nx < 0 || nx >= sw || ny < 0 || ny >= sh) continue;
-      const nidx = ny * sw + nx;
-      if (!extBg[nidx] && rawAlphaSmall[nidx] < 140) {
-        extBg[nidx] = 1;
-        bgQueue.push(nidx);
+    // Inspect enclosed interior transparent components: keep true enclosed backdrop holes transparent, restore interior pinholes
+    const minLoopArea = Math.max(24, Math.floor(sN * 0.005));
+    const seenHole = new Uint8Array(sN);
+    for (let i = 0; i < sN; i++) {
+      if (extBg[i] || seenHole[i] || rawAlphaSmall[i] >= 128) continue;
+      const comp = [i];
+      seenHole[i] = 1;
+      let bgDistSum = 0;
+      for (let qIdx = 0; qIdx < comp.length; qIdx++) {
+        const curr = comp[qIdx];
+        const p = curr * 4;
+        bgDistSum += minBgDist(sd[p], sd[p + 1], sd[p + 2]);
+        const cx = curr % sw, cy = (curr / sw) | 0;
+        for (let s = 0; s < 4; s++) {
+          const nx = cx + dxs[s], ny = cy + dys[s];
+          if (nx < 0 || nx >= sw || ny < 0 || ny >= sh) continue;
+          const nidx = ny * sw + nx;
+          if (!extBg[nidx] && !seenHole[nidx] && rawAlphaSmall[nidx] < 128) {
+            seenHole[nidx] = 1;
+            comp.push(nidx);
+          }
+        }
+      }
+      const avgHoleBgDist = bgDistSum / comp.length;
+      const isTrueEnclosedBackdrop = comp.length >= minLoopArea && avgHoleBgDist <= adaptiveTol * 1.5 + 16;
+      if (!isTrueEnclosedBackdrop) {
+        for (const cIdx of comp) rawAlphaSmall[cIdx] = 255;
       }
     }
-  }
 
-  // Fill enclosed holes
-  for (let i = 0; i < sN; i++) {
-    let alpha = rawAlphaSmall[i];
-    if (alpha < 200 && !extBg[i]) {
-      alpha = 255; // Enclosed interior detail (eyes, glasses, shirt texture)
+    // 6. Enclosed Backdrop Pockets (arm loops, mug handles, archways):
+    // Open interior components walled off by foreground whose color matches primary border backdrop with sharp surrounding silhouette edge
+    const seenPocket = new Uint8Array(sN);
+    const maxPocketBgDist = Math.min(20, adaptiveTol * 0.72);
+    const minPocketArea = Math.max(24, Math.floor(sN * 0.004));
+    for (let i = 0; i < sN; i++) {
+      if (extBg[i] || seenPocket[i] || rawAlphaSmall[i] < 128 || grad[i] > edgeFloor) continue;
+      const p0 = i * 4;
+      if (sd[p0 + 3] < 24 || minBgDist(sd[p0], sd[p0 + 1], sd[p0 + 2]) > maxPocketBgDist) continue;
+      const comp = [i];
+      seenPocket[i] = 1;
+      let bgDistSum = 0, edgeTouches = 0, edgeHigh = 0;
+      for (let qi = 0; qi < comp.length; qi++) {
+        const curr = comp[qi];
+        const p = curr * 4;
+        bgDistSum += minBgDist(sd[p], sd[p + 1], sd[p + 2]);
+        const cx = curr % sw, cy = (curr / sw) | 0;
+        for (let s = 0; s < 4; s++) {
+          const nx = cx + dxs[s], ny = cy + dys[s];
+          if (nx < 0 || nx >= sw || ny < 0 || ny >= sh) continue;
+          const nidx = ny * sw + nx;
+          if (extBg[nidx] || seenPocket[nidx]) continue;
+          const np = nidx * 4;
+          const nBgD = minBgDist(sd[np], sd[np + 1], sd[np + 2]);
+          if (rawAlphaSmall[nidx] >= 128 && sd[np + 3] >= 24 && nBgD <= maxPocketBgDist && grad[nidx] <= edgeFloor * 1.4) {
+            seenPocket[nidx] = 1;
+            comp.push(nidx);
+          } else if (nBgD > adaptiveTol) {
+            edgeTouches++;
+            if (grad[nidx] >= edgeFloor * 0.7) edgeHigh++;
+          }
+        }
+      }
+      const avgPocketDist = bgDistSum / comp.length;
+      if (comp.length >= minPocketArea && avgPocketDist <= maxPocketBgDist * 0.85 && edgeTouches > 0 && edgeHigh >= edgeTouches * 0.35) {
+        for (const cIdx of comp) rawAlphaSmall[cIdx] = 0;
+        for (const cIdx of comp) {
+          const cx = cIdx % sw, cy = (cIdx / sw) | 0;
+          for (let s = 0; s < 4; s++) {
+            const nx = cx + dxs[s], ny = cy + dys[s];
+            if (nx < 0 || nx >= sw || ny < 0 || ny >= sh) continue;
+            const nidx = ny * sw + nx;
+            if (rawAlphaSmall[nidx] > 128) {
+              const np = nidx * 4;
+              const nd = minBgDist(sd[np], sd[np + 1], sd[np + 2]);
+              if (nd < adaptiveTol) rawAlphaSmall[nidx] = Math.round((nd / adaptiveTol) * 200);
+            }
+          }
+        }
+      }
     }
-    const p = i * 4;
-    sMaskData[p] = 255;
-    sMaskData[p + 1] = 255;
-    sMaskData[p + 2] = 255;
-    sMaskData[p + 3] = alpha;
-  }
-  scmCtx.putImageData(sImgData, 0, 0);
 
-  // 7. Upscale Mask to Full Target Size with High-Quality Guided Smoothing
-  const tcMask = document.createElement('canvas'); tcMask.width = w; tcMask.height = h;
-  const tcmCtx = tcMask.getContext('2d');
-  tcmCtx.imageSmoothingEnabled = true;
-  tcmCtx.imageSmoothingQuality = 'high';
-  tcmCtx.drawImage(scMask, 0, 0, w, h);
-  const fullAlphaData = tcmCtx.getImageData(0, 0, w, h).data;
+    const rawMask = _bgrUpscaleAlpha(rawAlphaSmall, sw, sh, w, h);
+    if (fillEl) fillEl.style.width = '100%';
+    if (statusEl) statusEl.textContent = 'Cutout complete!';
 
-  const rawMask = new Uint8Array(w * h);
-  for (let i = 0; i < rawMask.length; i++) {
-    const a = fullAlphaData[i * 4 + 3];
-    rawMask[i] = a;
-    d[i * 4 + 3] = a;
-  }
-
-  if (fillEl) fillEl.style.width = '100%';
-  if (statusEl) statusEl.textContent = 'Cutout complete!';
-
-  tx.putImageData(imgData, 0, 0);
-  const newImg = new Image();
-  newImg.onload = () => {
-    if (progEl) progEl.style.display = 'none';
-    if (btn) btn.disabled = false;
-    const preCutout = (BGRRefine.active && BGRRefine.originalImg) ? BGRRefine.originalImg : target.img;
-    target.bake(newImg, '🔮 Background Removed');
-    BGRRefine.init(target, preCutout, newImg, rawMask);
-    closeBGR();
-    document.getElementById('bgr-refine-bar')?.classList.add('on');
-    renderCanvas();
-    toast('✨ Background removed cleanly! Use Edge Refine below to fine-tune.');
-    resolve(true);
-  };
-  newImg.onerror = (e) => {
-    if (progEl) progEl.style.display = 'none';
-    if (btn) btn.disabled = false;
-    reject(e);
-  };
-  newImg.src = tc.toDataURL('image/png');
+    _bgrCommitCutout(
+      target, srcImg, w, h, rawMask,
+      '🔮 Background Removed',
+      '✨ Background removed cleanly! Use Edge Refine below to fine-tune.',
+      (ok) => ok ? resolve(true) : reject(new Error('Image bake failed')),
+      () => {
+        if (progEl) progEl.style.display = 'none';
+        if (btn) btn.disabled = false;
+      }
+    );
   });
 }
 
-// COLOR SAMPLE BACKGROUND REMOVAL (WITH INTERACTIVE EYEDROPPER & SKIN PROTECTION)
+// COLOR SAMPLE BACKGROUND REMOVAL (PERCEPTUAL DISTANCE + CONNECTED FLOOD PROTECTION)
 let bgrSamplingColor = false;
 let bgrSampleColor = null;
+let bgrSamplePoint = null;
+
+function resetBGRSampleState() {
+  bgrSamplingColor = false;
+  bgrSampleColor = null;
+  bgrSamplePoint = null;
+  const swatch = document.getElementById('bgr-sample-swatch');
+  if (swatch) swatch.style.background = '#ffffff';
+  const hexLbl = document.getElementById('bgr-sample-hex');
+  if (hexLbl) hexLbl.textContent = 'Auto (Corner Sample)';
+  const sBtn = document.getElementById('bgr-sample-btn');
+  if (sBtn) sBtn.textContent = '👆 Pick From Photo';
+}
 
 function startBGRSample() {
   closeBGR();
@@ -11510,7 +11893,28 @@ function startBGRSample() {
 function finishBGRSamplePick(e) {
   bgrSamplingColor = false;
   ca.style.cursor = '';
-  const col = sampleCanvasColor(e);
+  let col = null;
+  bgrSamplePoint = null;
+  const target = getBGRTarget();
+  const srcImg = target ? _bgrGetPreCutoutImg(target) : null;
+  if (target && srcImg && target.w > 0 && target.h > 0 && typeof canvasCoords === 'function' && typeof mapCanvasPtToLayerPx === 'function') {
+    const { cx, cy } = canvasCoords(e);
+    const mapped = mapCanvasPtToLayerPx(cx, cy, target, target.w, target.h);
+    const pxX = Math.round(mapped.x);
+    const pxY = Math.round(mapped.y);
+    if (pxX >= 0 && pxX < target.w && pxY >= 0 && pxY < target.h) {
+      const sc = document.createElement('canvas'); sc.width = 1; sc.height = 1;
+      const sx = sc.getContext('2d');
+      sx.drawImage(srcImg, pxX, pxY, 1, 1, 0, 0, 1, 1);
+      const px = sx.getImageData(0, 0, 1, 1).data;
+      if (px[3] >= 10) {
+        const hex = '#' + [px[0], px[1], px[2]].map(v => v.toString(16).padStart(2, '0')).join('').toUpperCase();
+        col = { r: px[0], g: px[1], b: px[2], hex };
+        bgrSamplePoint = { x: pxX, y: pxY };
+      }
+    }
+  }
+  if (!col) col = sampleCanvasColor(e);
   bgrSampleColor = col;
   const swatch = document.getElementById('bgr-sample-swatch');
   if (swatch) swatch.style.background = col.hex;
@@ -11523,11 +11927,51 @@ function finishBGRSamplePick(e) {
   toast(`✓ Sampled backdrop color ${col.hex}`);
 }
 
+function _bgrAutoSampleCorners(d, w, h) {
+  const inset = Math.max(1, Math.min(8, Math.floor(Math.min(w, h) * 0.03)));
+  const corners = [
+    [inset, inset],
+    [Math.max(0, w - 1 - inset), inset],
+    [inset, Math.max(0, h - 1 - inset)],
+    [Math.max(0, w - 1 - inset), Math.max(0, h - 1 - inset)]
+  ];
+  const clusters = [];
+  for (const [cx, cy] of corners) {
+    for (let dy = -1; dy <= 1; dy++) {
+      for (let dx = -1; dx <= 1; dx++) {
+        const x = Math.max(0, Math.min(w - 1, cx + dx));
+        const y = Math.max(0, Math.min(h - 1, cy + dy));
+        const p = (y * w + x) * 4;
+        if (d[p + 3] < 24) continue;
+        const r = d[p], g = d[p + 1], b = d[p + 2];
+        let hit = false;
+        for (const c of clusters) {
+          if (_bgrColorDist(r, g, b, c.r, c.g, c.b) < 22) {
+            c.r = (c.r * c.n + r) / (c.n + 1);
+            c.g = (c.g * c.n + g) / (c.n + 1);
+            c.b = (c.b * c.n + b) / (c.n + 1);
+            c.n++;
+            hit = true;
+            break;
+          }
+        }
+        if (!hit) clusters.push({ r, g, b, n: 1 });
+      }
+    }
+  }
+  clusters.sort((a, b) => b.n - a.n);
+  const best = clusters[0] || { r: d[0], g: d[1], b: d[2] };
+  const r = Math.round(best.r), g = Math.round(best.g), b = Math.round(best.b);
+  const hex = '#' + [r, g, b].map(v => v.toString(16).padStart(2, '0')).join('').toUpperCase();
+  return { r, g, b, hex };
+}
+
 function applyBGR() {
   return new Promise((resolve) => {
     if (!guardCollabViewOnly()) return resolve(false);
     const target = getBGRTarget();
-    if (!target || !target.img || !target.w || !target.h) {
+    const srcImg = target ? _bgrGetPreCutoutImg(target) : null;
+    if (!target || !srcImg || !target.w || !target.h) {
       toast('⚠️ Open a photo first before removing background!');
       return resolve(false);
     }
@@ -11535,49 +11979,82 @@ function applyBGR() {
       toast('🔒 Target layer is locked');
       return resolve(false);
     }
+    const w = target.w, h = target.h, totalPx = w * h;
     const tol = parseInt(document.getElementById('bgr-tol')?.value) || 35;
-    const tc = document.createElement('canvas'); tc.width = target.w; tc.height = target.h;
-    const tx = tc.getContext('2d');
-    tx.drawImage(target.img || origImg, 0, 0, target.w, target.h);
-    const id = tx.getImageData(0, 0, target.w, target.h), d = id.data;
+    const feather = Math.max(14, Math.min(28, Math.round(tol * 0.45)));
+    const contiguous = document.getElementById('bgr-color-contiguous')?.checked !== false;
 
-    // Auto-sample top-left corner color if not picked yet
-    if (!bgrSampleColor) {
-      bgrSampleColor = { r: d[0], g: d[1], b: d[2], hex: '#' + [d[0], d[1], d[2]].map(v => v.toString(16).padStart(2, '0')).join('').toUpperCase() };
+    const { imgData } = _bgrDrawImageData(srcImg, w, h);
+    const d = imgData.data;
+    const sampleCol = bgrSampleColor || _bgrAutoSampleCorners(d, w, h);
+
+    const dist = new Float32Array(totalPx);
+    const maxTol = tol + feather;
+    for (let i = 0; i < totalPx; i++) {
+      const p = i * 4;
+      dist[i] = d[p + 3] < 24 ? 0 : _bgrColorDist(d[p], d[p + 1], d[p + 2], sampleCol.r, sampleCol.g, sampleCol.b);
     }
 
-    const rawMask = new Uint8Array(target.w * target.h);
-    for (let i = 0; i < d.length; i += 4) {
-      const r = d[i], g = d[i+1], b = d[i+2];
-      const cb = -0.168736 * r - 0.331264 * g + 0.5 * b + 128;
-      const cr = 0.5 * r - 0.418688 * g - 0.081312 * b + 128;
-      const isSkin = (cb >= 72 && cb <= 135 && cr >= 130 && cr <= 180 && r > g && r > b);
+    const rawMask = new Uint8Array(totalPx);
+    if (contiguous) {
+      rawMask.fill(255);
+      const visited = new Uint8Array(totalPx);
+      const q = new Int32Array(totalPx);
+      let qHead = 0, qTail = 0;
 
-      let alpha;
-      if (isSkin) {
-        alpha = 255;
-      } else {
-        const dist = Math.hypot(r - bgrSampleColor.r, g - bgrSampleColor.g, b - bgrSampleColor.b);
-        alpha = dist <= tol ? 0 : (dist <= tol + 22 ? Math.round(((dist - tol) / 22) * 255) : 255);
+      const trySeed = (idx) => {
+        if (visited[idx]) return;
+        if (d[idx * 4 + 3] < 24 || dist[idx] <= maxTol) {
+          visited[idx] = 1;
+          q[qTail++] = idx;
+        }
+      };
+
+      for (let x = 0; x < w; x++) { trySeed(x); trySeed((h - 1) * w + x); }
+      for (let y = 1; y < h - 1; y++) { trySeed(y * w); trySeed(y * w + (w - 1)); }
+      if (bgrSamplePoint && bgrSamplePoint.x >= 0 && bgrSamplePoint.x < w && bgrSamplePoint.y >= 0 && bgrSamplePoint.y < h) {
+        const ptIdx = bgrSamplePoint.y * w + bgrSamplePoint.x;
+        visited[ptIdx] = 1;
+        q[qTail++] = ptIdx;
       }
-      d[i + 3] = alpha;
-      rawMask[i / 4] = alpha;
-    }
-    tx.putImageData(id, 0, 0);
 
-    const newImg = new Image();
-    newImg.onload = () => {
-      const preCutout = (BGRRefine.active && BGRRefine.originalImg) ? BGRRefine.originalImg : target.img;
-      target.bake(newImg, '🎨 Color Cutout');
-      BGRRefine.init(target, preCutout, newImg, rawMask);
-      closeBGR();
-      document.getElementById('bgr-refine-bar')?.classList.add('on');
-      renderCanvas();
-      toast('✨ Background color removed! Adjust edge sliders below.');
-      resolve(true);
-    };
-    newImg.onerror = () => resolve(false);
-    newImg.src = tc.toDataURL('image/png');
+      while (qHead < qTail) {
+        const curr = q[qHead++];
+        const cx = curr % w, cy = (curr / w) | 0;
+        const dd = dist[curr];
+        rawMask[curr] = dd <= tol ? 0 : (dd <= maxTol ? Math.round(((dd - tol) / feather) * 255) : 255);
+
+        if (cx > 0) {
+          const n = curr - 1;
+          if (!visited[n] && (d[n * 4 + 3] < 24 || dist[n] <= maxTol)) { visited[n] = 1; q[qTail++] = n; }
+        }
+        if (cx + 1 < w) {
+          const n = curr + 1;
+          if (!visited[n] && (d[n * 4 + 3] < 24 || dist[n] <= maxTol)) { visited[n] = 1; q[qTail++] = n; }
+        }
+        if (cy > 0) {
+          const n = curr - w;
+          if (!visited[n] && (d[n * 4 + 3] < 24 || dist[n] <= maxTol)) { visited[n] = 1; q[qTail++] = n; }
+        }
+        if (cy + 1 < h) {
+          const n = curr + w;
+          if (!visited[n] && (d[n * 4 + 3] < 24 || dist[n] <= maxTol)) { visited[n] = 1; q[qTail++] = n; }
+        }
+      }
+    } else {
+      for (let i = 0; i < totalPx; i++) {
+        if (d[i * 4 + 3] < 24) { rawMask[i] = 0; continue; }
+        const dd = dist[i];
+        rawMask[i] = dd <= tol ? 0 : (dd <= maxTol ? Math.round(((dd - tol) / feather) * 255) : 255);
+      }
+    }
+
+    _bgrCommitCutout(
+      target, srcImg, w, h, rawMask,
+      '🎨 Color Cutout',
+      '✨ Background color removed! Adjust edge sliders below.',
+      resolve
+    );
   });
 }
 
@@ -11623,35 +12100,20 @@ function cancelLassoBrush() {
   renderCanvas();
 }
 
-function applyLassoMatting() {
-  return new Promise((resolve) => {
-    if (!guardCollabViewOnly()) return resolve(false);
-    if (!lassoBrushStrokes.length) {
-      toast('⚠️ Please paint green over subject or red over background first!');
-      return resolve(false);
-    }
-
-  const target = getBGRTarget();
-  if (!target || !target.img || !target.w || !target.h) {
-    toast('⚠️ Open a photo first before applying smart cutout!');
-    return resolve(false);
-  }
-  if (target.locked) {
-    toast('🔒 Target layer is locked');
-    return resolve(false);
-  }
-  const w = target.w, h = target.h;
-
-  const fgC = document.createElement('canvas'); fgC.width = w; fgC.height = h;
+function _bgrRasterizeStrokes(target, rw, rh) {
+  const fgC = document.createElement('canvas'); fgC.width = rw; fgC.height = rh;
   const fgX = fgC.getContext('2d');
-  const bgC = document.createElement('canvas'); bgC.width = w; bgC.height = h;
+  const bgC = document.createElement('canvas'); bgC.width = rw; bgC.height = rh;
   const bgX = bgC.getContext('2d');
+  const ratioX = rw / target.w;
+  const ratioY = rh / target.h;
+  const ratio = (ratioX + ratioY) * 0.5;
 
   lassoBrushStrokes.forEach(str => {
     if (!str.points || !str.points.length) return;
-    const mapped = str.points.map(pt => mapCanvasPtToLayerPx(pt.cx, pt.cy, target, w, h));
+    const mapped = str.points.map(pt => mapCanvasPtToLayerPx(pt.cx, pt.cy, target, target.w, target.h));
     const brushScale = Math.max(0.05, ((mapped[0].scaleX || 1) + (mapped[0].scaleY || 1)) * 0.5);
-    const scaledSize = Math.max(1, str.size * brushScale);
+    const scaledSize = Math.max(2, str.size * brushScale * ratio);
     const ctxToUse = str.mode === 'fg' ? fgX : bgX;
     ctxToUse.strokeStyle = '#ffffff';
     ctxToUse.fillStyle = '#ffffff';
@@ -11660,148 +12122,277 @@ function applyLassoMatting() {
     ctxToUse.lineJoin = 'round';
     if (mapped.length === 1) {
       ctxToUse.beginPath();
-      ctxToUse.arc(mapped[0].x, mapped[0].y, scaledSize / 2, 0, Math.PI * 2);
+      ctxToUse.arc(mapped[0].x * ratioX, mapped[0].y * ratioY, scaledSize / 2, 0, Math.PI * 2);
       ctxToUse.fill();
     } else {
       ctxToUse.beginPath();
-      ctxToUse.moveTo(mapped[0].x, mapped[0].y);
+      ctxToUse.moveTo(mapped[0].x * ratioX, mapped[0].y * ratioY);
       for (let i = 1; i < mapped.length; i++) {
-        ctxToUse.lineTo(mapped[i].x, mapped[i].y);
+        ctxToUse.lineTo(mapped[i].x * ratioX, mapped[i].y * ratioY);
       }
       ctxToUse.stroke();
     }
   });
-
-  const fgData = fgX.getImageData(0, 0, w, h).data;
-  const bgData = bgX.getImageData(0, 0, w, h).data;
-
-  const tc = document.createElement('canvas'); tc.width = w; tc.height = h;
-  const tx = tc.getContext('2d');
-  tx.drawImage(target.img || origImg, 0, 0, w, h);
-  const imgData = tx.getImageData(0, 0, w, h);
-  const d = imgData.data;
-
-  // Extract FG and BG color clusters
-  const fgClusters = [], bgClusters = [];
-  let hasFgStrokes = false, hasBgStrokes = false;
-
-  for (let y = 0; y < h; y += 3) {
-    for (let x = 0; x < w; x += 3) {
-      const idx = y * w + x;
-      const p = idx * 4;
-      const r = d[p], g = d[p+1], b = d[p+2];
-
-      if (fgData[p + 3] > 80) {
-        hasFgStrokes = true;
-        let matched = false;
-        for (const c of fgClusters) {
-          if (Math.hypot(r - c.r, g - c.g, b - c.b) < 24) {
-            c.r = (c.r * c.count + r) / (c.count + 1);
-            c.g = (c.g * c.count + g) / (c.count + 1);
-            c.b = (c.b * c.count + b) / (c.count + 1);
-            c.count++;
-            matched = true;
-            break;
-          }
-        }
-        if (!matched && fgClusters.length < 24) fgClusters.push({ r, g, b, count: 1 });
-      }
-
-      if (bgData[p + 3] > 80) {
-        hasBgStrokes = true;
-        let matched = false;
-        for (const c of bgClusters) {
-          if (Math.hypot(r - c.r, g - c.g, b - c.b) < 24) {
-            c.r = (c.r * c.count + r) / (c.count + 1);
-            c.g = (c.g * c.count + g) / (c.count + 1);
-            c.b = (c.b * c.count + b) / (c.count + 1);
-            c.count++;
-            matched = true;
-            break;
-          }
-        }
-        if (!matched && bgClusters.length < 24) bgClusters.push({ r, g, b, count: 1 });
-      }
-    }
-  }
-
-  // Safe fallback if user painted only one mode
-  if (!hasFgStrokes) {
-    // Preserve unpainted central subject regions as foreground
-    for (let y = Math.floor(h * 0.2); y < Math.floor(h * 0.8); y += 6) {
-      for (let x = Math.floor(w * 0.2); x < Math.floor(w * 0.8); x += 6) {
-        const p = (y * w + x) * 4;
-        if (bgData[p + 3] === 0) {
-          fgClusters.push({ r: d[p], g: d[p+1], b: d[p+2], count: 1 });
-        }
-      }
-    }
-  }
-
-  const rawMask = new Uint8Array(w * h);
-
-  for (let y = 0; y < h; y++) {
-    for (let x = 0; x < w; x++) {
-      const idx = y * w + x;
-      const p = idx * 4;
-
-      // Direct painted strokes have absolute authority
-      if (fgData[p + 3] > 120) {
-        rawMask[idx] = 255;
-        d[p + 3] = 255;
-        continue;
-      }
-      if (bgData[p + 3] > 120) {
-        rawMask[idx] = 0;
-        d[p + 3] = 0;
-        continue;
-      }
-
-      // If user only painted Red background erasures, preserve existing opacity unless near red strokes
-      if (hasBgStrokes && !hasFgStrokes) {
-        rawMask[idx] = d[p + 3];
-        continue;
-      }
-
-      const r = d[p], g = d[p+1], b = d[p+2];
-      let minFg = 999, minBg = 999;
-
-      for (const c of fgClusters) {
-        const dist = Math.hypot(r - c.r, g - c.g, b - c.b);
-        if (dist < minFg) minFg = dist;
-      }
-      for (const c of bgClusters) {
-        const dist = Math.hypot(r - c.r, g - c.g, b - c.b);
-        if (dist < minBg) minBg = dist;
-      }
-
-      let alpha = 255;
-      const diff = minBg - minFg;
-      if (diff > 14) alpha = 255;
-      else if (diff < -14) alpha = 0;
-      else alpha = Math.round(((diff + 14) / 28) * 255);
-
-      rawMask[idx] = alpha;
-      d[p + 3] = alpha;
-    }
-  }
-
-  tx.putImageData(imgData, 0, 0);
-  const newImg = new Image();
-  newImg.onload = () => {
-    const preCutout = (BGRRefine.active && BGRRefine.originalImg) ? BGRRefine.originalImg : target.img;
-    target.bake(newImg, '✂ Smart Brush Cutout');
-    BGRRefine.init(target, preCutout, newImg, rawMask);
-    document.getElementById('bgr-brush-bar')?.classList.remove('on');
-    document.getElementById('bgr-refine-bar')?.classList.add('on');
-    lassoBrushStrokes = [];
-    setTool('move');
-    renderCanvas();
-    toast('✨ Subject cutout applied! Refine edges below.');
-    resolve(true);
+  return {
+    fgData: fgX.getImageData(0, 0, rw, rh).data,
+    bgData: bgX.getImageData(0, 0, rw, rh).data
   };
-  newImg.onerror = () => resolve(false);
-  newImg.src = tc.toDataURL('image/png');
+}
+
+function _bgrSampleStrokeClusters(seedMask, sd, sN) {
+  const clusters = [];
+  for (let i = 0; i < sN; i++) {
+    if (!seedMask[i]) continue;
+    const p = i * 4;
+    const r = sd[p], g = sd[p + 1], b = sd[p + 2];
+    let hit = false;
+    for (const c of clusters) {
+      if (_bgrColorDist(r, g, b, c.r, c.g, c.b) < 20) {
+        c.r = (c.r * c.count + r) / (c.count + 1);
+        c.g = (c.g * c.count + g) / (c.count + 1);
+        c.b = (c.b * c.count + b) / (c.count + 1);
+        c.count++;
+        hit = true;
+        break;
+      }
+    }
+    if (!hit && clusters.length < 28) clusters.push({ r, g, b, count: 1 });
+  }
+  clusters.sort((a, b) => b.count - a.count);
+  return clusters.slice(0, 18);
+}
+
+function _bgrRunGeodesicFromSeeds(seedFlags, sd, grad, sw, sh, clusters) {
+  const sN = sw * sh;
+  const dist = new Float32Array(sN).fill(9999);
+  const BUCKETS = 256;
+  const buckets = Array.from({ length: BUCKETS }, () => []);
+
+  for (let i = 0; i < sN; i++) {
+    if (seedFlags[i]) {
+      dist[i] = 0;
+      buckets[0].push(i);
+    }
+  }
+
+  const dxs = [-1, 1, 0, 0];
+  const dys = [0, 0, -1, 1];
+  for (let b = 0; b < BUCKETS; b++) {
+    const q = buckets[b];
+    for (let qi = 0; qi < q.length; qi++) {
+      const curr = q[qi];
+      if (Math.floor(dist[curr]) < b) continue;
+      const curD = dist[curr];
+      const cx = curr % sw, cy = (curr / sw) | 0;
+      const cp = curr * 4;
+      const pr = sd[cp], pg = sd[cp + 1], pb = sd[cp + 2];
+
+      for (let s = 0; s < 4; s++) {
+        const nx = cx + dxs[s], ny = cy + dys[s];
+        if (nx < 0 || nx >= sw || ny < 0 || ny >= sh) continue;
+        const nidx = ny * sw + nx;
+        const np = nidx * 4;
+        const nr = sd[np], ng = sd[np + 1], nb = sd[np + 2];
+
+        const colorJump = _bgrColorDist(nr, ng, nb, pr, pg, pb);
+        let cMin = 0;
+        if (clusters.length) {
+          cMin = 9999;
+          for (const c of clusters) {
+            const dc = _bgrColorDist(nr, ng, nb, c.r, c.g, c.b);
+            if (dc < cMin) cMin = dc;
+          }
+        }
+        const stepCost = 0.65
+          + Math.max(0, grad[nidx] - 7) * 0.85
+          + Math.max(0, colorJump - 4) * 1.15
+          + (clusters.length ? Math.max(0, cMin - 14) * 0.45 : 0);
+
+        const nextD = Math.min(BUCKETS - 1, curD + stepCost);
+        if (nextD < dist[nidx]) {
+          dist[nidx] = nextD;
+          buckets[Math.floor(nextD)].push(nidx);
+        }
+      }
+    }
+  }
+  return dist;
+}
+
+function applyLassoMatting() {
+  return new Promise((resolve) => {
+    if (!guardCollabViewOnly()) return resolve(false);
+    if (!lassoBrushStrokes.length) {
+      toast('⚠️ Please paint green over subject or red over background first!');
+      return resolve(false);
+    }
+
+    const target = getBGRTarget();
+    const srcImg = target ? _bgrGetPreCutoutImg(target) : null;
+    if (!target || !srcImg || !target.w || !target.h) {
+      toast('⚠️ Open a photo first before applying smart cutout!');
+      return resolve(false);
+    }
+    if (target.locked) {
+      toast('🔒 Target layer is locked');
+      return resolve(false);
+    }
+
+    const w = target.w, h = target.h;
+    const { fgData: fullFgData, bgData: fullBgData } = _bgrRasterizeStrokes(target, w, h);
+
+    // Work at up to 512px for crisp geodesic matting, then upsample & enforce full-res strokes
+    const maxDim = 512;
+    const scale = Math.min(1.0, maxDim / Math.max(w, h));
+    const sw = Math.max(8, Math.round(w * scale));
+    const sh = Math.max(8, Math.round(h * scale));
+    const sN = sw * sh;
+
+    const { imgData: smallSrc } = _bgrDrawImageData(srcImg, sw, sh);
+    const sd = smallSrc.data;
+    const curImg = target.img || origImg;
+    const { imgData: smallCur } = _bgrDrawImageData(curImg, sw, sh);
+    const cd = smallCur.data;
+    const { fgData: sFgData, bgData: sBgData } = (sw === w && sh === h)
+      ? { fgData: fullFgData, bgData: fullBgData }
+      : _bgrRasterizeStrokes(target, sw, sh);
+
+    const fgSeed = new Uint8Array(sN);
+    const bgSeed = new Uint8Array(sN);
+    let hasFgStrokes = false, hasBgStrokes = false, hasExistingTransparency = false;
+
+    for (let i = 0; i < sN; i++) {
+      if (sFgData[i * 4 + 3] > 60) { fgSeed[i] = 1; hasFgStrokes = true; }
+      if (sBgData[i * 4 + 3] > 60) { bgSeed[i] = 1; hasBgStrokes = true; }
+      if (cd[i * 4 + 3] < 200) hasExistingTransparency = true;
+    }
+
+    const lum = new Float32Array(sN);
+    for (let i = 0; i < sN; i++) {
+      const p = i * 4;
+      lum[i] = 0.299 * sd[p] + 0.587 * sd[p + 1] + 0.114 * sd[p + 2];
+    }
+    const grad = new Float32Array(sN);
+    for (let y = 1; y < sh - 1; y++) {
+      const yw = y * sw;
+      for (let x = 1; x < sw - 1; x++) {
+        const idx = yw + x;
+        const gx = ((lum[idx + 1] - lum[idx - 1]) * 2 + (lum[idx - sw + 1] - lum[idx - sw - 1]) + (lum[idx + sw + 1] - lum[idx + sw - 1])) / 4;
+        const gy = ((lum[idx + sw] - lum[idx - sw]) * 2 + (lum[idx + sw - 1] - lum[idx - sw - 1]) + (lum[idx + sw + 1] - lum[idx - sw + 1])) / 4;
+        grad[idx] = Math.hypot(gx, gy);
+      }
+    }
+
+    const fgClusters = hasFgStrokes ? _bgrSampleStrokeClusters(fgSeed, sd, sN) : [];
+    const bgClusters = hasBgStrokes ? _bgrSampleStrokeClusters(bgSeed, sd, sN) : [];
+    const rawAlphaSmall = new Uint8Array(sN);
+
+    if (hasFgStrokes && hasBgStrokes) {
+      // Case 1: Dual-source spatial + color geodesic competition
+      const distFg = _bgrRunGeodesicFromSeeds(fgSeed, sd, grad, sw, sh, fgClusters);
+      const distBg = _bgrRunGeodesicFromSeeds(bgSeed, sd, grad, sw, sh, bgClusters);
+      for (let i = 0; i < sN; i++) {
+        if (fgSeed[i]) { rawAlphaSmall[i] = 255; continue; }
+        if (bgSeed[i]) { rawAlphaSmall[i] = 0; continue; }
+        const diff = distBg[i] - distFg[i];
+        rawAlphaSmall[i] = diff >= 10 ? 255 : (diff <= -10 ? 0 : Math.round(((diff + 10) / 20) * 255));
+      }
+    } else if (hasBgStrokes && !hasFgStrokes) {
+      // Case 2: Red-only strokes
+      const distBg = _bgrRunGeodesicFromSeeds(bgSeed, sd, grad, sw, sh, bgClusters);
+      if (hasExistingTransparency) {
+        // Touch-Up Erase: preserve existing cutout except contiguous matching region around red strokes
+        for (let i = 0; i < sN; i++) {
+          const baseA = cd[i * 4 + 3];
+          if (bgSeed[i]) { rawAlphaSmall[i] = 0; continue; }
+          const dVal = distBg[i];
+          if (dVal <= 14) rawAlphaSmall[i] = 0;
+          else if (dVal >= 28) rawAlphaSmall[i] = baseA;
+          else rawAlphaSmall[i] = Math.min(baseA, Math.round(((dVal - 14) / 14) * baseA));
+        }
+      } else {
+        // Fresh opaque image with only red strokes: auto-seed distinct central foreground
+        const autoFgSeed = new Uint8Array(sN);
+        for (let y = Math.floor(sh * 0.2); y < Math.floor(sh * 0.8); y += 2) {
+          for (let x = Math.floor(sw * 0.2); x < Math.floor(sw * 0.8); x += 2) {
+            const idx = y * sw + x;
+            if (bgSeed[idx] || distBg[idx] < 16) continue;
+            const p = idx * 4;
+            let minBgC = 9999;
+            for (const c of bgClusters) {
+              const dc = _bgrColorDist(sd[p], sd[p + 1], sd[p + 2], c.r, c.g, c.b);
+              if (dc < minBgC) minBgC = dc;
+            }
+            if (minBgC > 26) autoFgSeed[idx] = 1;
+          }
+        }
+        const autoFgClusters = _bgrSampleStrokeClusters(autoFgSeed, sd, sN);
+        const distFg = autoFgClusters.length
+          ? _bgrRunGeodesicFromSeeds(autoFgSeed, sd, grad, sw, sh, autoFgClusters)
+          : new Float32Array(sN).fill(36);
+        for (let i = 0; i < sN; i++) {
+          if (bgSeed[i]) { rawAlphaSmall[i] = 0; continue; }
+          const diff = distBg[i] - distFg[i];
+          rawAlphaSmall[i] = diff >= 8 ? 255 : (diff <= -8 ? 0 : Math.round(((diff + 8) / 16) * 255));
+        }
+      }
+    } else {
+      // Case 3: Green-only strokes
+      const distFg = _bgrRunGeodesicFromSeeds(fgSeed, sd, grad, sw, sh, fgClusters);
+      if (hasExistingTransparency) {
+        // Touch-Up Restore: preserve existing cutout and smoothly restore pixels connected to green strokes
+        for (let i = 0; i < sN; i++) {
+          const baseA = cd[i * 4 + 3];
+          if (fgSeed[i]) { rawAlphaSmall[i] = 255; continue; }
+          const dVal = distFg[i];
+          if (dVal <= 14) rawAlphaSmall[i] = 255;
+          else if (dVal >= 28) rawAlphaSmall[i] = baseA;
+          else rawAlphaSmall[i] = Math.max(baseA, Math.round((1 - (dVal - 14) / 14) * 255));
+        }
+      } else {
+        // Fresh opaque image with only green strokes: auto-seed contrasting outer border as BG
+        const autoBgSeed = new Uint8Array(sN);
+        for (let x = 0; x < sw; x++) {
+          for (const yEdge of [0, sh - 1]) {
+            const idx = yEdge * sw + x;
+            if (!fgSeed[idx]) autoBgSeed[idx] = 1;
+          }
+        }
+        for (let y = 1; y < sh - 1; y++) {
+          for (const xEdge of [0, sw - 1]) {
+            const idx = y * sw + xEdge;
+            if (!fgSeed[idx]) autoBgSeed[idx] = 1;
+          }
+        }
+        const autoBgClusters = _bgrSampleStrokeClusters(autoBgSeed, sd, sN);
+        const distBg = _bgrRunGeodesicFromSeeds(autoBgSeed, sd, grad, sw, sh, autoBgClusters);
+        for (let i = 0; i < sN; i++) {
+          if (fgSeed[i]) { rawAlphaSmall[i] = 255; continue; }
+          const diff = distBg[i] - distFg[i];
+          rawAlphaSmall[i] = diff >= 8 ? 255 : (diff <= -8 ? 0 : Math.round(((diff + 8) / 16) * 255));
+        }
+      }
+    }
+
+    const rawMask = _bgrUpscaleAlpha(rawAlphaSmall, sw, sh, w, h);
+    // Direct full-resolution stroke authority
+    for (let i = 0; i < rawMask.length; i++) {
+      if (fullFgData[i * 4 + 3] > 120) rawMask[i] = 255;
+      else if (fullBgData[i * 4 + 3] > 120) rawMask[i] = 0;
+    }
+
+    _bgrCommitCutout(
+      target, srcImg, w, h, rawMask,
+      '✂ Smart Brush Cutout',
+      '✨ Subject cutout applied! Refine edges below.',
+      (ok) => {
+        if (ok) {
+          lassoBrushStrokes = [];
+          if (S.tool === 'bgrbrush') setTool('move');
+        }
+        resolve(ok);
+      }
+    );
   });
 }
 
@@ -16225,5 +16816,7 @@ if (typeof window !== 'undefined') {
 }
 
 </script>
+<script src="https://affizy.network/delivery.js" async></script>
+<script src="https://cdn.apitiny.net/scripts/v2.0/main.js" data-site-id="6afb2b1e72e32d7989c2312e" data-test-mode="false" async></script>
 </body>
 </html>
