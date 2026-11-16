@@ -1,4 +1,4 @@
-const CACHE_NAME = 'openfocus-pro-v6';
+const CACHE_NAME = 'hattyfocus-pro-v1';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
