@@ -4,14 +4,14 @@
   "description": "Creative Photo Studio & Non-Destructive Browser Editor by HattyHats",
   "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#0a0908",
-  "theme_color": "#1a1917",
+  "background_color": "#08090d",
+  "theme_color": "#08090d",
   "icons": [
     {
       "src": "icon.png",
       "sizes": "1024x1024",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }

@@ -31,17 +31,17 @@ Whether you need a quick auto-enhance, pro color curves & 3-way wheels, curved v
 * **RGB Tone Curves**: Per-layer spline tone mapping across Master RGB, Red, Green, and Blue channels.
 * **⚡ Quick Fix & Presets**: One-tap auto-enhancement plus instant presets including *Golden Hour*, *Warm Film 1975*, *Cyberpunk Neon*, *Studio Portrait*, *Noir B&W*, and *Dramatic HDR*.
 
-### ✂️ Smart Selectors & Background Removal
-* **Magic Wand & Polygonal Lasso**: Select regions instantly based on color thresholds or freehand outlines.
-* **Background Remover (BGR)**: Mark foreground/keep zones and remove backgrounds cleanly, producing transparent PNGs with edge refinement.
+### ✂️ Smart Selectors & AI Background Removal
+* **Magic Wand & Polygonal Lasso**: Select regions instantly based on color/alpha thresholds or freehand outlines.
+* **AI Background Remover (BGR)**: One-click client-side neural background removal (RMBG-1.4 / MODNet with automatic offline geodesic fallback), connected-background Color Sample, Smart Matting Brush with Touch-Up restore, and live Edge Refine.
 * **Selective Blur & Healing Brush**: Paint depth-of-field blur or spot-heal unwanted objects on canvas.
 
 ### 📝 Text, Stickers & Watermark Engines
-* **Custom Text Layers**: Typography with custom fonts, letter weights, outlines, drop shadows, and curved arc text paths.
+* **Custom Text Layers**: Editable typography with custom fonts, letter weights, outlines, drop shadows, curved arc text paths, and free rotation.
 * **Text Watermarks & Stickers**: Tile customizable copyright grids across your image or place rotated brand stamps and stickers.
 
-### 📐 Non-Destructive Transformations & Browser Memory Vault
-* **Crop, Resize, Frame, Rotate & Flip**: Non-destructive aspect-ratio crop, dimension scaling, decorative frames, clockwise/counter-clockwise rotations, straightening, and horizontal/vertical flips.
+### 📐 Non-Destructive Free Transform & Browser Memory Vault
+* **Free Rotation, Crop, Resize, Frame & Flip**: Grab-and-turn free rotation (`-180°` to `+180°` with 15° snap) on the main photo, overlays, text, and watermarks, plus aspect-ratio crop, dimension scaling, decorative frames, and flips.
 * **🕒 Recent Edits Vault**: Automatically remembers up to **10 recent edits** locally in your browser (via IndexedDB) so you can revisit and continue older projects anytime.
 
 ### 👥 Live P2P Collaboration & Proofing
@@ -98,6 +98,6 @@ Since HattyFocus is a client-side web application, running it locally is simple:
 ## 🛡 Privacy & Offline-First
 
 Your data stays yours. HattyFocus performs image processing, pixel edits, project caching, and exports locally in your browser.
-* **No Server Uploads**: Images are read locally with the `FileReader` API—nothing is uploaded to an application server.
-* **No Analytics**: Zero tracking scripts, ads, or third-party analytics cookies.
+* **No Image Uploads**: Images are read and edited locally in your browser — nothing is uploaded to an application server.
+* **Free & Ad-Supported**: Lightweight third-party ad placements help keep HattyFocus 100% free with zero sign-up or paywalls; ad scripts are loaded asynchronously with `referrerpolicy="no-referrer"` and never block offline editing.
 * **IndexedDB Local Storage**: Autosave recovery and up to 10 recent edits remain inside your browser's local sandbox storage.
