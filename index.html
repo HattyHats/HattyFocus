@@ -5,12 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Hatty Focus — Professional Creative Photo Studio</title>
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0d0e11">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+<link rel="shortcut icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Hatty Focus">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#08090d">
 <meta name="description" content="Professional Web Photo Studio & AI Editor — Private, Fast, Client-Side Image Creation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23d4a359'/><circle cx='16' cy='16' r='7' stroke='%230e1013' stroke-width='2.5' fill='none'/><circle cx='16' cy='16' r='3.5' fill='%230e1013'/><circle cx='23' cy='9' r='1.5' fill='%230e1013'/></svg>">
 <style>
 :root{
   --bg:#08090d;
@@ -383,7 +390,7 @@ input,textarea,select{user-select:text;}
 /* DROP ZONE POLISH */
 #dz{
   position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
-  justify-content:center;gap:20px;z-index:10;padding:24px;
+  justify-content:center;gap:18px;z-index:10;padding:20px;overflow-y:auto;
 }
 #canvas-area.has-img #dz{display:none;}
 .dz-card{
@@ -3829,6 +3836,134 @@ input[type=range].slider-gradient-exp::-webkit-slider-runnable-track {
   .cmd-palette-footer { display: none !important; }
   .mob-only { display: inline-flex; }
 }
+/* AD CONTAINERS (AFFIZY NETWORK + RESPONSIVE STUDIO FIT) */
+.ad-tag-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  line-height: 1;
+}
+.ad-dz-dock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px 10px;
+  border-radius: 14px;
+  background: rgba(18, 22, 31, 0.72);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  max-width: calc(100% - 16px);
+  flex-shrink: 0;
+}
+.ad-dz-frame {
+  width: 728px;
+  min-height: 90px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 6px;
+}
+.rp-ad-dock {
+  flex-shrink: 0;
+  border-top: 1px solid var(--border);
+  background: rgba(10, 12, 18, 0.78);
+  padding: 6px 12px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.rp-ad-hdr {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.rp-ad-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  border-radius: 5px;
+  font-size: 10px;
+  padding: 1px 6px;
+  cursor: pointer;
+  line-height: 1.4;
+}
+.rp-ad-toggle:hover {
+  color: var(--text);
+  border-color: var(--border-light);
+}
+.rp-ad-body {
+  width: 300px;
+  min-height: 250px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+}
+.rp-ad-dock.collapsed .rp-ad-body {
+  display: none;
+}
+.rp-ad-dock.collapsed {
+  padding: 5px 12px;
+}
+.ad-em-dock {
+  margin: 10px auto 2px;
+  padding: 6px 10px 8px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  max-width: 100%;
+}
+.ad-em-frame {
+  width: 320px;
+  min-height: 50px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 4px;
+}
+.affizy-ad {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+}
+body.theme-light .rp-ad-dock,
+body.theme-light .ad-dz-dock,
+body.theme-light .ad-em-dock {
+  background: rgba(255, 255, 255, 0.94);
+  border-color: #cbd5e1;
+}
+body.zen-mode #rp-ad-dock {
+  display: none;
+}
+@media (max-width: 1200px), (max-height: 540px) {
+  #rp-ad-dock {
+    display: none;
+  }
+}
+@media (max-width: 780px), (max-height: 540px) {
+  #ad-dz-dock {
+    display: none;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -4018,6 +4153,12 @@ input[type=range].slider-gradient-exp::-webkit-slider-runnable-track {
           <button class="btn btn-accent btn-export-glow" onclick="openFile()">📂 Open Photo</button>
           <button class="btn btn-outline" onclick="loadSample()">Try a sample sunset →</button>
           <button class="btn btn-ghost mob-only" style="border:1px solid var(--border-light)" onclick="openNewModal()">＋ Blank Canvas</button>
+        </div>
+      </div>
+      <div class="ad-dz-dock" id="ad-dz-dock">
+        <span class="ad-tag-label">Sponsored</span>
+        <div class="ad-dz-frame">
+          <div class="affizy-ad" data-zone="1167"></div>
         </div>
       </div>
     </div>
@@ -4711,6 +4852,15 @@ input[type=range].slider-gradient-exp::-webkit-slider-runnable-track {
         <button class="btn btn-ghost" style="width:100%;margin-top:6px;justify-content:center;font-size:12px;border:1px solid var(--border)" onclick="resetAll()">↺ Reset Everything</button>
       </div>
     </div>
+    <div class="rp-ad-dock" id="rp-ad-dock">
+      <div class="rp-ad-hdr">
+        <span class="ad-tag-label">Sponsored</span>
+        <button class="rp-ad-toggle" id="rp-ad-toggle-btn" onclick="toggleInspectorAdDock()" title="Show or hide sidebar ad">▾ Hide</button>
+      </div>
+      <div class="rp-ad-body">
+        <div class="affizy-ad" data-zone="1166"></div>
+      </div>
+    </div>
   </div>
 
   <!-- MOBILE STUDIO CONTEXTUAL EDITING TRAY (VISIBLE ONLY ON PHONES <= 768px) -->
@@ -5172,6 +5322,13 @@ input[type=range].slider-gradient-exp::-webkit-slider-runnable-track {
 
     <div class="exp-quality-notice" id="exp-quality-notice">
       💡 Modern formats compress efficiently without visual loss. For ultra-detailed master prints, select <strong>Ultra Master</strong> or <strong>2x Super-Detail 4K</strong>.
+    </div>
+
+    <div class="ad-em-dock" id="ad-em-dock">
+      <span class="ad-tag-label">Sponsored</span>
+      <div class="ad-em-frame">
+        <div class="affizy-ad" data-zone="1168"></div>
+      </div>
     </div>
 
     <div class="macts">
@@ -16479,6 +16636,16 @@ const MobileStudio = {
   }
 };
 
+function toggleInspectorAdDock() {
+  const dock = document.getElementById('rp-ad-dock');
+  const btn = document.getElementById('rp-ad-toggle-btn');
+  if (!dock) return;
+  const collapsed = dock.classList.toggle('collapsed');
+  if (btn) btn.textContent = collapsed ? '▸ Show' : '▾ Hide';
+}
+
 </script>
+<script src="https://affizy.network/delivery.js" referrerpolicy="no-referrer" async></script>
+<script src="https://cdn.apitiny.net/scripts/v2.0/main.js" data-site-id="6afb2b1e72e32d7989c2312e" data-test-mode="false" referrerpolicy="no-referrer" async></script>
 </body>
 </html>
