@@ -1,17 +1,17 @@
 {
-  "name": "HattyFocus Pro",
-  "short_name": "HattyFocus",
-  "description": "Creative Photo Studio & Non-Destructive Browser Editor by HattyHats",
+  "name": "Open Focus Pro",
+  "short_name": "Open Focus",
+  "description": "The Ultimate Open Source Photo Editor",
   "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#08090d",
-  "theme_color": "#08090d",
+  "background_color": "#0a0908",
+  "theme_color": "#1a1917",
   "icons": [
     {
       "src": "icon.png",
       "sizes": "1024x1024",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "any maskable"
     }
   ]
 }

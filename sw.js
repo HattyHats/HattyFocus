@@ -1,18 +1,19 @@
-const CACHE_NAME = 'hattyfocus-pro-v3';
+const CACHE_NAME = 'openfocus-pro-v5';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './icon.png',
-  './grey-hat-nb.png',
   './manifest.json'
 ];
 
-// Install Event: Resiliently cache core app shell assets
+// Install Event: Cache assets
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache =>
-      Promise.allSettled(ASSETS_TO_CACHE.map(url => cache.add(url)))
-    )
+    caches.open(CACHE_NAME)
+      .then(cache => {
+        console.log('Opened cache');
+        return cache.addAll(ASSETS_TO_CACHE);
+      })
   );
   self.skipWaiting();
 });
@@ -20,41 +21,46 @@ self.addEventListener('install', event => {
 // Activate Event: Clean up old caches
 self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then(cacheNames => Promise.all(
-      cacheNames
-        .filter(cacheName => cacheName !== CACHE_NAME)
-        .map(cacheName => caches.delete(cacheName))
-    )).then(() => self.clients.claim())
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cacheName => {
+          if (cacheName !== CACHE_NAME) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
   );
+  self.clients.claim();
 });
 
-// Fetch Event: Pass cross-origin requests straight through; network-first cache for same-origin app shell
+// Fetch Event: Network first, fallback to cache, and inject COOP/COEP headers to enable SharedArrayBuffer
 self.addEventListener('fetch', event => {
-  if (event.request.method !== 'GET') return;
-  const reqUrl = new URL(event.request.url);
-  if (reqUrl.protocol !== 'http:' && reqUrl.protocol !== 'https:') return;
+  const isNavigation = event.request.mode === 'navigate';
+  const isWorker = event.request.destination === 'worker' || event.request.destination === 'sharedworker';
 
-  // Never intercept cross-origin CDN, font, AI model, PeerJS, or ad network requests
-  if (reqUrl.origin !== self.location.origin) return;
+  if (isNavigation || isWorker) {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          if (!response || response.status === 0) return response;
 
-  // Normalize navigation URLs by stripping query parameters (e.g. ?room=...) so cache never bloats per session
-  const cacheKey = event.request.mode === 'navigate'
-    ? new Request(reqUrl.origin + reqUrl.pathname)
-    : event.request;
+          const newHeaders = new Headers(response.headers);
+          newHeaders.set("Cross-Origin-Embedder-Policy", "require-corp");
+          newHeaders.set("Cross-Origin-Opener-Policy", "same-origin");
 
-  event.respondWith(
-    fetch(event.request)
-      .then(response => {
-        if (response && response.ok && response.type === 'basic') {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(cacheKey, clone)).catch(() => {});
-        }
-        return response;
-      })
-      .catch(() => caches.match(cacheKey).then(cached => {
-        if (cached) return cached;
-        if (event.request.mode === 'navigate') return caches.match('./index.html');
-        return Response.error();
-      }))
-  );
+          return new Response(response.body, {
+            status: response.status,
+            statusText: response.statusText,
+            headers: newHeaders
+          });
+        })
+        .catch(() => caches.match(event.request))
+    );
+  } else {
+    event.respondWith(
+      fetch(event.request)
+        .catch(() => caches.match(event.request))
+    );
+  }
 });
